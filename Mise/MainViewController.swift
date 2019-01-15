@@ -16,6 +16,7 @@ import GoogleMobileAds
 
 class MainViewController: UIViewController {
 
+    @IBOutlet weak var leftMenuView: UIView!
     var bannerView: GADBannerView!
     let baseScrollView = BaseVerticalScrollView()
     let thumImageView = UIImageView()
@@ -33,12 +34,13 @@ class MainViewController: UIViewController {
     var canUpdated:Bool {
             return CLLocationManager.locationServicesEnabled()
     }
+    let menuBtn = UIButton()
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         setUI()
-        
+
         locationManager = CLLocationManager()
         
         locationManager.delegate = self
@@ -51,11 +53,35 @@ class MainViewController: UIViewController {
 
     }
     
+    @objc func callMenu(sender:UIButton) {
+        
+        sender.isSelected = !(sender.isSelected)
+        
+        if sender.isSelected {
+            UIView.animate(withDuration: 0.5) {
+                self.leftMenuView.snp.updateConstraints { (make) in
+                    make.leading.equalToSuperview()
+                }
+                self.view.layoutIfNeeded()
+            }
+        }else{
+            UIView.animate(withDuration: 0.5) {
+                self.leftMenuView.snp.updateConstraints { (make) in
+                    make.leading.equalTo(self.view.snp.leading).offset(-self.view.bounds.width)
+                }
+                self.view.layoutIfNeeded()
+            }
+        }
+
+
+        
+    }
+    
     func setUI() {
 
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
 
-        baseScrollView.contentView.addSubview([thumImageView, locationLb, dustLb, infoStackView, infoStackView2, alertLb, mapView, bannerView])
+        baseScrollView.contentView.addSubview([thumImageView, locationLb, dustLb, infoStackView, infoStackView2, alertLb, mapView, bannerView, menuBtn])
         view.addSubview([baseScrollView])
         baseScrollView.setScrollView(vc: self)
 
@@ -63,6 +89,16 @@ class MainViewController: UIViewController {
             make.top.leading.trailing.equalToSuperview()
             make.bottom.equalTo(-50)
         }
+        
+        menuBtn.snp.makeConstraints { (make) in
+            make.width.height.equalTo(50)
+            make.trailing.equalToSuperview()
+            make.top.equalTo(100)
+        }
+        
+        menuBtn.addTarget(self, action: #selector(callMenu(sender:)), for: .touchUpInside)
+        menuBtn.backgroundColor = .red
+        
         tapGesture.addTarget(self, action: #selector(shaking))
         thumImageView.addGestureRecognizer(tapGesture)
         thumImageView.isUserInteractionEnabled = true
@@ -131,6 +167,15 @@ class MainViewController: UIViewController {
             make.leading.bottom.trailing.equalToSuperview()
             make.height.equalTo(50)
         }
+        
+        leftMenuView.snp.makeConstraints { (make) in
+            make.width.equalToSuperview().multipliedBy(0.9)
+            make.height.equalToSuperview()
+            make.leading.equalTo(view.snp.leading).offset(-view.bounds.width)
+            make.top.equalToSuperview()
+        }
+        
+        view.bringSubviewToFront(leftMenuView)
         bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
@@ -164,15 +209,15 @@ class MainViewController: UIViewController {
 
         case .little:
             self.thumImageView.image = UIImage.init(named: "gas-mask-3")
-            self.alertLb.text = "나가면 죽어요,,"
+            self.alertLb.text = "나가면 아파요,,"
 
         case .normal:
             self.thumImageView.image = UIImage.init(named: "gas-mask-4")
-            self.alertLb.text = "나가면 죽어요,,"
+            self.alertLb.text = "그래도 살만한 세상,,"
 
         case .safe:
             self.thumImageView.image = UIImage.init(named: "gas-mask-5")
-            self.alertLb.text = "나가면 죽어요,,"
+            self.alertLb.text = "오랜만에 여행갑시다,,"
 
         case .veryBad:
             self.thumImageView.image = UIImage.init(named: "gas-mask-1")
@@ -213,8 +258,7 @@ class MainViewController: UIViewController {
                 if let place = places?[0] {
 
                     CustomAPI.getDust(lat:"\(myLocation.coordinate.latitude)", lng: "\(myLocation.coordinate.longitude)", completion: { (weather) in
-                        print(weather)
-//                        self.mapView.showa
+
                         self.centerMapOnLocation(myLocation, mapView: self.mapView)
 
                         self.setData(weather, locationName: place.locality ?? weather.name)
@@ -301,10 +345,10 @@ extension MainViewController:GADBannerViewDelegate {
 extension MainViewController:MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "AnnotationIdentifier")
         
         let annotationV = MKPinAnnotationView.init(annotation: annotation, reuseIdentifier: nil)
         annotationV.canShowCallout = true
+//        annotationV.
 //        annotationV.image = UIImage.init(named: "gas-mask-1")
 
 //        annotationV.
@@ -325,7 +369,7 @@ extension MainViewController:MKMapViewDelegate {
                 
                 let annotation = MKPointAnnotation.init()
                 annotation.coordinate = $0.geo
-                
+                annotation.title = $0.aqi
                 currentAnnos.append(annotation)
                 
             })
