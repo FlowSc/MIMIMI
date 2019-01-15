@@ -27,7 +27,7 @@ struct CustomAPI {
                 guard let completion = completion else {return}
                 completion([])
             case .success(let value):
-                print(value)
+//                print(value)
                 
                 let json = JSON(value)
                 _ = json["data"].arrayValue.map({

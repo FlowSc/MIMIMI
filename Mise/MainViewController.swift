@@ -27,6 +27,7 @@ class MainViewController: UIViewController {
     let tapGesture = UITapGestureRecognizer()
     let emptyView = UIView()
     let mapView = MKMapView()
+    var annotations:[MKAnnotation] = []
     
     var locationManager:CLLocationManager!
     var canUpdated:Bool {
@@ -213,7 +214,7 @@ class MainViewController: UIViewController {
 
                     CustomAPI.getDust(lat:"\(myLocation.coordinate.latitude)", lng: "\(myLocation.coordinate.longitude)", completion: { (weather) in
                         print(weather)
-                       
+//                        self.mapView.showa
                         self.centerMapOnLocation(myLocation, mapView: self.mapView)
 
                         self.setData(weather, locationName: place.locality ?? weather.name)
@@ -222,6 +223,8 @@ class MainViewController: UIViewController {
                 }
             }
         }
+        
+
 //            if let myLocation = locationManager.location {
 //
 //                UserDefaults.standard.set(["en"], forKey: "AppleLanguages")
@@ -297,12 +300,53 @@ extension MainViewController:GADBannerViewDelegate {
 
 extension MainViewController:MKMapViewDelegate {
     
-    func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "AnnotationIdentifier")
+        
+        let annotationV = MKPinAnnotationView.init(annotation: annotation, reuseIdentifier: nil)
+        annotationV.canShowCallout = true
+//        annotationV.image = UIImage.init(named: "gas-mask-1")
+
+//        annotationV.
+        
+        return annotationV
+        
+
+    }
+    
+    func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
+
+        CustomAPI.getDustMap(topLeft: mapView.convert(CGPoint.init(x: 0, y: 0), toCoordinateFrom: mapView), bottomRight: mapView.convert(CGPoint.init(x: mapView.bounds.width, y: mapView.bounds.height), toCoordinateFrom: mapView)) { (annos) in
+            
+            
+            var currentAnnos:[MKAnnotation] = []
+            
+            _ = annos.map({
+                
+                let annotation = MKPointAnnotation.init()
+                annotation.coordinate = $0.geo
+                
+                currentAnnos.append(annotation)
+                
+            })
+            
+            
+            //            print(anno)
+            self.annotations = currentAnnos
+            
+            self.mapView.removeAnnotations(self.mapView.annotations)
+            self.mapView.addAnnotations(self.annotations)
+            //            self.mapView.showAnnotations(self.annotations, animated: true)
+            print(self.mapView.annotations.count, "ANNOC")
+            //            annotation.coordinate =
+        }
 
         
-        CustomAPI.getDustMap(topLeft: mapView.convert(CGPoint.init(x: 0, y: 0), toCoordinateFrom: mapView), bottomRight: mapView.convert(CGPoint.init(x: mapView.bounds.width, y: mapView.bounds.height), toCoordinateFrom: mapView)) { (annos) in
-            print(annos.count)
-        }
+    }
+    
+    func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
+
+ 
     }
     
 }

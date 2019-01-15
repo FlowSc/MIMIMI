@@ -20,7 +20,7 @@ struct MapAQI {
     
         self.uid = json["uid"].intValue
         self.aqi = json["aqi"].stringValue
-        self.geo = CLLocationCoordinate2D.init(latitude: CLLocationDegrees(json["lat"].floatValue), longitude: CLLocationDegrees(json["lng"].floatValue))
+        self.geo = CLLocationCoordinate2D.init(latitude: CLLocationDegrees(json["lat"].floatValue), longitude: CLLocationDegrees(json["lon"].floatValue))
     }
     
 }
