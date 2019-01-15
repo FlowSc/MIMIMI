@@ -14,6 +14,7 @@ target 'Mise' do
 	pod 'ObjectMapper'
     pod 'Firebase'
     pod 'Google-Mobile-Ads-SDK'
+    pod 'Hero'
 
      target 'MiseTests' do
     inherit! :search_paths

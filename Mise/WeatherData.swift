@@ -10,6 +10,21 @@ import Foundation
 import MapKit
 import SwiftyJSON
 
+struct MapAQI {
+    
+    var geo:CLLocationCoordinate2D
+    var aqi:String
+    var uid:Int
+    
+    init(json:JSON) {
+    
+        self.uid = json["uid"].intValue
+        self.aqi = json["aqi"].stringValue
+        self.geo = CLLocationCoordinate2D.init(latitude: CLLocationDegrees(json["lat"].floatValue), longitude: CLLocationDegrees(json["lng"].floatValue))
+    }
+    
+}
+
 struct WeatherData {
     
     private var iaqis:[String:JSON]

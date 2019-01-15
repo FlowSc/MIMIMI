@@ -9,11 +9,36 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import MapKit
 
 struct CustomAPI {
     
     static let token = "7ba124cd957e5ac93963ee8aa2e8d7eb478d3c12"
     
+    static func getDustMap(topLeft:CLLocationCoordinate2D, bottomRight:CLLocationCoordinate2D, completion:(([MapAQI])->())?) {
+        
+        Alamofire.request("https://api.waqi.info/map/bounds/?latlng=\(bottomRight.latitude),\(bottomRight.longitude),\(topLeft.latitude),\(topLeft.longitude)&token=\(token)").responseJSON { (response) in
+            
+            var infos:[MapAQI] = []
+            switch response.result {
+                
+            case .failure(let error):
+                print(error)
+                guard let completion = completion else {return}
+                completion([])
+            case .success(let value):
+                print(value)
+                
+                let json = JSON(value)
+                _ = json["data"].arrayValue.map({
+                    let maps = MapAQI.init(json: $0)
+                    infos.append(maps)
+                })
+                guard let completion = completion else {return}
+                completion(infos)
+            }
+        }
+    }
     
     static func getDust(lat:String, lng:String, completion:((WeatherData)->())?) {
         

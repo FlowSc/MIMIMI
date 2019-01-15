@@ -26,7 +26,8 @@ class MainViewController: UIViewController {
     let alertLb = UILabel()
     let tapGesture = UITapGestureRecognizer()
     let emptyView = UIView()
-
+    let mapView = MKMapView()
+    
     var locationManager:CLLocationManager!
     var canUpdated:Bool {
             return CLLocationManager.locationServicesEnabled()
@@ -40,6 +41,7 @@ class MainViewController: UIViewController {
         locationManager = CLLocationManager()
         
         locationManager.delegate = self
+        mapView.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         
         locationManager.requestLocation()
@@ -52,7 +54,7 @@ class MainViewController: UIViewController {
 
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
 
-        baseScrollView.contentView.addSubview([thumImageView, locationLb, dustLb, infoStackView, infoStackView2, alertLb, emptyView, bannerView])
+        baseScrollView.contentView.addSubview([thumImageView, locationLb, dustLb, infoStackView, infoStackView2, alertLb, mapView, bannerView])
         view.addSubview([baseScrollView])
         baseScrollView.setScrollView(vc: self)
 
@@ -77,14 +79,13 @@ class MainViewController: UIViewController {
         locationLb.snp.makeConstraints { (make) in
             make.bottom.equalTo(thumImageView.snp.top).offset(-20)
             make.leading.equalTo(10)
-            make.height.equalTo(40)
+            make.height.equalTo(60)
             make.centerX.equalToSuperview()
         }
         
         alertLb.snp.makeConstraints { (make) in
             make.bottom.equalTo(locationLb.snp.top).offset(-10)
             make.centerX.equalToSuperview()
-//            make.
         }
         locationLb.numberOfLines = 0
         locationLb.textAlignment = .center
@@ -107,17 +108,17 @@ class MainViewController: UIViewController {
             make.leading.equalTo(10)
             make.height.equalTo(100)
             make.centerX.equalToSuperview()
-//            make.bottom.equalToSuperview()
-//            make.bottom.equalTo(-50)
+
         }
         
-        emptyView.snp.makeConstraints { (make) in
+        mapView.snp.makeConstraints { (make) in
             make.height.equalTo(400)
-            make.top.equalTo(infoStackView2.snp.bottom)
+            make.top.equalTo(infoStackView2.snp.bottom).offset(10)
             make.leading.trailing.equalToSuperview()
             make.bottom.equalToSuperview()
         }
-        emptyView.backgroundColor = .red
+        mapView.showsUserLocation = true
+
         infoStackView.axis = .horizontal
         infoStackView.distribution = .fillEqually
         infoStackView2.distribution = .fillEqually
@@ -129,11 +130,9 @@ class MainViewController: UIViewController {
             make.leading.bottom.trailing.equalToSuperview()
             make.height.equalTo(50)
         }
-//        bannerView.adUnitID = "ca-app-pub-9212649214874133/6072058333"
         bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
-//        thumImageView
 
     }
     
@@ -197,6 +196,13 @@ class MainViewController: UIViewController {
 
     }
     
+    func centerMapOnLocation(_ location: CLLocation, mapView: MKMapView) {
+        let regionRadius: CLLocationDistance = 1000
+        let coordinateRegion = MKCoordinateRegion(center: location.coordinate,
+                                                  latitudinalMeters: regionRadius * 2.0, longitudinalMeters: regionRadius * 2.0)
+        mapView.setRegion(coordinateRegion, animated: true)
+    }
+    
     func getInfo() {
         
         if let myLocation = locationManager.location {
@@ -207,6 +213,8 @@ class MainViewController: UIViewController {
 
                     CustomAPI.getDust(lat:"\(myLocation.coordinate.latitude)", lng: "\(myLocation.coordinate.longitude)", completion: { (weather) in
                         print(weather)
+                       
+                        self.centerMapOnLocation(myLocation, mapView: self.mapView)
 
                         self.setData(weather, locationName: place.locality ?? weather.name)
 
@@ -287,6 +295,17 @@ extension MainViewController:GADBannerViewDelegate {
     }
 }
 
+extension MainViewController:MKMapViewDelegate {
+    
+    func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
+
+        
+        CustomAPI.getDustMap(topLeft: mapView.convert(CGPoint.init(x: 0, y: 0), toCoordinateFrom: mapView), bottomRight: mapView.convert(CGPoint.init(x: mapView.bounds.width, y: mapView.bounds.height), toCoordinateFrom: mapView)) { (annos) in
+            print(annos.count)
+        }
+    }
+    
+}
 
 extension UIView {
     

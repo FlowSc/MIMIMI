@@ -48,6 +48,7 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (5.3.6):
     - GoogleUtilities/Logger
+  - Hero (1.4.0)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
     - nanopb/encode (= 0.3.901)
@@ -67,6 +68,7 @@ DEPENDENCIES:
   - AloeStackView
   - Firebase
   - Google-Mobile-Ads-SDK
+  - Hero
   - ObjectMapper
   - RealmSwift
   - SnapKit
@@ -83,6 +85,7 @@ SPEC REPOS:
     - Google-Mobile-Ads-SDK
     - GoogleAppMeasurement
     - GoogleUtilities
+    - Hero
     - nanopb
     - ObjectMapper
     - Realm
@@ -100,6 +103,7 @@ SPEC CHECKSUMS:
   Google-Mobile-Ads-SDK: d028682d7450749a1955679da050eaf70d997b3e
   GoogleAppMeasurement: 98b71f5e04142793729a5ef23e5b96651ff4b70f
   GoogleUtilities: 95996bea7c7d9b8fb811b7507669a4a8762f80c7
+  Hero: bac92350d7201a1a940003e0767c7b52ce7c99a1
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   ObjectMapper: 0d4402610f4e468903ae64629eec4784531e5c51
   Realm: 50071da38fe079e0735e47c9f2eae738c68c5996
@@ -107,6 +111,6 @@ SPEC CHECKSUMS:
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: 41310266e2282ba8fe1d3cb8d76387c49b270a61
+PODFILE CHECKSUM: 5ecf3a18a950a5630b94c06afa3d2611b72d0996
 
 COCOAPODS: 1.6.0.beta.2
