@@ -20,9 +20,10 @@
 		23BBBBF121EDDE0F00B64B7B /* LeftPaddedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BBBBF021EDDE0F00B64B7B /* LeftPaddedTextField.swift */; };
 		23BBBBF321EDDE1900B64B7B /* BaseVerticalScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BBBBF221EDDE1900B64B7B /* BaseVerticalScrollView.swift */; };
 		23BBBBF521EDE04200B64B7B /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BBBBF421EDE04200B64B7B /* InfoView.swift */; };
-		4A9E6FC797B52BA6C1CAFD80 /* Pods_MiseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AB43AED1FBA74CAEE01B88A /* Pods_MiseTests.framework */; };
-		AA2F75EF8F4DB4E565BB0A3B /* Pods_MiseUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E661D6B5191B4D494621346 /* Pods_MiseUITests.framework */; };
-		F42D68924D423C4DF1B93B8C /* Pods_Mise.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 852C840CB9CEF3F4D292B0E0 /* Pods_Mise.framework */; };
+		26A03B8D65FFF5BB03691098 /* Pods_Mise.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AFDD39391D9CD3C5198F341 /* Pods_Mise.framework */; };
+		5C19A0B78DAEA3B6EBA2508A /* Pods_MiseUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E56F0E92F0506EF398BDA262 /* Pods_MiseUITests.framework */; };
+		758CCDB121EE0366000539D7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 758CCDB021EE0366000539D7 /* GoogleService-Info.plist */; };
+		B39534071C2EE54C69ACED18 /* Pods_MiseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6ED8677847C1862C042F5E0 /* Pods_MiseTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,15 +63,16 @@
 		23BBBBF021EDDE0F00B64B7B /* LeftPaddedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftPaddedTextField.swift; sourceTree = "<group>"; };
 		23BBBBF221EDDE1900B64B7B /* BaseVerticalScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseVerticalScrollView.swift; sourceTree = "<group>"; };
 		23BBBBF421EDE04200B64B7B /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
-		423BACA12AE7B1C20A32BCB4 /* Pods-MiseUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiseUITests.release.xcconfig"; path = "Target Support Files/Pods-MiseUITests/Pods-MiseUITests.release.xcconfig"; sourceTree = "<group>"; };
-		5047162873188F2450FBBA36 /* Pods-MiseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiseTests.release.xcconfig"; path = "Target Support Files/Pods-MiseTests/Pods-MiseTests.release.xcconfig"; sourceTree = "<group>"; };
-		5AB43AED1FBA74CAEE01B88A /* Pods_MiseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7E661D6B5191B4D494621346 /* Pods_MiseUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiseUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		852C840CB9CEF3F4D292B0E0 /* Pods_Mise.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mise.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C0693DC3FFC4DCC7B89281A6 /* Pods-Mise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mise.release.xcconfig"; path = "Target Support Files/Pods-Mise/Pods-Mise.release.xcconfig"; sourceTree = "<group>"; };
-		C1297DA91F63683FD71287D8 /* Pods-MiseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiseTests.debug.xcconfig"; path = "Target Support Files/Pods-MiseTests/Pods-MiseTests.debug.xcconfig"; sourceTree = "<group>"; };
-		E049E732FE02962701DCCA69 /* Pods-MiseUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiseUITests.debug.xcconfig"; path = "Target Support Files/Pods-MiseUITests/Pods-MiseUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		F39F16152511E696AAEC64E4 /* Pods-Mise.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mise.debug.xcconfig"; path = "Target Support Files/Pods-Mise/Pods-Mise.debug.xcconfig"; sourceTree = "<group>"; };
+		4AD90BF4664FDA9F25F99389 /* Pods-MiseUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiseUITests.debug.xcconfig"; path = "Target Support Files/Pods-MiseUITests/Pods-MiseUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		6C318A6B8E7574D96F46F7A5 /* Pods-Mise.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mise.debug.xcconfig"; path = "Target Support Files/Pods-Mise/Pods-Mise.debug.xcconfig"; sourceTree = "<group>"; };
+		6EA4EFA21B32D62ABDFF72FC /* Pods-MiseUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiseUITests.release.xcconfig"; path = "Target Support Files/Pods-MiseUITests/Pods-MiseUITests.release.xcconfig"; sourceTree = "<group>"; };
+		758CCDB021EE0366000539D7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7AFDD39391D9CD3C5198F341 /* Pods_Mise.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mise.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		97BDFADC6167248C32173D50 /* Pods-Mise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mise.release.xcconfig"; path = "Target Support Files/Pods-Mise/Pods-Mise.release.xcconfig"; sourceTree = "<group>"; };
+		9F411BB940480B6F476CE0C8 /* Pods-MiseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiseTests.release.xcconfig"; path = "Target Support Files/Pods-MiseTests/Pods-MiseTests.release.xcconfig"; sourceTree = "<group>"; };
+		C10FE8B7CE617772A35CCFEA /* Pods-MiseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiseTests.debug.xcconfig"; path = "Target Support Files/Pods-MiseTests/Pods-MiseTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D6ED8677847C1862C042F5E0 /* Pods_MiseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56F0E92F0506EF398BDA262 /* Pods_MiseUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiseUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F42D68924D423C4DF1B93B8C /* Pods_Mise.framework in Frameworks */,
+				26A03B8D65FFF5BB03691098 /* Pods_Mise.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,7 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A9E6FC797B52BA6C1CAFD80 /* Pods_MiseTests.framework in Frameworks */,
+				B39534071C2EE54C69ACED18 /* Pods_MiseTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,13 +96,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA2F75EF8F4DB4E565BB0A3B /* Pods_MiseUITests.framework in Frameworks */,
+				5C19A0B78DAEA3B6EBA2508A /* Pods_MiseUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C2A52064AD5D4926CBACA29 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7AFDD39391D9CD3C5198F341 /* Pods_Mise.framework */,
+				D6ED8677847C1862C042F5E0 /* Pods_MiseTests.framework */,
+				E56F0E92F0506EF398BDA262 /* Pods_MiseUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		23BBBBAE21EDB9AB00B64B7B = {
 			isa = PBXGroup;
 			children = (
@@ -109,7 +121,7 @@
 				23BBBBD921EDB9AD00B64B7B /* MiseUITests */,
 				23BBBBB821EDB9AB00B64B7B /* Products */,
 				F59628B7E7F09EC03B6A72AF /* Pods */,
-				385685B4C0D0205DA54A8565 /* Frameworks */,
+				1C2A52064AD5D4926CBACA29 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -126,6 +138,7 @@
 		23BBBBB921EDB9AB00B64B7B /* Mise */ = {
 			isa = PBXGroup;
 			children = (
+				758CCDB021EE0366000539D7 /* GoogleService-Info.plist */,
 				23BBBBBA21EDB9AB00B64B7B /* AppDelegate.swift */,
 				23BBBBEC21EDC0A700B64B7B /* MainViewController.swift */,
 				23BBBBF421EDE04200B64B7B /* InfoView.swift */,
@@ -160,25 +173,15 @@
 			path = MiseUITests;
 			sourceTree = "<group>";
 		};
-		385685B4C0D0205DA54A8565 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				852C840CB9CEF3F4D292B0E0 /* Pods_Mise.framework */,
-				5AB43AED1FBA74CAEE01B88A /* Pods_MiseTests.framework */,
-				7E661D6B5191B4D494621346 /* Pods_MiseUITests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		F59628B7E7F09EC03B6A72AF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				F39F16152511E696AAEC64E4 /* Pods-Mise.debug.xcconfig */,
-				C0693DC3FFC4DCC7B89281A6 /* Pods-Mise.release.xcconfig */,
-				C1297DA91F63683FD71287D8 /* Pods-MiseTests.debug.xcconfig */,
-				5047162873188F2450FBBA36 /* Pods-MiseTests.release.xcconfig */,
-				E049E732FE02962701DCCA69 /* Pods-MiseUITests.debug.xcconfig */,
-				423BACA12AE7B1C20A32BCB4 /* Pods-MiseUITests.release.xcconfig */,
+				6C318A6B8E7574D96F46F7A5 /* Pods-Mise.debug.xcconfig */,
+				97BDFADC6167248C32173D50 /* Pods-Mise.release.xcconfig */,
+				C10FE8B7CE617772A35CCFEA /* Pods-MiseTests.debug.xcconfig */,
+				9F411BB940480B6F476CE0C8 /* Pods-MiseTests.release.xcconfig */,
+				4AD90BF4664FDA9F25F99389 /* Pods-MiseUITests.debug.xcconfig */,
+				6EA4EFA21B32D62ABDFF72FC /* Pods-MiseUITests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -190,11 +193,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 23BBBBDF21EDB9AD00B64B7B /* Build configuration list for PBXNativeTarget "Mise" */;
 			buildPhases = (
-				FF2A7596042BEE07F22A01B0 /* [CP] Check Pods Manifest.lock */,
+				8317F4BE14B290D17E346AFB /* [CP] Check Pods Manifest.lock */,
 				23BBBBB321EDB9AB00B64B7B /* Sources */,
 				23BBBBB421EDB9AB00B64B7B /* Frameworks */,
 				23BBBBB521EDB9AB00B64B7B /* Resources */,
-				20D220A38BA05557187CBFD0 /* [CP] Embed Pods Frameworks */,
+				B3E566D778BB0BF1C905172F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -209,7 +212,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 23BBBBE221EDB9AD00B64B7B /* Build configuration list for PBXNativeTarget "MiseTests" */;
 			buildPhases = (
-				9CA4F5C8B12122D42C10000C /* [CP] Check Pods Manifest.lock */,
+				FBFA721791B3B346D8239956 /* [CP] Check Pods Manifest.lock */,
 				23BBBBC721EDB9AD00B64B7B /* Sources */,
 				23BBBBC821EDB9AD00B64B7B /* Frameworks */,
 				23BBBBC921EDB9AD00B64B7B /* Resources */,
@@ -228,7 +231,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 23BBBBE521EDB9AD00B64B7B /* Build configuration list for PBXNativeTarget "MiseUITests" */;
 			buildPhases = (
-				2F5C3255FF34A2E6E42C1E9F /* [CP] Check Pods Manifest.lock */,
+				991D8CCFF932A8FC57F789D6 /* [CP] Check Pods Manifest.lock */,
 				23BBBBD221EDB9AD00B64B7B /* Sources */,
 				23BBBBD321EDB9AD00B64B7B /* Frameworks */,
 				23BBBBD421EDB9AD00B64B7B /* Resources */,
@@ -292,6 +295,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				23BBBBC521EDB9AD00B64B7B /* LaunchScreen.storyboard in Resources */,
+				758CCDB121EE0366000539D7 /* GoogleService-Info.plist in Resources */,
 				23BBBBC221EDB9AD00B64B7B /* Assets.xcassets in Resources */,
 				23BBBBC021EDB9AB00B64B7B /* Main.storyboard in Resources */,
 			);
@@ -314,54 +318,34 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		20D220A38BA05557187CBFD0 /* [CP] Embed Pods Frameworks */ = {
+		8317F4BE14B290D17E346AFB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Mise/Pods-Mise-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/AloeStackView/AloeStackView.framework",
-				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
-				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
-				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AloeStackView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Mise/Pods-Mise-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		2F5C3255FF34A2E6E42C1E9F /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Mise-checkManifestLockResult.txt",
 			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		991D8CCFF932A8FC57F789D6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-MiseUITests-checkManifestLockResult.txt",
 			);
@@ -370,44 +354,52 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9CA4F5C8B12122D42C10000C /* [CP] Check Pods Manifest.lock */ = {
+		B3E566D778BB0BF1C905172F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
+				"${PODS_ROOT}/Target Support Files/Pods-Mise/Pods-Mise-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AloeStackView/AloeStackView.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MiseTests-checkManifestLockResult.txt",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AloeStackView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Mise/Pods-Mise-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		FF2A7596042BEE07F22A01B0 /* [CP] Check Pods Manifest.lock */ = {
+		FBFA721791B3B346D8239956 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Mise-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-MiseTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -601,7 +593,7 @@
 		};
 		23BBBBE021EDB9AD00B64B7B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F39F16152511E696AAEC64E4 /* Pods-Mise.debug.xcconfig */;
+			baseConfigurationReference = 6C318A6B8E7574D96F46F7A5 /* Pods-Mise.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -620,7 +612,7 @@
 		};
 		23BBBBE121EDB9AD00B64B7B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C0693DC3FFC4DCC7B89281A6 /* Pods-Mise.release.xcconfig */;
+			baseConfigurationReference = 97BDFADC6167248C32173D50 /* Pods-Mise.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -639,7 +631,7 @@
 		};
 		23BBBBE321EDB9AD00B64B7B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C1297DA91F63683FD71287D8 /* Pods-MiseTests.debug.xcconfig */;
+			baseConfigurationReference = C10FE8B7CE617772A35CCFEA /* Pods-MiseTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -661,7 +653,7 @@
 		};
 		23BBBBE421EDB9AD00B64B7B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5047162873188F2450FBBA36 /* Pods-MiseTests.release.xcconfig */;
+			baseConfigurationReference = 9F411BB940480B6F476CE0C8 /* Pods-MiseTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -683,7 +675,7 @@
 		};
 		23BBBBE621EDB9AD00B64B7B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E049E732FE02962701DCCA69 /* Pods-MiseUITests.debug.xcconfig */;
+			baseConfigurationReference = 4AD90BF4664FDA9F25F99389 /* Pods-MiseUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -704,7 +696,7 @@
 		};
 		23BBBBE721EDB9AD00B64B7B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 423BACA12AE7B1C20A32BCB4 /* Pods-MiseUITests.release.xcconfig */;
+			baseConfigurationReference = 6EA4EFA21B32D62ABDFF72FC /* Pods-MiseUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

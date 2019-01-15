@@ -12,8 +12,10 @@ target 'Mise' do
 	pod 'SwiftyJSON'
 	pod 'AloeStackView'
 	pod 'ObjectMapper'
+    pod 'Firebase'
+    pod 'Google-Mobile-Ads-SDK'
 
-  target 'MiseTests' do
+     target 'MiseTests' do
     inherit! :search_paths
     # Pods for testing
   end

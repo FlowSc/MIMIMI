@@ -10,10 +10,14 @@ import UIKit
 import CoreLocation
 import MapKit
 import SnapKit
+import GoogleMobileAds
+
 //import URWeatherView
 
 class MainViewController: UIViewController {
 
+    var bannerView: GADBannerView!
+    let baseScrollView = BaseVerticalScrollView()
     let thumImageView = UIImageView()
     let locationLb = UILabel()
     let dustLb = UILabel()
@@ -44,17 +48,24 @@ class MainViewController: UIViewController {
     }
     
     func setUI() {
-        
-        
-        view.addSubview([thumImageView, locationLb, dustLb, infoStackView, infoStackView2, alertLb])
 
+        bannerView = GADBannerView(adSize: kGADAdSizeBanner)
 
+        baseScrollView.addSubview([thumImageView, locationLb, dustLb, infoStackView, infoStackView2, alertLb])
+        view.addSubview([baseScrollView, bannerView])
+
+        baseScrollView.snp.makeConstraints { (make) in
+            make.top.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(-50)
+        }
         tapGesture.addTarget(self, action: #selector(shaking))
         thumImageView.addGestureRecognizer(tapGesture)
         thumImageView.isUserInteractionEnabled = true
 
         thumImageView.snp.makeConstraints { (make) in
-            make.center.equalToSuperview()
+//            make.center.equalToSuperview()
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview().offset(-20)
             make.width.equalToSuperview().multipliedBy(0.7)
             
             make.height.equalTo(250)
@@ -89,6 +100,7 @@ class MainViewController: UIViewController {
             make.top.equalTo(infoStackView.snp.bottom).offset(10)
             make.leading.equalTo(10)
             make.centerX.equalToSuperview()
+            make.bottom.equalTo(-50)
         }
         infoStackView.axis = .horizontal
         infoStackView.distribution = .fillEqually
@@ -97,6 +109,14 @@ class MainViewController: UIViewController {
         infoStackView.spacing = 0
         dustLb.textAlignment = .center
         thumImageView.contentMode = .scaleAspectFit
+        bannerView.snp.makeConstraints { (make) in
+            make.leading.bottom.trailing.equalToSuperview()
+            make.height.equalTo(50)
+        }
+//        bannerView.adUnitID = "ca-app-pub-9212649214874133/6072058333"
+        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
 //        thumImageView
 
     }
@@ -232,6 +252,16 @@ extension MainViewController:CLLocationManagerDelegate {
     
 //    locatio
     
+}
+
+extension MainViewController:GADBannerViewDelegate {
+    
+    func adViewDidReceiveAd(_ bannerView: GADBannerView) {
+        print("RECIED")
+    }
+    func adViewWillPresentScreen(_ bannerView: GADBannerView) {
+        print("WILL")
+    }
 }
 
 
