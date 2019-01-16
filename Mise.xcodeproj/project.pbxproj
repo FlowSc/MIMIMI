@@ -173,6 +173,7 @@
 		26A03B8D65FFF5BB03691098 /* Pods_Mise.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AFDD39391D9CD3C5198F341 /* Pods_Mise.framework */; };
 		5C19A0B78DAEA3B6EBA2508A /* Pods_MiseUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E56F0E92F0506EF398BDA262 /* Pods_MiseUITests.framework */; };
 		750F25B121EE3D55003A3FA6 /* LeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750F25B021EE3D55003A3FA6 /* LeftMenuViewController.swift */; };
+		758A33AB21EF7ED600EA2B50 /* SignAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758A33AA21EF7ED600EA2B50 /* SignAnnotationView.swift */; };
 		758CCDB121EE0366000539D7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 758CCDB021EE0366000539D7 /* GoogleService-Info.plist */; };
 		B39534071C2EE54C69ACED18 /* Pods_MiseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6ED8677847C1862C042F5E0 /* Pods_MiseTests.framework */; };
 /* End PBXBuildFile section */
@@ -368,6 +369,7 @@
 		6C318A6B8E7574D96F46F7A5 /* Pods-Mise.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mise.debug.xcconfig"; path = "Target Support Files/Pods-Mise/Pods-Mise.debug.xcconfig"; sourceTree = "<group>"; };
 		6EA4EFA21B32D62ABDFF72FC /* Pods-MiseUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiseUITests.release.xcconfig"; path = "Target Support Files/Pods-MiseUITests/Pods-MiseUITests.release.xcconfig"; sourceTree = "<group>"; };
 		750F25B021EE3D55003A3FA6 /* LeftMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftMenuViewController.swift; sourceTree = "<group>"; };
+		758A33AA21EF7ED600EA2B50 /* SignAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignAnnotationView.swift; sourceTree = "<group>"; };
 		758CCDB021EE0366000539D7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7AFDD39391D9CD3C5198F341 /* Pods_Mise.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mise.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		97BDFADC6167248C32173D50 /* Pods-Mise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mise.release.xcconfig"; path = "Target Support Files/Pods-Mise/Pods-Mise.release.xcconfig"; sourceTree = "<group>"; };
@@ -453,6 +455,7 @@
 				23BBBBF221EDDE1900B64B7B /* BaseVerticalScrollView.swift */,
 				23BBBBF021EDDE0F00B64B7B /* LeftPaddedTextField.swift */,
 				23BBBBEA21EDBEA600B64B7B /* WeatherData.swift */,
+				758A33AA21EF7ED600EA2B50 /* SignAnnotationView.swift */,
 				23BBBD4021EF37F400B64B7B /* 1920x1080-446505-mad-max-background-wallpaper-for-computer-free.jpg */,
 				23BBBBEE21EDD08100B64B7B /* UIView_extension.swift */,
 				23BBBBE821EDBB8C00B64B7B /* CustomAPI.swift */,
@@ -1042,6 +1045,7 @@
 				23BBBBEB21EDBEA600B64B7B /* WeatherData.swift in Sources */,
 				23BBBBBB21EDB9AB00B64B7B /* AppDelegate.swift in Sources */,
 				23BBBBED21EDC0A700B64B7B /* MainViewController.swift in Sources */,
+				758A33AB21EF7ED600EA2B50 /* SignAnnotationView.swift in Sources */,
 				23BBBC2021EEFBA400B64B7B /* UIColorExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

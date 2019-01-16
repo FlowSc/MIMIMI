@@ -479,7 +479,7 @@ extension MainViewController:MKMapViewDelegate {
         
         
         if !(annotation is MKUserLocation) {
-            let annotationV = MKPinAnnotationView.init(annotation: annotation, reuseIdentifier: nil)
+            let annotationV = SignAnnotationView.init(annotation: annotation, reuseIdentifier: nil)
             annotationV.canShowCallout = true
             
             
@@ -487,10 +487,6 @@ extension MainViewController:MKMapViewDelegate {
         }else{
             return nil
         }
-        
- 
-        
-
     }
     
     func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
