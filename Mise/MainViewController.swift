@@ -61,6 +61,12 @@ class MainViewController: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = true
+
+    }
+    
     @objc func callMenu(sender:UIButton) {
         
         sender.isSelected = !(sender.isSelected)
@@ -105,7 +111,7 @@ class MainViewController: UIViewController {
         menuBtn.snp.makeConstraints { (make) in
             make.width.height.equalTo(40)
             make.trailing.equalToSuperview().offset(-20)
-            make.top.equalTo(30)
+            make.top.equalTo(40)
         }
         
         menuBtn.addTarget(self, action: #selector(callMenu(sender:)), for: .touchUpInside)
@@ -117,7 +123,7 @@ class MainViewController: UIViewController {
 
         thumImageView.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
-            make.top.equalTo(220)
+            make.top.equalTo(270)
             make.width.equalToSuperview().multipliedBy(0.7)
             make.height.equalTo(250)
         }
@@ -132,7 +138,11 @@ class MainViewController: UIViewController {
         alertLb.snp.makeConstraints { (make) in
             make.bottom.equalTo(locationLb.snp.top).offset(-10)
             make.centerX.equalToSuperview()
+            make.leading.equalTo(10)
         }
+        alertLb.textAlignment = .center
+        alertLb.numberOfLines = 2
+        alertLb.adjustsFontSizeToFitWidth = true
         locationLb.numberOfLines = 0
         locationLb.textAlignment = .center
         dustLb.snp.makeConstraints { (make) in
@@ -254,34 +264,37 @@ class MainViewController: UIViewController {
         switch weatherData.alertLevel! {
             
         case .bad:
-            self.alertLb.text = "나가면 죽어요,,"
-            self.thumImageView.image = UIImage.init(named: "gas-mask-1")
+            self.alertLb.attributedText = "뭐, 나가도 괜찮습니다.\n목숨이 아깝지 않다면.".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
+            self.thumImageView.image = UIImage.init(named: "\(SELECTEDMASKIMAGE)4")
             self.view.backgroundColor = UIColor.unhealthyRed
 
         case .danger:
-            self.alertLb.text = "나가면 죽어요,,"
-
-            self.thumImageView.image = UIImage.init(named: "gas-mask-2")
+            self.alertLb.attributedText = "목숨이 아깝지 않더라도\n나가지 말아야 할 때가 있습니다.".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
+            self.thumImageView.image = UIImage.init(named: "\(SELECTEDMASKIMAGE)6")
             self.view.backgroundColor = UIColor.hazardPurple
 
         case .little:
-            self.thumImageView.image = UIImage.init(named: "gas-mask-3")
+            self.thumImageView.image = UIImage.init(named: "\(SELECTEDMASKIMAGE)3")
             self.view.backgroundColor = UIColor.unhealthyTangerine
-            self.alertLb.attributedText = "쭈거욧!!!!!".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
+            self.alertLb.attributedText = "목이 칼칼하다면\n기분탓은 아닐겁니다.".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
 
         case .normal:
-            self.thumImageView.image = UIImage.init(named: "gas-mask-4")
+            self.thumImageView.image = UIImage.init(named: "\(SELECTEDMASKIMAGE)2")
             self.view.backgroundColor = UIColor.normalYellow
-            self.alertLb.attributedText = "쭈거욧!!!!!".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
+            self.alertLb.attributedText = "이정도는 이제 익숙해졌습니다.".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
 
         case .safe:
-            self.thumImageView.image = UIImage.init(named: "gas-mask-5")
-            self.alertLb.text = "오랜만에 여행갑시다,,"
+//            self.alertLb.attributedText = "목숨이 아깝지 않더라도\n나가지 말아야 할 때가 있습니다.".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
+//            self.thumImageView.image = UIImage.init(named: "basicMask6")
+//            self.view.backgroundColor = UIColor.hazardPurple
+
+            self.thumImageView.image = UIImage.init(named: "\(SELECTEDMASKIMAGE)1")
+            self.alertLb.attributedText = "산책나가는 것을\n두려워 하지 않아도 됩니다.".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
             self.view.backgroundColor = UIColor.wellGreen
 
         case .veryBad:
-            self.thumImageView.image = UIImage.init(named: "gas-mask-1")
-            self.alertLb.text = "나가면 죽어요,,"
+            self.thumImageView.image = UIImage.init(named: "\(SELECTEDMASKIMAGE)5")
+            self.alertLb.attributedText = "뭐, 나가도 괜찮습니다.\n목숨이 아깝지 않다면.".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
             self.view.backgroundColor = UIColor.unhealthyPurple
 
 
@@ -351,7 +364,7 @@ class MainViewController: UIViewController {
                                     print("temerature nil")
                                     UserDefaults.standard.removeObject(forKey: "AppleLanguages")
                                     self.centerMapOnLocation(myLocation, mapView: self.mapView)
-                                    self.setData(weatherr, locationName: place.administrativeArea ?? "")
+                                    self.setData(weatherr, locationName: _weather.name)
                                 }else{
                                     CustomAPI.getDust(city: place.subAdministrativeArea ?? "", completion: { (weather) in
                                         if let _weather = weather {
@@ -360,7 +373,7 @@ class MainViewController: UIViewController {
 //                                            place.
                                             UserDefaults.standard.removeObject(forKey: "AppleLanguages")
                                             self.centerMapOnLocation(myLocation, mapView: self.mapView)
-                                            self.setData(weatherr, locationName: place.administrativeArea ?? "")
+                                            self.setData(weatherr, locationName: _weather.name)
                                         }
                                     })
                                 }
@@ -371,7 +384,7 @@ class MainViewController: UIViewController {
                         }else{
                             self.centerMapOnLocation(myLocation, mapView: self.mapView)
                             
-                            self.setData(weatherr, locationName: place.locality ?? weather.name)
+                            self.setData(weatherr, locationName: weatherr.name)
                         }
                     
                     })

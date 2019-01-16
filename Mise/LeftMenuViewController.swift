@@ -107,7 +107,7 @@ extension LeftMenuViewController:UITableViewDelegate, UITableViewDataSource {
         
         let headerView = MenuHeaderView()
         
-        headerView.setData(image: UIImage.init(named: "gas-mask-1")!, title: "방독면 챙기십쇼")
+        headerView.setData(image: UIImage.init(named: "\(SELECTEDMASKIMAGE)1")!, title: "방독면 챙기십쇼")
 //        headerView.backgroundColor = .blue
         
         
@@ -146,20 +146,55 @@ extension LeftMenuViewController:UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         
-        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "ConfigViewController") as? ConfigViewController else {return}
-
-        
-        if let pv = self.parent as? UINavigationController {
-           
-            if let mvc = pv.navigationController?.viewControllers.filter({$0 is MainViewController}).first as? MainViewController{
-                pv.navigationController?.pushViewController(vc, animated: true)
-                mvc.dismissMenu()
+        switch indexPath.row {
+            
+            
+        case 0:
+            guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "StoreViewController") as? StoreViewController else {return}
+            
+            
+            if let pv = self.parent as? UINavigationController {
+                
+                if let mvc = pv.navigationController?.viewControllers.filter({$0 is MainViewController}).first as? MainViewController{
+                    pv.navigationController?.pushViewController(vc, animated: true)
+                    mvc.dismissMenu()
+                }
+                
             }
+        case 1:
+            guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "StoreViewController") as? StoreViewController else {return}
             
             
+            if let pv = self.parent as? UINavigationController {
+                
+                if let mvc = pv.navigationController?.viewControllers.filter({$0 is MainViewController}).first as? MainViewController{
+                    pv.navigationController?.pushViewController(vc, animated: true)
+                    mvc.dismissMenu()
+                }
+                
+            }
+        case 2:
+            guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "ConfigViewController") as? ConfigViewController else {return}
+            
+            
+            if let pv = self.parent as? UINavigationController {
+                
+                if let mvc = pv.navigationController?.viewControllers.filter({$0 is MainViewController}).first as? MainViewController{
+                    pv.navigationController?.pushViewController(vc, animated: true)
+                    mvc.dismissMenu()
+                }
+                
+                
+                
+                
+            }
+        default:
+            break
             
             
         }
+        
+
         
 //        self.navigationController?.pushViewController(vc, animated: true)
 
