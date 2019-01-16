@@ -59,7 +59,7 @@
 		23BBBC8521EF27B100B64B7B /* toxicMask6.png in Resources */ = {isa = PBXBuildFile; fileRef = 23BBBC5021EF27AB00B64B7B /* toxicMask6.png */; };
 		23BBBC8621EF27B100B64B7B /* bioMask4.png in Resources */ = {isa = PBXBuildFile; fileRef = 23BBBC5121EF27AB00B64B7B /* bioMask4.png */; };
 		23BBBC8721EF27B100B64B7B /* madMask4.png in Resources */ = {isa = PBXBuildFile; fileRef = 23BBBC5221EF27AB00B64B7B /* madMask4.png */; };
-		23BBBC8821EF27B100B64B7B /* biomask1.png in Resources */ = {isa = PBXBuildFile; fileRef = 23BBBC5321EF27AB00B64B7B /* biomask1.png */; };
+		23BBBC8821EF27B100B64B7B /* bioMask1.png in Resources */ = {isa = PBXBuildFile; fileRef = 23BBBC5321EF27AB00B64B7B /* bioMask1.png */; };
 		23BBBC8921EF27B100B64B7B /* seMask5.png in Resources */ = {isa = PBXBuildFile; fileRef = 23BBBC5421EF27AB00B64B7B /* seMask5.png */; };
 		23BBBC8A21EF27B100B64B7B /* seMask3.png in Resources */ = {isa = PBXBuildFile; fileRef = 23BBBC5521EF27AC00B64B7B /* seMask3.png */; };
 		23BBBC8B21EF27B100B64B7B /* toxicMask5.png in Resources */ = {isa = PBXBuildFile; fileRef = 23BBBC5621EF27AC00B64B7B /* toxicMask5.png */; };
@@ -162,6 +162,14 @@
 		23BBBD2F21EF2C2A00B64B7B /* longMask1.png in Resources */ = {isa = PBXBuildFile; fileRef = 23BBBD2321EF2C2900B64B7B /* longMask1.png */; };
 		23BBBD3021EF2C2A00B64B7B /* blueMask3.png in Resources */ = {isa = PBXBuildFile; fileRef = 23BBBD2421EF2C2900B64B7B /* blueMask3.png */; };
 		23BBBD3121EF2C2A00B64B7B /* longMask3.png in Resources */ = {isa = PBXBuildFile; fileRef = 23BBBD2521EF2C2A00B64B7B /* longMask3.png */; };
+		23BBBD3821EF2F8700B64B7B /* gasMask1.png in Resources */ = {isa = PBXBuildFile; fileRef = 23BBBD3221EF2F8700B64B7B /* gasMask1.png */; };
+		23BBBD3921EF2F8700B64B7B /* gasMask6.png in Resources */ = {isa = PBXBuildFile; fileRef = 23BBBD3321EF2F8700B64B7B /* gasMask6.png */; };
+		23BBBD3A21EF2F8700B64B7B /* gasMask2.png in Resources */ = {isa = PBXBuildFile; fileRef = 23BBBD3421EF2F8700B64B7B /* gasMask2.png */; };
+		23BBBD3B21EF2F8700B64B7B /* gasMask3.png in Resources */ = {isa = PBXBuildFile; fileRef = 23BBBD3521EF2F8700B64B7B /* gasMask3.png */; };
+		23BBBD3C21EF2F8700B64B7B /* gasMask4.png in Resources */ = {isa = PBXBuildFile; fileRef = 23BBBD3621EF2F8700B64B7B /* gasMask4.png */; };
+		23BBBD3D21EF2F8700B64B7B /* gasMask5.png in Resources */ = {isa = PBXBuildFile; fileRef = 23BBBD3721EF2F8700B64B7B /* gasMask5.png */; };
+		23BBBD3F21EF36F900B64B7B /* mad-max-fury-road-background-5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 23BBBD3E21EF36F900B64B7B /* mad-max-fury-road-background-5.jpg */; };
+		23BBBD4121EF37F400B64B7B /* 1920x1080-446505-mad-max-background-wallpaper-for-computer-free.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 23BBBD4021EF37F400B64B7B /* 1920x1080-446505-mad-max-background-wallpaper-for-computer-free.jpg */; };
 		26A03B8D65FFF5BB03691098 /* Pods_Mise.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AFDD39391D9CD3C5198F341 /* Pods_Mise.framework */; };
 		5C19A0B78DAEA3B6EBA2508A /* Pods_MiseUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E56F0E92F0506EF398BDA262 /* Pods_MiseUITests.framework */; };
 		750F25B121EE3D55003A3FA6 /* LeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750F25B021EE3D55003A3FA6 /* LeftMenuViewController.swift */; };
@@ -245,7 +253,7 @@
 		23BBBC5021EF27AB00B64B7B /* toxicMask6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toxicMask6.png; sourceTree = "<group>"; };
 		23BBBC5121EF27AB00B64B7B /* bioMask4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bioMask4.png; sourceTree = "<group>"; };
 		23BBBC5221EF27AB00B64B7B /* madMask4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = madMask4.png; sourceTree = "<group>"; };
-		23BBBC5321EF27AB00B64B7B /* biomask1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = biomask1.png; sourceTree = "<group>"; };
+		23BBBC5321EF27AB00B64B7B /* bioMask1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bioMask1.png; sourceTree = "<group>"; };
 		23BBBC5421EF27AB00B64B7B /* seMask5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = seMask5.png; sourceTree = "<group>"; };
 		23BBBC5521EF27AC00B64B7B /* seMask3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = seMask3.png; sourceTree = "<group>"; };
 		23BBBC5621EF27AC00B64B7B /* toxicMask5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toxicMask5.png; sourceTree = "<group>"; };
@@ -348,6 +356,14 @@
 		23BBBD2321EF2C2900B64B7B /* longMask1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = longMask1.png; sourceTree = "<group>"; };
 		23BBBD2421EF2C2900B64B7B /* blueMask3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueMask3.png; sourceTree = "<group>"; };
 		23BBBD2521EF2C2A00B64B7B /* longMask3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = longMask3.png; sourceTree = "<group>"; };
+		23BBBD3221EF2F8700B64B7B /* gasMask1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gasMask1.png; sourceTree = "<group>"; };
+		23BBBD3321EF2F8700B64B7B /* gasMask6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gasMask6.png; sourceTree = "<group>"; };
+		23BBBD3421EF2F8700B64B7B /* gasMask2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gasMask2.png; sourceTree = "<group>"; };
+		23BBBD3521EF2F8700B64B7B /* gasMask3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gasMask3.png; sourceTree = "<group>"; };
+		23BBBD3621EF2F8700B64B7B /* gasMask4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gasMask4.png; sourceTree = "<group>"; };
+		23BBBD3721EF2F8700B64B7B /* gasMask5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gasMask5.png; sourceTree = "<group>"; };
+		23BBBD3E21EF36F900B64B7B /* mad-max-fury-road-background-5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "mad-max-fury-road-background-5.jpg"; sourceTree = "<group>"; };
+		23BBBD4021EF37F400B64B7B /* 1920x1080-446505-mad-max-background-wallpaper-for-computer-free.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "1920x1080-446505-mad-max-background-wallpaper-for-computer-free.jpg"; sourceTree = "<group>"; };
 		4AD90BF4664FDA9F25F99389 /* Pods-MiseUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiseUITests.debug.xcconfig"; path = "Target Support Files/Pods-MiseUITests/Pods-MiseUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6C318A6B8E7574D96F46F7A5 /* Pods-Mise.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mise.debug.xcconfig"; path = "Target Support Files/Pods-Mise/Pods-Mise.debug.xcconfig"; sourceTree = "<group>"; };
 		6EA4EFA21B32D62ABDFF72FC /* Pods-MiseUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiseUITests.release.xcconfig"; path = "Target Support Files/Pods-MiseUITests/Pods-MiseUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -437,9 +453,11 @@
 				23BBBBF221EDDE1900B64B7B /* BaseVerticalScrollView.swift */,
 				23BBBBF021EDDE0F00B64B7B /* LeftPaddedTextField.swift */,
 				23BBBBEA21EDBEA600B64B7B /* WeatherData.swift */,
+				23BBBD4021EF37F400B64B7B /* 1920x1080-446505-mad-max-background-wallpaper-for-computer-free.jpg */,
 				23BBBBEE21EDD08100B64B7B /* UIView_extension.swift */,
 				23BBBBE821EDBB8C00B64B7B /* CustomAPI.swift */,
 				23BBBBBE21EDB9AB00B64B7B /* Main.storyboard */,
+				23BBBD3E21EF36F900B64B7B /* mad-max-fury-road-background-5.jpg */,
 				23BBBBC121EDB9AD00B64B7B /* Assets.xcassets */,
 				23BBBBC321EDB9AD00B64B7B /* LaunchScreen.storyboard */,
 				23BBBCAD21EF27BF00B64B7B /* Mask */,
@@ -495,13 +513,19 @@
 		23BBBCAD21EF27BF00B64B7B /* Mask */ = {
 			isa = PBXGroup;
 			children = (
+				23BBBD3221EF2F8700B64B7B /* gasMask1.png */,
+				23BBBD3421EF2F8700B64B7B /* gasMask2.png */,
+				23BBBD3521EF2F8700B64B7B /* gasMask3.png */,
+				23BBBD3621EF2F8700B64B7B /* gasMask4.png */,
+				23BBBD3721EF2F8700B64B7B /* gasMask5.png */,
+				23BBBD3321EF2F8700B64B7B /* gasMask6.png */,
 				23BBBC6D21EF27B000B64B7B /* basicMask1.png */,
 				23BBBC5C21EF27AD00B64B7B /* basicMask2.png */,
 				23BBBC7421EF27B100B64B7B /* basicMask3.png */,
 				23BBBC6121EF27AE00B64B7B /* basicMask4.png */,
 				23BBBC6F21EF27B000B64B7B /* basicMask5.png */,
 				23BBBC6E21EF27B000B64B7B /* basicMask6.png */,
-				23BBBC5321EF27AB00B64B7B /* biomask1.png */,
+				23BBBC5321EF27AB00B64B7B /* bioMask1.png */,
 				23BBBC7321EF27B100B64B7B /* bioMask2.png */,
 				23BBBC6B21EF27AF00B64B7B /* bioMask3.png */,
 				23BBBC5121EF27AB00B64B7B /* bioMask4.png */,
@@ -757,6 +781,7 @@
 				23BBBC9721EF27B100B64B7B /* fireMask5.png in Resources */,
 				23BBBCDE21EF2A5100B64B7B /* emerMask4.png in Resources */,
 				23BBBC7821EF27B100B64B7B /* fireMask4.png in Resources */,
+				23BBBD3C21EF2F8700B64B7B /* gasMask4.png in Resources */,
 				23BBBD2721EF2C2A00B64B7B /* blueMask4.png in Resources */,
 				23BBBBC521EDB9AD00B64B7B /* LaunchScreen.storyboard in Resources */,
 				23BBBCA521EF27B100B64B7B /* bioMask5.png in Resources */,
@@ -773,7 +798,10 @@
 				23BBBD1021EF2B6700B64B7B /* ffMask3.png in Resources */,
 				23BBBCE121EF2A5100B64B7B /* sfMask5.png in Resources */,
 				23BBBC9921EF27B100B64B7B /* weaponMask5.png in Resources */,
+				23BBBD3B21EF2F8700B64B7B /* gasMask3.png in Resources */,
+				23BBBD3D21EF2F8700B64B7B /* gasMask5.png in Resources */,
 				23BBBCDD21EF2A5100B64B7B /* paintMask4.png in Resources */,
+				23BBBD4121EF37F400B64B7B /* 1920x1080-446505-mad-max-background-wallpaper-for-computer-free.jpg in Resources */,
 				23BBBC1721EECA3300B64B7B /* notosans_bold.ttf in Resources */,
 				23BBBD0C21EF2B6700B64B7B /* nuhaMask1.png in Resources */,
 				23BBBCB821EF284A00B64B7B /* metwinMask1.png in Resources */,
@@ -794,6 +822,7 @@
 				23BBBC7D21EF27B100B64B7B /* toxicMask2.png in Resources */,
 				23BBBCEC21EF2A5100B64B7B /* emerMask1.png in Resources */,
 				23BBBCEF21EF2A5100B64B7B /* paintMask1.png in Resources */,
+				23BBBD3821EF2F8700B64B7B /* gasMask1.png in Resources */,
 				23BBBC1221EECA3300B64B7B /* american_typewriter_bold.ttf in Resources */,
 				23BBBD0E21EF2B6700B64B7B /* ffMask5.png in Resources */,
 				23BBBC0E21EECA3300B64B7B /* american_typewriter_light.ttf in Resources */,
@@ -826,6 +855,7 @@
 				23BBBD2C21EF2C2A00B64B7B /* blueMask5.png in Resources */,
 				23BBBCDC21EF2A5100B64B7B /* paintMask5.png in Resources */,
 				23BBBBC221EDB9AD00B64B7B /* Assets.xcassets in Resources */,
+				23BBBD3F21EF36F900B64B7B /* mad-max-fury-road-background-5.jpg in Resources */,
 				23BBBC7C21EF27B100B64B7B /* weaponMask3.png in Resources */,
 				23BBBD0F21EF2B6700B64B7B /* ffMask1.png in Resources */,
 				23BBBD1421EF2B6700B64B7B /* hazardMask1.png in Resources */,
@@ -848,6 +878,7 @@
 				23BBBCA021EF27B100B64B7B /* bioMask3.png in Resources */,
 				23BBBBC021EDB9AB00B64B7B /* Main.storyboard in Resources */,
 				23BBBC1A21EECA3300B64B7B /* notosans_regular.ttf in Resources */,
+				23BBBD3921EF2F8700B64B7B /* gasMask6.png in Resources */,
 				23BBBCEE21EF2A5100B64B7B /* paintMask6.png in Resources */,
 				23BBBC8E21EF27B100B64B7B /* vainMask1.png in Resources */,
 				23BBBCA121EF27B100B64B7B /* madMask5.png in Resources */,
@@ -857,6 +888,7 @@
 				23BBBD1221EF2B6700B64B7B /* nuhaMask4.png in Resources */,
 				23BBBCA321EF27B100B64B7B /* basicMask6.png in Resources */,
 				23BBBCAC21EF27B100B64B7B /* vainMask4.png in Resources */,
+				23BBBD3A21EF2F8700B64B7B /* gasMask2.png in Resources */,
 				23BBBD1321EF2B6700B64B7B /* hazardMask3.png in Resources */,
 				23BBBD1821EF2B6700B64B7B /* nuhaMask3.png in Resources */,
 				23BBBCA821EF27B100B64B7B /* bioMask2.png in Resources */,
@@ -870,7 +902,7 @@
 				23BBBCE721EF2A5100B64B7B /* seaMask5.png in Resources */,
 				23BBBC1021EECA3300B64B7B /* notosans_black.ttf in Resources */,
 				23BBBCE421EF2A5100B64B7B /* seaMask3.png in Resources */,
-				23BBBC8821EF27B100B64B7B /* biomask1.png in Resources */,
+				23BBBC8821EF27B100B64B7B /* bioMask1.png in Resources */,
 				23BBBCE521EF2A5100B64B7B /* nuMask4.png in Resources */,
 				23BBBCB521EF284A00B64B7B /* metwinMask4.png in Resources */,
 				23BBBD2D21EF2C2A00B64B7B /* blueMask6.png in Resources */,

@@ -84,6 +84,11 @@ class LeftMenuViewController: UIViewController, BasicViewControllerDelegate {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.reloadData()
+    }
+    
     
     
 

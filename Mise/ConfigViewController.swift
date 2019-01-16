@@ -9,7 +9,7 @@
 import UIKit
 
 
-var SELECTEDMASKIMAGE = "nuhaMask"
+var SELECTEDMASKIMAGE = UserDefaults.standard.string(forKey: "currentMask") ?? "basicMask"
 
 class ConfigViewController: UIViewController, BasicViewControllerDelegate {
     

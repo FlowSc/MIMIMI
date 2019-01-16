@@ -64,6 +64,7 @@ class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
+        getInfo()
 
     }
     
@@ -98,6 +99,7 @@ class MainViewController: UIViewController {
     func setUI() {
 
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
+        self.view.backgroundColor = UIColor.wellGreen
 
         baseScrollView.contentView.addSubview([thumImageView, locationLb, dustLb, infoStackView, infoStackView2, alertLb, mapView, bannerView, menuBtn])
         view.addSubview([baseScrollView])
