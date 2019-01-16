@@ -8,14 +8,44 @@
 
 import UIKit
 
-class LeftMenuViewController: UIViewController {
+class LeftMenuViewController: UIViewController, BasicViewControllerDelegate {
+    
+    func setUI() {
 
+        view.addSubview(tableView)
+        tableView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+        
+    }
+    
+    func setDelegate() {
+        print("Delegate")
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+    
+    func setAction() {
+        print("Action")
+    }
+    
+    
+    let tableView = UITableView()
+    var delegate:BasicViewControllerDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .red
-
+        setUI()
+        setDelegate()
+        setAction()
+        
+        
+        
+        
         // Do any additional setup after loading the view.
     }
+    
+    
     
 
     /*
@@ -28,4 +58,49 @@ class LeftMenuViewController: UIViewController {
     }
     */
 
+}
+
+extension LeftMenuViewController:UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let headerView = UIView()
+        
+        
+        headerView.backgroundColor = .blue
+        
+        
+        return headerView
+        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 200
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.row)
+    }
+    
+}
+
+protocol BasicViewControllerDelegate {
+    
+    func setUI()
+    func setDelegate()
+    func setAction()
+    
 }

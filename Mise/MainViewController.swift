@@ -91,32 +91,29 @@ class MainViewController: UIViewController {
         }
         
         menuBtn.snp.makeConstraints { (make) in
-            make.width.height.equalTo(50)
-            make.trailing.equalToSuperview()
-            make.top.equalTo(100)
+            make.width.height.equalTo(30)
+            make.trailing.equalToSuperview().offset(-10)
+            make.top.equalTo(50)
         }
         
         menuBtn.addTarget(self, action: #selector(callMenu(sender:)), for: .touchUpInside)
-        menuBtn.backgroundColor = .red
+        menuBtn.setImage(UIImage.init(named: "menu"), for: .normal)
         
         tapGesture.addTarget(self, action: #selector(shaking))
         thumImageView.addGestureRecognizer(tapGesture)
         thumImageView.isUserInteractionEnabled = true
 
         thumImageView.snp.makeConstraints { (make) in
-//            make.center.equalToSuperview()
             make.centerX.equalToSuperview()
-            make.top.equalTo(150)
-//            make.top.equalTo(view.safeArea.top).offset(150)
+            make.top.equalTo(220)
             make.width.equalToSuperview().multipliedBy(0.7)
-            
-            make.height.equalTo(300)
+            make.height.equalTo(250)
         }
         
         locationLb.snp.makeConstraints { (make) in
             make.bottom.equalTo(thumImageView.snp.top).offset(-20)
             make.leading.equalTo(10)
-            make.height.equalTo(60)
+//            make.height.equalTo(60)
             make.centerX.equalToSuperview()
         }
         
@@ -130,7 +127,6 @@ class MainViewController: UIViewController {
             make.centerX.equalToSuperview()
             make.top.equalTo(thumImageView.snp.bottom).offset(20)
             make.leading.equalTo(10)
-            make.height.equalTo(20)
         }
         
         infoStackView.snp.makeConstraints { (make) in
@@ -150,7 +146,7 @@ class MainViewController: UIViewController {
         
         mapView.snp.makeConstraints { (make) in
             make.height.equalTo(400)
-            make.top.equalTo(infoStackView2.snp.bottom).offset(10)
+            make.top.equalTo(infoStackView2.snp.bottom).offset(40)
             make.leading.trailing.equalToSuperview()
             make.bottom.equalToSuperview()
         }
@@ -169,7 +165,7 @@ class MainViewController: UIViewController {
         }
         
         leftMenuView.snp.makeConstraints { (make) in
-            make.width.equalToSuperview().multipliedBy(0.9)
+            make.width.equalToSuperview().multipliedBy(0.8)
             make.height.equalToSuperview()
             make.leading.equalTo(view.snp.leading).offset(-view.bounds.width)
             make.top.equalToSuperview()
@@ -189,12 +185,24 @@ class MainViewController: UIViewController {
     
     func setData(_ weatherData:WeatherData, locationName:String) {
         
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        
+        let dt = dateFormatter.date(from: weatherData.time)
+
+        dateFormatter.dateFormat = "yyyy년 MM 월 dd일 hh시 mm분 기준"
+        
+        let std = dateFormatter.string(from: dt!)
+
+        
         _ = self.infoStackView.arrangedSubviews.map({$0.removeFromSuperview()})
         _ = self.infoStackView2.arrangedSubviews.map({$0.removeFromSuperview()})
 
-        self.locationLb.text = "\(locationName)\n\(weatherData.time)"
-        self.dustLb.text = "\(weatherData.dominentpol): \(weatherData.aqi)"
-        locationLb.numberOfLines = 0
+        self.locationLb.attributedText = "\(locationName)\n\(std)".makeAttrString(font: .NotoSans(.bold, size: 20), color: .white)
+        self.dustLb.attributedText = "\(weatherData.dominentpol): \(weatherData.aqi) ㎍/m³".makeAttrString(font: .NotoSans(.bold, size: 25), color: .white)
+        locationLb.numberOfLines = 2
+        locationLb.adjustsFontSizeToFitWidth = true
         
         switch weatherData.alertLevel! {
             
@@ -212,8 +220,9 @@ class MainViewController: UIViewController {
             self.alertLb.text = "나가면 아파요,,"
 
         case .normal:
-            self.thumImageView.image = UIImage.init(named: "gas-mask-4")
-            self.alertLb.text = "그래도 살만한 세상,,"
+            self.thumImageView.image = UIImage.init(named: "gas-mask-1")
+            self.view.backgroundColor = UIColor.init(red: 27/255, green: 130/255, blue: 0/255, alpha: 1)
+            self.alertLb.attributedText = "그래도 살만한 세상,,".makeAttrString(font: .NotoSans(.bold, size: 25), color: .white)
 
         case .safe:
             self.thumImageView.image = UIImage.init(named: "gas-mask-5")
@@ -225,20 +234,20 @@ class MainViewController: UIViewController {
 
         }
         
-        let v1 = InfoView.init(title: "Humidity", value: "\(weatherData.humidity ?? 0)") // 습도
-        let v2 = InfoView.init(title: "O3", value: "\(weatherData.o3 ?? 0)") // 오존
-        let v3 = InfoView.init(title: "SO2", value: "\(weatherData.so2 ?? 0)") // 이산화황
-        let v4 = InfoView.init(title: "PM2.5", value: "\(weatherData.pm25 ?? 0)") // 초미세먼지
-        let v5 = InfoView.init(title: "PM10", value: "\(weatherData.pm10 ?? 0)") // 미세먼지
-        let v6 = InfoView.init(title: "Pressure", value: "\(weatherData.pressure ?? 0)") // 기압
-        let v7 = InfoView.init(title: "Wind", value: "\(weatherData.wind ?? 0)") // 풍향
-        let v8 = InfoView.init(title: "CO", value: "\(weatherData.co ?? 0)") // 일산화탄소
-        let v9 = InfoView.init(title: "Temp", value: "\(weatherData.temperature ?? 0)") // 기온
-        let v10 = InfoView.init(title: "rain", value: "\(weatherData.rain ?? 0)") // 강수확률
+//        let v1 = InfoView.init(title: "Humidity", value: "\(weatherData.humidity ?? 0)") // 습도
+        let v2 = InfoView.init(title: "오존", value: "\(weatherData.o3 ?? 0) ppm") // 오존
+        let v3 = InfoView.init(title: "이산화황", value: "\(weatherData.so2 ?? 0) ppm") // 이산화황
+        let v4 = InfoView.init(title: "초미세먼지", value: "\(weatherData.pm25 ?? 0) ㎍/m³") // 초미세먼지
+        let v5 = InfoView.init(title: "미세먼지", value: "\(weatherData.pm10 ?? 0) ㎍/m³") // 미세먼지
+//        let v6 = InfoView.init(title: "Pressure", value: "\(weatherData.pressure ?? 0)") // 기압
+//        let v7 = InfoView.init(title: "Wind", value: "\(weatherData.wind ?? 0)") // 풍향
+        let v8 = InfoView.init(title: "일산화탄소", value: "\(weatherData.co ?? 0) ㎍/m³") // 일산화탄소
+        let v9 = InfoView.init(title: "기온", value: "\(weatherData.temperature ?? 0) °C") // 기온
+//        let v10 = InfoView.init(title: "rain", value: "\(weatherData.rain ?? 0)") // 강수확률
 
         
-        _ = [v1, v2, v3, v4, v5].map({infoStackView.addArrangedSubview($0)})
-        _ = [v6, v7, v8, v9, v10].map({infoStackView2.addArrangedSubview($0)})
+        _ = [v3, v4, v5].map({infoStackView.addArrangedSubview($0)})
+        _ = [v8, v9, v2].map({infoStackView2.addArrangedSubview($0)})
 
     }
     
@@ -346,14 +355,18 @@ extension MainViewController:MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
-        let annotationV = MKPinAnnotationView.init(annotation: annotation, reuseIdentifier: nil)
-        annotationV.canShowCallout = true
-//        annotationV.
-//        annotationV.image = UIImage.init(named: "gas-mask-1")
-
-//        annotationV.
         
-        return annotationV
+        if !(annotation is MKUserLocation) {
+            let annotationV = MKPinAnnotationView.init(annotation: annotation, reuseIdentifier: nil)
+            annotationV.canShowCallout = true
+            
+            
+            return annotationV
+        }else{
+            return nil
+        }
+        
+ 
         
 
     }
@@ -361,36 +374,23 @@ extension MainViewController:MKMapViewDelegate {
     func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
 
         CustomAPI.getDustMap(topLeft: mapView.convert(CGPoint.init(x: 0, y: 0), toCoordinateFrom: mapView), bottomRight: mapView.convert(CGPoint.init(x: mapView.bounds.width, y: mapView.bounds.height), toCoordinateFrom: mapView)) { (annos) in
-            
-            
+
             var currentAnnos:[MKAnnotation] = []
             
             _ = annos.map({
-                
                 let annotation = MKPointAnnotation.init()
                 annotation.coordinate = $0.geo
                 annotation.title = $0.aqi
                 currentAnnos.append(annotation)
-                
             })
-            
-            
-            //            print(anno)
             self.annotations = currentAnnos
             
             self.mapView.removeAnnotations(self.mapView.annotations)
             self.mapView.addAnnotations(self.annotations)
-            //            self.mapView.showAnnotations(self.annotations, animated: true)
-            print(self.mapView.annotations.count, "ANNOC")
-            //            annotation.coordinate =
+
         }
 
         
-    }
-    
-    func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
-
- 
     }
     
 }

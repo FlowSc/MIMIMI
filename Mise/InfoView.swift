@@ -24,8 +24,8 @@ class InfoView: UIView {
     
     convenience init(title:String, value:String) {
         self.init()
-        self.titleLb.text = title
-        self.infoLb.text = value
+        self.titleLb.attributedText = title.makeAttrString(font: .NotoSans(.bold, size: 20), color: .white)
+        self.infoLb.attributedText = value.makeAttrString(font: .NotoSans(.bold, size: 18), color: .white)
     }
     
     private func setUI() {
@@ -38,10 +38,10 @@ class InfoView: UIView {
         divider.snp.makeConstraints { (make) in
             make.top.equalTo(titleLb.snp.bottom)
             make.leading.trailing.equalToSuperview()
-            make.height.equalTo(1)
+            make.height.equalTo(0.5)
         }
-        divider.backgroundColor = .black
-        self.setBorder(color: .black, width: 1)
+        divider.backgroundColor = UIColor.init(white: 189/255, alpha: 1)
+        self.setBorder(color: UIColor.init(white: 189/255, alpha: 1), width: 0.5)
         titleLb.textAlignment = .center
         titleLb.adjustsFontSizeToFitWidth = true
         infoLb.textAlignment = .center

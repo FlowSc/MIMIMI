@@ -2,6 +2,23 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+    <key>UIAppFonts</key>
+    <array>
+        <string>notokr_regular.ttf</string>
+        <string>american_typewriter_light.ttf</string>
+        <string>notokr_medium.ttf</string>
+        <string>american_typewriter_bold.ttf</string>
+        <string>notokr_thin.ttf</string>
+        <string>notokr_black.ttf</string>
+        <string>american_typewriter.ttf</string>
+        <string>notosans_black.ttf</string>
+        <string>notosans_bold.ttf</string>
+        <string>notosans_extrabold.ttf</string>
+        <string>notosans_light.ttf</string>
+        <string>notosans_medium.ttf</string>
+        <string>notosans_regular.ttf</string>
+        <string>notosans_semibold.ttf</string>
+    </array>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>dd</string>
 	<key>NSLocationAlwaysUsageDescription</key>
