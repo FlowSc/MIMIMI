@@ -19,6 +19,7 @@ class LeftMenuViewController: UIViewController, BasicViewControllerDelegate {
     
     func setUI() {
 
+        self.navigationController?.isNavigationBarHidden = true
         view.addSubview([tableView, bottomView])
         tableView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
@@ -143,6 +144,26 @@ extension LeftMenuViewController:UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        
+        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "ConfigViewController") as? ConfigViewController else {return}
+
+        
+        if let pv = self.parent as? UINavigationController {
+           
+            if let mvc = pv.navigationController?.viewControllers.filter({$0 is MainViewController}).first as? MainViewController{
+                pv.navigationController?.pushViewController(vc, animated: true)
+                mvc.dismissMenu()
+            }
+            
+            
+            
+            
+        }
+        
+//        self.navigationController?.pushViewController(vc, animated: true)
+
+        
         print(indexPath.row)
     }
     
