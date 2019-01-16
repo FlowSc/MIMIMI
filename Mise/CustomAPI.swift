@@ -58,13 +58,15 @@ struct CustomAPI {
         
     }
     
-    static func getDust(city:String, completion:((WeatherData)->())?) {
+    static func getDust(city:String, completion:((WeatherData?)->())?) {
         
         Alamofire.request("http://api.waqi.info/feed/\(city)/?token=\(token)").responseJSON { (response) in
             switch response.result {
                 
             case .failure(let error):
                 print(error)
+//                completion!(WeatherData)
+                completion!(nil)
             case .success(let value):
                 print(value)
                 

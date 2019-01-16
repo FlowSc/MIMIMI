@@ -13,6 +13,8 @@ class InfoView: UIView {
     var titleLb = UILabel()
     var infoLb = UILabel()
     var divider = UIView()
+    var tapGesture = UITapGestureRecognizer()
+    var delegate:InfoViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -22,15 +24,18 @@ class InfoView: UIView {
         
     }
     
-    convenience init(title:String, value:String) {
+    convenience init(title:String, value:String, tag:Int) {
         self.init()
+        self.isUserInteractionEnabled = true
         self.titleLb.attributedText = title.makeAttrString(font: .NotoSans(.bold, size: 20), color: .white)
         self.infoLb.attributedText = value.makeAttrString(font: .NotoSans(.bold, size: 18), color: .white)
+        self.tag = tag
     }
     
     private func setUI() {
         self.addSubview([titleLb, infoLb, divider])
-        
+        self.addGestureRecognizer(tapGesture)
+        tapGesture.addTarget(self, action: #selector(callPopUp))
         titleLb.snp.makeConstraints { (make) in
             make.top.leading.trailing.equalToSuperview()
             make.height.equalTo(50)
@@ -56,13 +61,13 @@ class InfoView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    @objc func callPopUp() {
+        delegate?.callDetailPopUp(sender: self.tag)
     }
-    */
+    
+}
 
+protocol InfoViewDelegate {
+    
+    func callDetailPopUp(sender:Int)
 }

@@ -29,7 +29,7 @@ class MainViewController: UIViewController {
     let emptyView = UIView()
     let mapView = MKMapView()
     var annotations:[MKAnnotation] = []
-    
+    var dismissGesture = UITapGestureRecognizer()
     var locationManager:CLLocationManager!
     var canUpdated:Bool {
             return CLLocationManager.locationServicesEnabled()
@@ -42,15 +42,22 @@ class MainViewController: UIViewController {
         setUI()
 
         locationManager = CLLocationManager()
-        
         locationManager.delegate = self
         mapView.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        
         locationManager.requestLocation()
         locationManager.startUpdatingLocation()
-        
+        dismissGesture.addTarget(self, action: #selector(dismissMenu))
 
+    }
+    
+    @objc func dismissMenu() {
+        UIView.animate(withDuration: 0.5) {
+            self.leftMenuView.snp.updateConstraints { (make) in
+                make.leading.equalTo(self.view.snp.leading).offset(-self.view.bounds.width)
+            }
+            self.view.layoutIfNeeded()
+        }
     }
     
     @objc func callMenu(sender:UIButton) {
@@ -58,6 +65,9 @@ class MainViewController: UIViewController {
         sender.isSelected = !(sender.isSelected)
         
         if sender.isSelected {
+
+            self.view.addGestureRecognizer(dismissGesture)
+//            self.dismissGesture.removeTarget(<#T##target: Any?##Any?#>, action: <#T##Selector?#>)
             UIView.animate(withDuration: 0.5) {
                 self.leftMenuView.snp.updateConstraints { (make) in
                     make.leading.equalToSuperview()
@@ -65,6 +75,8 @@ class MainViewController: UIViewController {
                 self.view.layoutIfNeeded()
             }
         }else{
+            self.view.removeGestureRecognizer(dismissGesture)
+
             UIView.animate(withDuration: 0.5) {
                 self.leftMenuView.snp.updateConstraints { (make) in
                     make.leading.equalTo(self.view.snp.leading).offset(-self.view.bounds.width)
@@ -187,19 +199,28 @@ class MainViewController: UIViewController {
         
         let dateFormatter = DateFormatter()
         
-        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         
-        let dt = dateFormatter.date(from: weatherData.time)
+        print(weatherData.time)
+        print("TIMEIS")
+        
+        if let dt = dateFormatter.date(from: weatherData.time) {
+            dateFormatter.dateFormat = "yyyy년 MM 월 dd일 HH시 mm분 기준"
+            
+            let std = dateFormatter.string(from: dt)
+            
+                    self.locationLb.attributedText = "\(locationName)\n\(std)".makeAttrString(font: .NotoSans(.bold, size: 20), color: .white)
+        }else{
+                self.locationLb.attributedText = "\(locationName)".makeAttrString(font: .NotoSans(.bold, size: 20), color: .white)
+        }
 
-        dateFormatter.dateFormat = "yyyy년 MM 월 dd일 hh시 mm분 기준"
-        
-        let std = dateFormatter.string(from: dt!)
+    
 
         
         _ = self.infoStackView.arrangedSubviews.map({$0.removeFromSuperview()})
         _ = self.infoStackView2.arrangedSubviews.map({$0.removeFromSuperview()})
 
-        self.locationLb.attributedText = "\(locationName)\n\(std)".makeAttrString(font: .NotoSans(.bold, size: 20), color: .white)
+
         self.dustLb.attributedText = "\(weatherData.dominentpol): \(weatherData.aqi) ㎍/m³".makeAttrString(font: .NotoSans(.bold, size: 25), color: .white)
         locationLb.numberOfLines = 2
         locationLb.adjustsFontSizeToFitWidth = true
@@ -227,6 +248,8 @@ class MainViewController: UIViewController {
         case .safe:
             self.thumImageView.image = UIImage.init(named: "gas-mask-5")
             self.alertLb.text = "오랜만에 여행갑시다,,"
+            self.view.backgroundColor = UIColor.init(red: 27/255, green: 130/255, blue: 0/255, alpha: 1)
+
 
         case .veryBad:
             self.thumImageView.image = UIImage.init(named: "gas-mask-1")
@@ -235,19 +258,34 @@ class MainViewController: UIViewController {
         }
         
 //        let v1 = InfoView.init(title: "Humidity", value: "\(weatherData.humidity ?? 0)") // 습도
-        let v2 = InfoView.init(title: "오존", value: "\(weatherData.o3 ?? 0) ppm") // 오존
-        let v3 = InfoView.init(title: "이산화황", value: "\(weatherData.so2 ?? 0) ppm") // 이산화황
-        let v4 = InfoView.init(title: "초미세먼지", value: "\(weatherData.pm25 ?? 0) ㎍/m³") // 초미세먼지
-        let v5 = InfoView.init(title: "미세먼지", value: "\(weatherData.pm10 ?? 0) ㎍/m³") // 미세먼지
+        let v2 = InfoView.init(title: "오존", value: "\(weatherData.o3 ?? 0) ppm", tag:1) // 오존
+        let v3 = InfoView.init(title: "이산화황", value: "\(weatherData.so2 ?? 0) ppm", tag:2) // 이산화황
+        let v4 = InfoView.init(title: "초미세먼지", value: "\(weatherData.pm25 ?? 0) ㎍/m³", tag:3) // 초미세먼지
+        let v5 = InfoView.init(title: "미세먼지", value: "\(weatherData.pm10 ?? 0) ㎍/m³", tag:4) // 미세먼지
 //        let v6 = InfoView.init(title: "Pressure", value: "\(weatherData.pressure ?? 0)") // 기압
 //        let v7 = InfoView.init(title: "Wind", value: "\(weatherData.wind ?? 0)") // 풍향
-        let v8 = InfoView.init(title: "일산화탄소", value: "\(weatherData.co ?? 0) ㎍/m³") // 일산화탄소
-        let v9 = InfoView.init(title: "기온", value: "\(weatherData.temperature ?? 0) °C") // 기온
+        let v8 = InfoView.init(title: "일산화탄소", value: "\(weatherData.co ?? 0) ㎍/m³", tag:5) // 일산화탄소
+        let v9 = InfoView.init(title: "기온", value: "\(weatherData.temperature ?? 0) °C", tag:6) // 기온
 //        let v10 = InfoView.init(title: "rain", value: "\(weatherData.rain ?? 0)") // 강수확률
 
         
-        _ = [v3, v4, v5].map({infoStackView.addArrangedSubview($0)})
-        _ = [v8, v9, v2].map({infoStackView2.addArrangedSubview($0)})
+        _ = [v3, v4, v5].map({
+            infoStackView.addArrangedSubview($0)
+            $0.delegate = self
+        })
+        
+        if weatherData.temperature == nil {
+            _ = [v8, v2].map({
+                infoStackView2.addArrangedSubview($0)
+                $0.delegate = self
+            })
+        }else{
+            _ = [v8, v9, v2].map({
+                infoStackView2.addArrangedSubview($0)
+                $0.delegate = self
+            })
+        }
+
 
     }
     
@@ -259,19 +297,60 @@ class MainViewController: UIViewController {
     }
     
     func getInfo() {
-        
-        if let myLocation = locationManager.location {
 
-            CLGeocoder().reverseGeocodeLocation(myLocation) { (places, error) in
+        if let myLocation = locationManager.location {
+            
+
+            CLGeocoder().reverseGeocodeLocation(myLocation, preferredLocale: Locale.init(identifier: "en")) { (places, error) in
+
 
                 if let place = places?[0] {
-
+                    
+//                    place.isoCountryCode
+                    
+//                    NSLocale.init(localeIdentifier: "en_US").displayName(forKey: , value: <#T##Any#>)
+                    
+                    
                     CustomAPI.getDust(lat:"\(myLocation.coordinate.latitude)", lng: "\(myLocation.coordinate.longitude)", completion: { (weather) in
 
-                        self.centerMapOnLocation(myLocation, mapView: self.mapView)
+                        print(place.administrativeArea)
+                        
+                        var weatherr = weather
 
-                        self.setData(weather, locationName: place.locality ?? weather.name)
+                        if weather.temperature == nil {
+                            
 
+                            CustomAPI.getDust(city: place.administrativeArea ?? "", completion: { (weather) in
+                                
+                                
+                                if let _weather = weather {
+                                    weatherr.setTemperature(_weather.temperature)
+                                    print("temerature nil")
+                                    UserDefaults.standard.removeObject(forKey: "AppleLanguages")
+                                    self.centerMapOnLocation(myLocation, mapView: self.mapView)
+                                    self.setData(weatherr, locationName: place.administrativeArea ?? "")
+                                }else{
+                                    CustomAPI.getDust(city: place.subAdministrativeArea ?? "", completion: { (weather) in
+                                        if let _weather = weather {
+                                            weatherr.setTemperature(_weather.temperature)
+                                            print("temerature nil")
+//                                            place.
+                                            UserDefaults.standard.removeObject(forKey: "AppleLanguages")
+                                            self.centerMapOnLocation(myLocation, mapView: self.mapView)
+                                            self.setData(weatherr, locationName: place.administrativeArea ?? "")
+                                        }
+                                    })
+                                }
+                                
+                             
+                            })
+                            
+                        }else{
+                            self.centerMapOnLocation(myLocation, mapView: self.mapView)
+                            
+                            self.setData(weatherr, locationName: place.locality ?? weather.name)
+                        }
+                    
                     })
                 }
             }
@@ -316,10 +395,12 @@ extension MainViewController:CLLocationManagerDelegate {
             
         case .authorizedAlways:
             print(" case .authorizedAlways:")
+            locationManager.startUpdatingLocation()
             getInfo()
 
         case .authorizedWhenInUse:
             print(" case .authorizedWhenInUse:")
+            locationManager.startUpdatingLocation()
             getInfo()
 
         case .denied:
@@ -331,6 +412,9 @@ extension MainViewController:CLLocationManagerDelegate {
         case .notDetermined:
 //            locationManager.requestLocation()
             locationManager.requestAlwaysAuthorization()
+        
+//            manager.completion
+        
 
             print(" case .notDetermined:")
             
@@ -392,6 +476,15 @@ extension MainViewController:MKMapViewDelegate {
 
         
     }
+    
+}
+
+extension MainViewController:InfoViewDelegate {
+    func callDetailPopUp(sender: Int) {
+        print(sender)
+    }
+    
+    
     
 }
 

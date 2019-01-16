@@ -51,8 +51,13 @@ struct WeatherData {
         self.name = json["data"]["city"]["name"].stringValue
         self.time = json["data"]["time"]["s"].stringValue
         self.aqi = json["data"]["aqi"].intValue
-        let loca = json["data"]["city"]["geo"].arrayValue
-        self.geo = CLLocationCoordinate2D.init(latitude: CLLocationDegrees(loca[0].floatValue), longitude: CLLocationDegrees(loca[1].floatValue))
+        if let loca = json["data"]["city"]["geo"].array {
+                    self.geo = CLLocationCoordinate2D.init(latitude: CLLocationDegrees(loca[0].floatValue), longitude: CLLocationDegrees(loca[1].floatValue))
+        }else{
+            self.geo = CLLocationCoordinate2D()
+        }
+        
+
         self.iaqis = json["data"]["iaqi"].dictionaryValue
         self.dominentpol = json["data"]["dominentpol"].stringValue
         
@@ -110,7 +115,11 @@ struct WeatherData {
             break
             
         }
-    }    
+    }
+    
+    mutating func setTemperature(_ temp:Float?) {
+        self.temperature = temp
+    }
     
 }
 
