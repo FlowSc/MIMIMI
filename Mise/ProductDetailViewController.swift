@@ -51,6 +51,7 @@ class ProductDetailViewController: UIViewController {
             SELECTEDMASKIMAGE = _imgTitle
             
             UserDefaults.standard.set(_imgTitle, forKey: "currentMask")
+            UserDefaults.init(suiteName: GROUPIDENTIFIER)?.set(SELECTEDMASKIMAGE, forKey: "imageName")
             
         }
         

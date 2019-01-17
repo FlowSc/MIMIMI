@@ -15,9 +15,14 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     @IBOutlet weak var thumnailImv: UIImageView!
     @IBOutlet weak var widgetLb: UILabel!
     @IBOutlet weak var moveToAppBtn: UIButton!
+    var locationManager:CLLocationManager!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
+//        locationManager.
+        locationManager = CLLocationManager()
+        locationManager.startUpdatingLocation()
         // Do any additional setup after loading the view from its nib.
     }
     
@@ -53,55 +58,63 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     func setData() {
 
-        
-        CustomAPI.getDust(lat: "33", lng: "128") { (data) in
-            print(data.aqi)
-            print(data.dominentpol)
+        if let myLocation = locationManager.location {
             
             
-            switch data.alertLevel! {
+            print(myLocation)
+            
+            
+            CustomAPI.getDust(lat:"\(myLocation.coordinate.latitude)", lng: "\(myLocation.coordinate.longitude)") { (data) in
+                print(data.aqi)
+                print(data.dominentpol)
                 
-            case .bad:
-                self.view.backgroundColor = UIColor.unhealthyRed
                 
-            case .danger:
-              
-                self.view.backgroundColor = UIColor.hazardPurple
+                switch data.alertLevel! {
+                    
+                case .bad:
+                    self.view.backgroundColor = UIColor.unhealthyRed
+                    
+                case .danger:
+                    
+                    self.view.backgroundColor = UIColor.hazardPurple
+                    
+                case .little:
+                    
+                    self.view.backgroundColor = UIColor.unhealthyTangerine
+                    
+                case .normal:
+                    
+                    self.view.backgroundColor = UIColor.normalYellow
+                    
+                case .safe:
+                    
+                    self.view.backgroundColor = UIColor.wellGreen
+                    
+                case .veryBad:
+                    
+                    self.view.backgroundColor = UIColor.unhealthyPurple
+                    
+                }
                 
-            case .little:
-          
-                self.view.backgroundColor = UIColor.unhealthyTangerine
-
-            case .normal:
-          
-                self.view.backgroundColor = UIColor.normalYellow
-
-            case .safe:
-           
-                self.view.backgroundColor = UIColor.wellGreen
                 
-            case .veryBad:
-             
-                self.view.backgroundColor = UIColor.unhealthyPurple
+                
+                if let time = UserDefaults.init(suiteName: GROUPIDENTIFIER)?.string(forKey: "time"), let aqi = UserDefaults.init(suiteName: GROUPIDENTIFIER)?.string(forKey: "domimentAQI"), let text = UserDefaults.init(suiteName: GROUPIDENTIFIER)?.string(forKey: "alertText")  {
+                    self.widgetLb.numberOfLines = 0
+                    self.widgetLb.attributedText = "\(data.time)\n\(data.aqi)㎍/m³\n\(text)".makeAttrString(font: .NotoSans(.bold, size: 14), color: .white)
+                }
                 
             }
             
             
             
-            if let time = UserDefaults.init(suiteName: GROUPIDENTIFIER)?.string(forKey: "time"), let aqi = UserDefaults.init(suiteName: GROUPIDENTIFIER)?.string(forKey: "domimentAQI"), let text = UserDefaults.init(suiteName: GROUPIDENTIFIER)?.string(forKey: "alertText")  {
-                self.widgetLb.numberOfLines = 0
-                self.widgetLb.attributedText = "\(data.time)\n\(data.aqi)㎍/m³\n\(text)".makeAttrString(font: .NotoSans(.bold, size: 14), color: .white)
+            if let image = UserDefaults.init(suiteName: GROUPIDENTIFIER)?.string(forKey: "imageName") {
+                print(image)
+                thumnailImv.image = UIImage.init(named: "\(image)1")
+                view.layoutIfNeeded()
             }
-
         }
         
-        
 
-        if let image = UserDefaults.init(suiteName: GROUPIDENTIFIER)?.string(forKey: "imageName") {
-            print(image)
-            thumnailImv.image = UIImage.init(named: "\(image)1")
-            view.layoutIfNeeded()
-        }
     }
     
     @objc func moveToApp(sender:UIButton) {

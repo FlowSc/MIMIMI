@@ -40,7 +40,7 @@ class MainViewController: UIViewController {
         
         super.viewDidLoad()
         setUI()
-        
+//        getInfo()
         
         
         UserDefaults.init(suiteName: GROUPIDENTIFIER)?.set(SELECTEDMASKIMAGE, forKey: "imageName")
@@ -52,8 +52,6 @@ class MainViewController: UIViewController {
         locationManager.delegate = self
         mapView.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestLocation()
-        locationManager.startUpdatingLocation()
         dismissGesture.addTarget(self, action: #selector(dismissMenu))
 
     }
@@ -71,7 +69,13 @@ class MainViewController: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
         getInfo()
+        UserDefaults.init(suiteName: GROUPIDENTIFIER)?.set(SELECTEDMASKIMAGE, forKey: "imageName")
 
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+         getInfo()
     }
     
     @objc func callMenu(sender:UIButton) {
@@ -358,9 +362,13 @@ class MainViewController: UIViewController {
     }
     
     func getInfo() {
+        
+        locationManager.startUpdatingLocation()
+
 
         if let myLocation = locationManager.location {
-            
+
+            print(myLocation, "MYLOCATION")
 
             CLGeocoder().reverseGeocodeLocation(myLocation, preferredLocale: Locale.init(identifier: "en")) { (places, error) in
 
