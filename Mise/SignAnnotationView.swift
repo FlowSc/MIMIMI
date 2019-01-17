@@ -11,6 +11,7 @@ import MapKit
 
 class SignAnnotationView: MKAnnotationView {
     
+    let baseView = UIView()
     let signImageView = UIImageView()
     let aqiLb = UILabel()
     
@@ -18,6 +19,7 @@ class SignAnnotationView: MKAnnotationView {
     override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
         setUI()
+        self.isUserInteractionEnabled = true
 
         setData(annotation: annotation!)
 
@@ -33,10 +35,9 @@ class SignAnnotationView: MKAnnotationView {
             switch aqiInt {
                 
             case 0...50 :
-
                 signImageView.image = UIImage.init(named: "sign-3")
             case 51...100:
-                         signImageView.image = UIImage.init(named: "sign")
+                signImageView.image = UIImage.init(named: "sign")
             case 101...150:
                signImageView.image = UIImage.init(named: "sign-5")
             case 151...200:
@@ -61,13 +62,20 @@ class SignAnnotationView: MKAnnotationView {
     }
     
     func setUI() {
-        self.addSubview([signImageView, aqiLb])
+        
+        self.addSubview(baseView)
+        self.baseView.addSubview([signImageView, aqiLb])
+        
+        baseView.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+            make.width.height.equalTo(60)
+        }
         
         signImageView.image = UIImage.init(named: "flags")
         signImageView.snp.makeConstraints { (make) in
 //            make.edges.equalToSuperview()
-            make.top.equalToSuperview()
-            make.leading.equalToSuperview()
+            make.top.equalTo(10)
+            make.centerX.equalToSuperview()
             make.width.equalTo(30)
             make.height.equalTo(30)
         }

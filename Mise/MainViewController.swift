@@ -270,10 +270,6 @@ class MainViewController: UIViewController {
         }
         
         
-        
-//        UserDefaults.init(suiteName: <#T##String?#>)
-
-        
         locationLb.numberOfLines = 2
         locationLb.adjustsFontSizeToFitWidth = true
         
@@ -360,6 +356,58 @@ class MainViewController: UIViewController {
         let coordinateRegion = MKCoordinateRegion(center: location.coordinate,
                                                   latitudinalMeters: regionRadius * 2.0, longitudinalMeters: regionRadius * 2.0)
         mapView.setRegion(coordinateRegion, animated: true)
+    }
+    
+    
+    func getInfo(location:CLLocation) {
+        
+        
+            CLGeocoder().reverseGeocodeLocation(location, preferredLocale: Locale.init(identifier: "en")) { (places, error) in
+                
+                
+                if let place = places?[0] {
+                    
+                    CustomAPI.getDust(lat:"\(location.coordinate.latitude)", lng: "\(location.coordinate.longitude)", completion: { (weather) in
+                        
+                        var weatherr = weather
+                        
+                        if weather.temperature == nil {
+                            
+                            
+                            CustomAPI.getDust(city: place.administrativeArea ?? "", completion: { (weather) in
+                                
+                                
+                                if let _weather = weather {
+                                    weatherr.setTemperature(_weather.temperature)
+                                    print("temerature nil")
+                                    UserDefaults.standard.removeObject(forKey: "AppleLanguages")
+                                    self.centerMapOnLocation(location, mapView: self.mapView)
+                                    self.setData(weatherr, locationName: _weather.name)
+                                }else{
+                                    CustomAPI.getDust(city: place.subAdministrativeArea ?? "", completion: { (weather) in
+                                        if let _weather = weather {
+                                            weatherr.setTemperature(_weather.temperature)
+                                            print("temerature nil")
+                                            //                                            place.
+                                            UserDefaults.standard.removeObject(forKey: "AppleLanguages")
+                                            self.centerMapOnLocation(location, mapView: self.mapView)
+                                            self.setData(weatherr, locationName: _weather.name)
+                                        }
+                                    })
+                                }
+                                
+                                
+                            })
+                            
+                        }else{
+                            self.centerMapOnLocation(location, mapView: self.mapView)
+                            
+                            self.setData(weatherr, locationName: weatherr.name)
+                        }
+                        
+                    })
+                }
+            }
     }
     
     func getInfo() {
@@ -500,13 +548,43 @@ extension MainViewController:GADBannerViewDelegate {
 
 extension MainViewController:MKMapViewDelegate {
     
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        
+        print(view.annotation?.coordinate, "LOCATION")
+        
+        if let selectedLocation = view.annotation?.coordinate {
+         
+            let location = CLLocation.init(coordinate: selectedLocation, altitude: CLLocationDistance.init(), horizontalAccuracy: .init(), verticalAccuracy: .init(), timestamp: .init())
+            self.getInfo(location:location)
+            
+            CustomAPI.getDustMap(topLeft: mapView.convert(CGPoint.init(x: 0, y: 0), toCoordinateFrom: mapView), bottomRight: mapView.convert(CGPoint.init(x: mapView.bounds.width, y: mapView.bounds.height), toCoordinateFrom: mapView)) { (annos) in
+                
+                var currentAnnos:[MKAnnotation] = []
+                
+                _ = annos.map({
+                    let annotation = MKPointAnnotation.init()
+                    annotation.coordinate = $0.geo
+                    annotation.title = $0.aqi
+                    currentAnnos.append(annotation)
+                })
+                self.annotations = currentAnnos
+                
+                self.mapView.removeAnnotations(self.mapView.annotations)
+                self.mapView.addAnnotations(self.annotations)
+                
+            }
+//            CLLocation.ini2d
+        }
+        
+    }
+    
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         
         if !(annotation is MKUserLocation) {
             let annotationV = SignAnnotationView.init(annotation: annotation, reuseIdentifier: nil)
-            annotationV.canShowCallout = true
-            
+//            annotationV.canShowCallout = true
             
             return annotationV
         }else{
@@ -514,10 +592,9 @@ extension MainViewController:MKMapViewDelegate {
         }
     }
     
-    func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
-
+    func mapViewWillStartLoadingMap(_ mapView: MKMapView) {
         CustomAPI.getDustMap(topLeft: mapView.convert(CGPoint.init(x: 0, y: 0), toCoordinateFrom: mapView), bottomRight: mapView.convert(CGPoint.init(x: mapView.bounds.width, y: mapView.bounds.height), toCoordinateFrom: mapView)) { (annos) in
-
+            
             var currentAnnos:[MKAnnotation] = []
             
             _ = annos.map({
@@ -530,8 +607,13 @@ extension MainViewController:MKMapViewDelegate {
             
             self.mapView.removeAnnotations(self.mapView.annotations)
             self.mapView.addAnnotations(self.annotations)
-
+            
         }
+    }
+    
+    func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
+
+
 
         
     }

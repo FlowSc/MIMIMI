@@ -335,11 +335,11 @@
 		23BBBE1321F04F0900B64B7B /* 1920x1080-446505-mad-max-background-wallpaper-for-computer-free.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 23BBBD4021EF37F400B64B7B /* 1920x1080-446505-mad-max-background-wallpaper-for-computer-free.jpg */; };
 		23BBBE1421F04F0900B64B7B /* UIView_extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BBBBEE21EDD08100B64B7B /* UIView_extension.swift */; };
 		23BBBE1521F04F0900B64B7B /* CustomAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BBBBE821EDBB8C00B64B7B /* CustomAPI.swift */; };
-		26A03B8D65FFF5BB03691098 /* Pods_Mise.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AFDD39391D9CD3C5198F341 /* Pods_Mise.framework */; };
+		6C5D2677A239DDCF791E0E08 /* Pods_Mise.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6836431A449DCA6FF72A218 /* Pods_Mise.framework */; };
 		750F25B121EE3D55003A3FA6 /* LeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750F25B021EE3D55003A3FA6 /* LeftMenuViewController.swift */; };
 		758A33AB21EF7ED600EA2B50 /* SignAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758A33AA21EF7ED600EA2B50 /* SignAnnotationView.swift */; };
 		758CCDB121EE0366000539D7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 758CCDB021EE0366000539D7 /* GoogleService-Info.plist */; };
-		DC98484A3F91720BD22422E4 /* Pods_MiseWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 806786847FCCFB93DDCC8623 /* Pods_MiseWidget.framework */; };
+		79E38A424384DED9CD02B818 /* Pods_MiseWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F28C2BAB7103EDF75EDE95E /* Pods_MiseWidget.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -381,6 +381,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1959179BF8481FD09E9B698D /* Pods-Mise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mise.release.xcconfig"; path = "Target Support Files/Pods-Mise/Pods-Mise.release.xcconfig"; sourceTree = "<group>"; };
+		1F28C2BAB7103EDF75EDE95E /* Pods_MiseWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiseWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		23BBBBB721EDB9AB00B64B7B /* Mise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23BBBBBA21EDB9AB00B64B7B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23BBBBBF21EDB9AB00B64B7B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -558,17 +560,13 @@
 		23BBBD5121F02AC200B64B7B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23BBBD5E21F035F400B64B7B /* MiseWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MiseWidget.entitlements; sourceTree = "<group>"; };
 		23BBBD6121F0388B00B64B7B /* Mise.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Mise.entitlements; sourceTree = "<group>"; };
-		25CA6E04D6556DF8192D7D24 /* Pods-MiseWidget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiseWidget.release.xcconfig"; path = "Target Support Files/Pods-MiseWidget/Pods-MiseWidget.release.xcconfig"; sourceTree = "<group>"; };
-		60F3A440D2A947328A79EFC8 /* Pods-MiseWidget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiseWidget.debug.xcconfig"; path = "Target Support Files/Pods-MiseWidget/Pods-MiseWidget.debug.xcconfig"; sourceTree = "<group>"; };
-		6C318A6B8E7574D96F46F7A5 /* Pods-Mise.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mise.debug.xcconfig"; path = "Target Support Files/Pods-Mise/Pods-Mise.debug.xcconfig"; sourceTree = "<group>"; };
+		323051EBA0B400F4266937A7 /* Pods-Mise.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mise.debug.xcconfig"; path = "Target Support Files/Pods-Mise/Pods-Mise.debug.xcconfig"; sourceTree = "<group>"; };
+		5501F6FA369D1E112E5AC383 /* Pods-MiseWidget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiseWidget.debug.xcconfig"; path = "Target Support Files/Pods-MiseWidget/Pods-MiseWidget.debug.xcconfig"; sourceTree = "<group>"; };
 		750F25B021EE3D55003A3FA6 /* LeftMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftMenuViewController.swift; sourceTree = "<group>"; };
 		758A33AA21EF7ED600EA2B50 /* SignAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignAnnotationView.swift; sourceTree = "<group>"; };
 		758CCDB021EE0366000539D7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		7AFDD39391D9CD3C5198F341 /* Pods_Mise.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mise.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		806786847FCCFB93DDCC8623 /* Pods_MiseWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiseWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		97BDFADC6167248C32173D50 /* Pods-Mise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mise.release.xcconfig"; path = "Target Support Files/Pods-Mise/Pods-Mise.release.xcconfig"; sourceTree = "<group>"; };
-		D6ED8677847C1862C042F5E0 /* Pods_MiseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E56F0E92F0506EF398BDA262 /* Pods_MiseUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiseUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6836431A449DCA6FF72A218 /* Pods_Mise.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mise.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0E75C8B6B9AEFEC2BAAB846 /* Pods-MiseWidget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiseWidget.release.xcconfig"; path = "Target Support Files/Pods-MiseWidget/Pods-MiseWidget.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -576,7 +574,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26A03B8D65FFF5BB03691098 /* Pods_Mise.framework in Frameworks */,
+				6C5D2677A239DDCF791E0E08 /* Pods_Mise.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -599,7 +597,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				23BBBD4A21F02AC200B64B7B /* NotificationCenter.framework in Frameworks */,
-				DC98484A3F91720BD22422E4 /* Pods_MiseWidget.framework in Frameworks */,
+				79E38A424384DED9CD02B818 /* Pods_MiseWidget.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -609,11 +607,9 @@
 		1C2A52064AD5D4926CBACA29 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7AFDD39391D9CD3C5198F341 /* Pods_Mise.framework */,
-				D6ED8677847C1862C042F5E0 /* Pods_MiseTests.framework */,
-				E56F0E92F0506EF398BDA262 /* Pods_MiseUITests.framework */,
 				23BBBD4921F02AC200B64B7B /* NotificationCenter.framework */,
-				806786847FCCFB93DDCC8623 /* Pods_MiseWidget.framework */,
+				A6836431A449DCA6FF72A218 /* Pods_Mise.framework */,
+				1F28C2BAB7103EDF75EDE95E /* Pods_MiseWidget.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -864,10 +860,10 @@
 		F59628B7E7F09EC03B6A72AF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				6C318A6B8E7574D96F46F7A5 /* Pods-Mise.debug.xcconfig */,
-				97BDFADC6167248C32173D50 /* Pods-Mise.release.xcconfig */,
-				60F3A440D2A947328A79EFC8 /* Pods-MiseWidget.debug.xcconfig */,
-				25CA6E04D6556DF8192D7D24 /* Pods-MiseWidget.release.xcconfig */,
+				323051EBA0B400F4266937A7 /* Pods-Mise.debug.xcconfig */,
+				1959179BF8481FD09E9B698D /* Pods-Mise.release.xcconfig */,
+				5501F6FA369D1E112E5AC383 /* Pods-MiseWidget.debug.xcconfig */,
+				F0E75C8B6B9AEFEC2BAAB846 /* Pods-MiseWidget.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -879,12 +875,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 23BBBBDF21EDB9AD00B64B7B /* Build configuration list for PBXNativeTarget "Mise" */;
 			buildPhases = (
-				8317F4BE14B290D17E346AFB /* [CP] Check Pods Manifest.lock */,
+				818229B3D9DD112CC8868FF7 /* [CP] Check Pods Manifest.lock */,
 				23BBBBB321EDB9AB00B64B7B /* Sources */,
 				23BBBBB421EDB9AB00B64B7B /* Frameworks */,
 				23BBBBB521EDB9AB00B64B7B /* Resources */,
-				B3E566D778BB0BF1C905172F /* [CP] Embed Pods Frameworks */,
 				23BBBD5821F02AC200B64B7B /* Embed App Extensions */,
+				16ACB0432ACEC96CEB0644C2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -936,7 +932,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 23BBBD5521F02AC200B64B7B /* Build configuration list for PBXNativeTarget "MiseWidget" */;
 			buildPhases = (
-				BB5C8DFE02CAF0FEB51B555F /* [CP] Check Pods Manifest.lock */,
+				F288777637A89290C8220D6D /* [CP] Check Pods Manifest.lock */,
 				23BBBD4421F02AC200B64B7B /* Sources */,
 				23BBBD4521F02AC200B64B7B /* Frameworks */,
 				23BBBD4621F02AC200B64B7B /* Resources */,
@@ -1334,28 +1330,12 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		8317F4BE14B290D17E346AFB /* [CP] Check Pods Manifest.lock */ = {
+		16ACB0432ACEC96CEB0644C2 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Mise-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B3E566D778BB0BF1C905172F /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Mise/Pods-Mise-frameworks.sh",
@@ -1370,6 +1350,8 @@
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AloeStackView.framework",
@@ -1386,7 +1368,29 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Mise/Pods-Mise-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		BB5C8DFE02CAF0FEB51B555F /* [CP] Check Pods Manifest.lock */ = {
+		818229B3D9DD112CC8868FF7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Mise-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F288777637A89290C8220D6D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1641,7 +1645,7 @@
 		};
 		23BBBBE021EDB9AD00B64B7B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6C318A6B8E7574D96F46F7A5 /* Pods-Mise.debug.xcconfig */;
+			baseConfigurationReference = 323051EBA0B400F4266937A7 /* Pods-Mise.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1663,7 +1667,7 @@
 		};
 		23BBBBE121EDB9AD00B64B7B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 97BDFADC6167248C32173D50 /* Pods-Mise.release.xcconfig */;
+			baseConfigurationReference = 1959179BF8481FD09E9B698D /* Pods-Mise.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1767,7 +1771,7 @@
 		};
 		23BBBD5621F02AC200B64B7B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 60F3A440D2A947328A79EFC8 /* Pods-MiseWidget.debug.xcconfig */;
+			baseConfigurationReference = 5501F6FA369D1E112E5AC383 /* Pods-MiseWidget.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = MiseWidget/MiseWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -1788,7 +1792,7 @@
 		};
 		23BBBD5721F02AC200B64B7B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 25CA6E04D6556DF8192D7D24 /* Pods-MiseWidget.release.xcconfig */;
+			baseConfigurationReference = F0E75C8B6B9AEFEC2BAAB846 /* Pods-MiseWidget.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = MiseWidget/MiseWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
