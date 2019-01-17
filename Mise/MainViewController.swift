@@ -29,6 +29,7 @@ class MainViewController: UIViewController {
     let emptyView = UIView()
     let mapView = MKMapView()
     var annotations:[MKAnnotation] = []
+    let aqiNoticeLb = UILabel()
     var dismissGesture = UITapGestureRecognizer()
     var locationManager:CLLocationManager!
     var canUpdated:Bool {
@@ -109,20 +110,17 @@ class MainViewController: UIViewController {
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
         self.view.backgroundColor = UIColor.wellGreen
         
-        baseScrollView.contentView.addSubview([thumImageView, locationLb, dustLb, infoStackView, infoStackView2, alertLb, mapView, bannerView, menuBtn])
+        baseScrollView.contentView.addSubview([thumImageView, locationLb, dustLb, infoStackView, infoStackView2, alertLb, mapView, bannerView, menuBtn, aqiNoticeLb])
         view.addSubview([baseScrollView])
         baseScrollView.setScrollView(vc: self)
         
         baseScrollView.snp.remakeConstraints { (make) in
-            make.top.leading.trailing.equalToSuperview()
+            make.top.equalTo(view.safeArea.top)
+            make.leading.trailing.equalToSuperview()
             make.bottom.equalTo(-50)
         }
         
-        menuBtn.snp.makeConstraints { (make) in
-            make.width.height.equalTo(40)
-            make.trailing.equalToSuperview().offset(-20)
-            make.top.equalTo(40)
-        }
+
         
         menuBtn.addTarget(self, action: #selector(callMenu(sender:)), for: .touchUpInside)
         menuBtn.setImage(UIImage.init(named: "menu"), for: .normal)
@@ -150,6 +148,14 @@ class MainViewController: UIViewController {
             make.centerX.equalToSuperview()
             make.leading.equalTo(10)
         }
+        
+        menuBtn.snp.makeConstraints { (make) in
+            make.width.height.equalTo(40)
+            make.trailing.equalToSuperview().offset(-20)
+            make.top.equalTo(10)
+//            make.bottom.greaterThanOrEqualTo(alertLb.snp.top).offset(10)
+        }
+        
         alertLb.textAlignment = .center
         alertLb.numberOfLines = 2
         alertLb.adjustsFontSizeToFitWidth = true
@@ -161,9 +167,17 @@ class MainViewController: UIViewController {
             make.leading.equalTo(10)
         }
         
+        aqiNoticeLb.snp.makeConstraints { (make) in
+            make.top.equalTo(dustLb.snp.bottom).offset(10)
+            make.trailing.equalTo(-10)
+        }
+        aqiNoticeLb.textAlignment = .right
+        
+        aqiNoticeLb.attributedText = "AQI (Air Quality Index) Standard".makeAttrString(font: .NotoSans(.bold, size: 18), color: .white)
+        
         dustLb.adjustsFontSizeToFitWidth = true
         infoStackView.snp.makeConstraints { (make) in
-            make.top.equalTo(dustLb.snp.bottom).offset(10)
+            make.top.equalTo(aqiNoticeLb.snp.bottom).offset(10)
             make.leading.equalTo(10)
             make.height.equalTo(100)
             make.centerX.equalToSuperview()
@@ -224,9 +238,6 @@ class MainViewController: UIViewController {
         
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         
-        print(weatherData.time)
-        print("TIMEIS")
-        
         if let dt = dateFormatter.date(from: weatherData.time) {
             dateFormatter.dateFormat = "yyyy.MM.dd HH:mm"
             
@@ -264,22 +275,22 @@ class MainViewController: UIViewController {
         switch weatherData.dominentpol {
             
         case "pm25":
-            self.dustLb.attributedText = "초미세먼지: \(weatherData.aqi) ㎍/m³".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
+            self.dustLb.attributedText = "초미세먼지: \(weatherData.aqi)".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
             
         case "pm10":
-            self.dustLb.attributedText = "미세먼지: \(weatherData.aqi) ㎍/m³".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
+            self.dustLb.attributedText = "미세먼지: \(weatherData.aqi)".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
             
         case "o3":
-            self.dustLb.attributedText = "오존: \(weatherData.aqi / 1000) ㎍/m³".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
+            self.dustLb.attributedText = "오존: \(weatherData.aqi / 1000)".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
             
         case "so2":
-            self.dustLb.attributedText = "이산화황: \(weatherData.aqi) ㎍/m³".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
+            self.dustLb.attributedText = "이산화황: \(weatherData.aqi)".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
             
         case "no2":
-            self.dustLb.attributedText = "이산화질소: \(weatherData.aqi) ㎍/m³".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
+            self.dustLb.attributedText = "이산화질소: \(weatherData.aqi)".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
             
         case "co":
-            self.dustLb.attributedText = "일산화탄소: \(weatherData.aqi) ㎍/m³".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
+            self.dustLb.attributedText = "일산화탄소: \(weatherData.aqi)".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
         default:
             break
             
@@ -292,37 +303,33 @@ class MainViewController: UIViewController {
         switch weatherData.alertLevel! {
             
         case .bad:
-            self.alertLb.attributedText = "뭐, 나가도 괜찮습니다.\n목숨이 아깝지 않다면.".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
+            self.alertLb.attributedText = "오늘은 실외활동을 최대한 자제해주세요!".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
             self.thumImageView.image = UIImage.init(named: "\(SELECTEDMASKIMAGE)4")
             self.view.backgroundColor = UIColor.unhealthyRed
             
         case .danger:
-            self.alertLb.attributedText = "목숨이 아깝지 않더라도\n나가지 말아야 할 때가 있습니다.".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
+            self.alertLb.attributedText = "오늘만큼은 무슨 일이 있어도 집밖으로 나가지 마세요!".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
             self.thumImageView.image = UIImage.init(named: "\(SELECTEDMASKIMAGE)6")
             self.view.backgroundColor = UIColor.hazardPurple
             
         case .little:
             self.thumImageView.image = UIImage.init(named: "\(SELECTEDMASKIMAGE)3")
             self.view.backgroundColor = UIColor.unhealthyTangerine
-            self.alertLb.attributedText = "목이 칼칼하다면\n기분탓은 아닐겁니다.".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
+            self.alertLb.attributedText = "조금은 목이 칼칼해지는 날씨입니다.".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
             
         case .normal:
             self.thumImageView.image = UIImage.init(named: "\(SELECTEDMASKIMAGE)2")
             self.view.backgroundColor = UIColor.normalYellow
-            self.alertLb.attributedText = "이정도는 이제 익숙해졌습니다.".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
+            self.alertLb.attributedText = "그럭저럭 돌아다닐 수 있는 날씨입니다.".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
             
         case .safe:
-            //            self.alertLb.attributedText = "목숨이 아깝지 않더라도\n나가지 말아야 할 때가 있습니다.".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
-            //            self.thumImageView.image = UIImage.init(named: "basicMask6")
-            //            self.view.backgroundColor = UIColor.hazardPurple
-            
             self.thumImageView.image = UIImage.init(named: "\(SELECTEDMASKIMAGE)1")
-            self.alertLb.attributedText = "산책나가는 것을\n두려워 하지 않아도 됩니다.".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
+            self.alertLb.attributedText = "맑은 공기를 마음껏 마실 수 있는 날씨입니다.".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
             self.view.backgroundColor = UIColor.wellGreen
             
         case .veryBad:
             self.thumImageView.image = UIImage.init(named: "\(SELECTEDMASKIMAGE)5")
-            self.alertLb.attributedText = "뭐, 나가도 괜찮습니다.\n목숨이 아깝지 않다면.".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
+            self.alertLb.attributedText = "오늘만큼은 집밖으로 나가지 마세요!".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
             self.view.backgroundColor = UIColor.unhealthyPurple
             
             
@@ -334,15 +341,14 @@ class MainViewController: UIViewController {
         
         nformatter.maximumFractionDigits = 3
         
-        
-        let v1 = InfoView.init(title: "이산화질소", value: "\(weatherData.no2 ?? -100) ㎍/m³", tag:0) // 습도
-        let v2 = InfoView.init(title: "오존", value: "\(weatherData.o3 ?? -100) ㎍/m³", tag:1) // 오존
-        let v3 = InfoView.init(title: "이산화황", value: "\(weatherData.so2 ?? -100) ㎍/m³", tag:2) // 이산화황
-        let v4 = InfoView.init(title: "초미세먼지", value: "\(weatherData.pm25 ?? -100) ㎍/m³", tag:3) // 초미세먼지
-        let v5 = InfoView.init(title: "미세먼지", value: "\(weatherData.pm10 ?? -100) ㎍/m³", tag:4) // 미세먼지
+        let v1 = InfoView.init(title: "이산화질소", value: "\(Int(weatherData.no2 ?? -100))", tag:0) // 습도
+        let v2 = InfoView.init(title: "오존", value: "\(Int(weatherData.o3 ?? -100))", tag:1) // 오존
+        let v3 = InfoView.init(title: "이산화황", value: "\(Int(weatherData.so2 ?? -100))", tag:2) // 이산화황
+        let v4 = InfoView.init(title: "초미세먼지", value: "\(Int(weatherData.pm25 ?? -100))", tag:3) // 초미세먼지
+        let v5 = InfoView.init(title: "미세먼지", value: "\(Int(weatherData.pm10 ?? -100))", tag:4) // 미세먼지
         //        let v6 = InfoView.init(title: "Pressure", value: "\(weatherData.pressure ?? 0)") // 기압
         //        let v7 = InfoView.init(title: "Wind", value: "\(weatherData.wind ?? 0)") // 풍향
-        let v8 = InfoView.init(title: "일산화탄소", value: "\(weatherData.co ?? -100) ㎍/m³", tag:5) // 일산화탄소
+        let v8 = InfoView.init(title: "일산화탄소", value: "\(Int(weatherData.co ?? -100))", tag:5) // 일산화탄소
         let v9 = InfoView.init(title: "기온", value: "\(weatherData.temperature ?? -100) °C", tag:6) // 기온
         //        let v10 = InfoView.init(title: "rain", value: "\(weatherData.rain ?? 0)") // 강수확률
         
@@ -365,7 +371,7 @@ class MainViewController: UIViewController {
                 $0.delegate = self
             })
         }else{
-            _ = [v8, v9, v2, v1].map({
+            _ = [v8, v2, v1, v9].map({
                 infoStackView2.addArrangedSubview($0)
                 if ($0.infoLb.text?.contains("-100"))! {
                     $0.infoLb.attributedText = "측정불가".makeAttrString(font: .NotoSans(.bold, size: 18), color: .white)
@@ -649,6 +655,8 @@ extension MainViewController:MKMapViewDelegate {
 extension MainViewController:InfoViewDelegate {
     func callDetailPopUp(sender: Int) {
         print(sender)
+//        PopUp.info(vc: <#T##UIViewController#>)
+        PopUp.info(vc: self)
     }
     
     

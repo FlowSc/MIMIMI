@@ -337,6 +337,8 @@
 		23BBBE1521F04F0900B64B7B /* CustomAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BBBBE821EDBB8C00B64B7B /* CustomAPI.swift */; };
 		6C5D2677A239DDCF791E0E08 /* Pods_Mise.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6836431A449DCA6FF72A218 /* Pods_Mise.framework */; };
 		750F25B121EE3D55003A3FA6 /* LeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750F25B021EE3D55003A3FA6 /* LeftMenuViewController.swift */; };
+		7514129121F0CD4B006CA8AD /* PopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7514129021F0CD4B006CA8AD /* PopUp.swift */; };
+		7514129221F0CF34006CA8AD /* PopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7514129021F0CD4B006CA8AD /* PopUp.swift */; };
 		758A33AB21EF7ED600EA2B50 /* SignAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758A33AA21EF7ED600EA2B50 /* SignAnnotationView.swift */; };
 		758CCDB121EE0366000539D7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 758CCDB021EE0366000539D7 /* GoogleService-Info.plist */; };
 		79E38A424384DED9CD02B818 /* Pods_MiseWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F28C2BAB7103EDF75EDE95E /* Pods_MiseWidget.framework */; };
@@ -563,6 +565,7 @@
 		323051EBA0B400F4266937A7 /* Pods-Mise.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mise.debug.xcconfig"; path = "Target Support Files/Pods-Mise/Pods-Mise.debug.xcconfig"; sourceTree = "<group>"; };
 		5501F6FA369D1E112E5AC383 /* Pods-MiseWidget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiseWidget.debug.xcconfig"; path = "Target Support Files/Pods-MiseWidget/Pods-MiseWidget.debug.xcconfig"; sourceTree = "<group>"; };
 		750F25B021EE3D55003A3FA6 /* LeftMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftMenuViewController.swift; sourceTree = "<group>"; };
+		7514129021F0CD4B006CA8AD /* PopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUp.swift; sourceTree = "<group>"; };
 		758A33AA21EF7ED600EA2B50 /* SignAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignAnnotationView.swift; sourceTree = "<group>"; };
 		758CCDB021EE0366000539D7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A6836431A449DCA6FF72A218 /* Pods_Mise.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mise.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -647,6 +650,7 @@
 				23BBBBEC21EDC0A700B64B7B /* MainViewController.swift */,
 				750F25B021EE3D55003A3FA6 /* LeftMenuViewController.swift */,
 				23BBBC4121EF1D8B00B64B7B /* ProductDetailViewController.swift */,
+				7514129021F0CD4B006CA8AD /* PopUp.swift */,
 				23BBBC3F21EF1A7F00B64B7B /* StoreViewController.swift */,
 				23BBBC1D21EEF6AF00B64B7B /* ConfigViewController.swift */,
 				23BBBC1B21EED51400B64B7B /* MenuTableViewCell.swift */,
@@ -1432,6 +1436,7 @@
 				23BBBC4221EF1D8B00B64B7B /* ProductDetailViewController.swift in Sources */,
 				23BBBBEB21EDBEA600B64B7B /* WeatherData.swift in Sources */,
 				23BBBBBB21EDB9AB00B64B7B /* AppDelegate.swift in Sources */,
+				7514129121F0CD4B006CA8AD /* PopUp.swift in Sources */,
 				23BBBBED21EDC0A700B64B7B /* MainViewController.swift in Sources */,
 				758A33AB21EF7ED600EA2B50 /* SignAnnotationView.swift in Sources */,
 				23BBBC2021EEFBA400B64B7B /* UIColorExtension.swift in Sources */,
@@ -1471,6 +1476,7 @@
 				23BBBE0B21F04F0900B64B7B /* ConfigViewController.swift in Sources */,
 				23BBBE0821F04F0900B64B7B /* LeftMenuViewController.swift in Sources */,
 				23BBBE0E21F04F0900B64B7B /* InfoView.swift in Sources */,
+				7514129221F0CF34006CA8AD /* PopUp.swift in Sources */,
 				23BBBD4D21F02AC200B64B7B /* TodayViewController.swift in Sources */,
 				23BBBE1121F04F0900B64B7B /* WeatherData.swift in Sources */,
 				23BBBE1521F04F0900B64B7B /* CustomAPI.swift in Sources */,

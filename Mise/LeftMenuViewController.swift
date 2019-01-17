@@ -30,24 +30,25 @@ class LeftMenuViewController: UIViewController, BasicViewControllerDelegate {
             make.height.equalTo(100)
         }
         
-        bottomView.addSubview([signInBtn, signUpBtn])
+        bottomView.addSubview([signInBtn])
         
         signInBtn.snp.makeConstraints { (make) in
             make.leading.equalTo(10)
             make.centerY.equalToSuperview()
             make.height.equalTo(40)
-        }
-        signUpBtn.snp.makeConstraints { (make) in
             make.trailing.equalTo(-10)
-            make.centerY.equalToSuperview()
-            make.height.equalTo(40)
-            make.width.equalTo(signInBtn.snp.width)
-            make.leading.equalTo(signInBtn.snp.trailing).offset(10)
         }
+//        signUpBtn.snp.makeConstraints { (make) in
+//            make.trailing.equalTo(-10)
+//            make.centerY.equalToSuperview()
+//            make.height.equalTo(40)
+//            make.width.equalTo(signInBtn.snp.width)
+//            make.leading.equalTo(signInBtn.snp.trailing).offset(10)
+//        }
         
-        signInBtn.setAttributedTitle("로그인".makeAttrString(font: .NotoSans(.bold, size: 15), color: .black), for: .normal)
+        signInBtn.setAttributedTitle("구매내역 복원하기".makeAttrString(font: .NotoSans(.bold, size: 15), color: .black), for: .normal)
         
-        signUpBtn.setAttributedTitle("회원가입".makeAttrString(font: .NotoSans(.bold, size: 15), color: .black), for: .normal)
+//        signUpBtn.setAttributedTitle("회원가입".makeAttrString(font: .NotoSans(.bold, size: 15), color: .black), for: .normal)
         
 //        bottomView.backgroundColor = .red
         tableView.register(MenuTableViewCell.self, forCellReuseIdentifier: "MenuTableViewCell")

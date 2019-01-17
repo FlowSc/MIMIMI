@@ -12,6 +12,7 @@ class InfoView: UIView {
 
     var titleLb = UILabel()
     var infoLb = UILabel()
+    var info2Lb = UILabel()
     var divider = UIView()
     var tapGesture = UITapGestureRecognizer()
     var delegate:InfoViewDelegate?
@@ -30,10 +31,39 @@ class InfoView: UIView {
         self.titleLb.attributedText = title.makeAttrString(font: .NotoSans(.bold, size: 20), color: .white)
         self.infoLb.attributedText = value.makeAttrString(font: .NotoSans(.bold, size: 18), color: .white)
         self.tag = tag
+        
+        if tag != 6 {
+            
+            if let aqi = Int(infoLb.text ?? "0") {
+                
+                switch aqi {
+                    
+                case 0...50 :
+                    info2Lb.attributedText = "좋음".makeAttrString(font: .NotoSans(.bold, size: 18), color: .white)
+                case 51...100:
+                    info2Lb.attributedText = "보통".makeAttrString(font: .NotoSans(.bold, size: 18), color: .white)
+                case 101...150:
+ info2Lb.attributedText = "민감군영향".makeAttrString(font: .NotoSans(.bold, size: 18), color: .white)
+                case 151...200:
+ info2Lb.attributedText = "나쁨".makeAttrString(font: .NotoSans(.bold, size: 18), color: .white)
+                case 201...300:
+ info2Lb.attributedText = "매우나쁨".makeAttrString(font: .NotoSans(.bold, size: 18), color: .white)
+                case 300...1000:
+ info2Lb.attributedText = "위험".makeAttrString(font: .NotoSans(.bold, size: 18), color: .white)
+                default:
+                    break
+                    
+                }
+            }else{
+                info2Lb.isHidden = true
+            }
+            
+        }
+        
     }
     
     private func setUI() {
-        self.addSubview([titleLb, infoLb, divider])
+        self.addSubview([titleLb, infoLb, divider, info2Lb])
         self.addGestureRecognizer(tapGesture)
         tapGesture.addTarget(self, action: #selector(callPopUp))
         titleLb.snp.makeConstraints { (make) in
@@ -54,12 +84,19 @@ class InfoView: UIView {
         infoLb.textAlignment = .center
         infoLb.adjustsFontSizeToFitWidth = true
 
+        info2Lb.textAlignment = .center
+        info2Lb.adjustsFontSizeToFitWidth = true
+        
         infoLb.snp.makeConstraints { (make) in
             make.leading.equalTo(2)
             make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview()
-            //            make.height.equalToSuperview()
             make.top.equalTo(titleLb.snp.bottom)
+        }
+        info2Lb.snp.makeConstraints { (make) in
+            make.leading.equalTo(2)
+            make.centerX.equalToSuperview()
+            make.top.equalTo(infoLb.snp.bottom).offset(1)
+            make.bottom.equalTo(-2)
         }
     }
     
