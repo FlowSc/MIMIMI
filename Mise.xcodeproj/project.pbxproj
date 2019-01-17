@@ -301,7 +301,6 @@
 		23BBBDDC21F03E0200B64B7B /* longMask4.png in Resources */ = {isa = PBXBuildFile; fileRef = 23BBBD1A21EF2C2700B64B7B /* longMask4.png */; };
 		23BBBDDD21F03E0200B64B7B /* longMask5.png in Resources */ = {isa = PBXBuildFile; fileRef = 23BBBD1C21EF2C2700B64B7B /* longMask5.png */; };
 		23BBBDDE21F03E0200B64B7B /* longMask6.png in Resources */ = {isa = PBXBuildFile; fileRef = 23BBBD2221EF2C2800B64B7B /* longMask6.png */; };
-		23BBBDDF21F03E9E00B64B7B /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BBBC1F21EEFBA400B64B7B /* UIColorExtension.swift */; };
 		23BBBDE021F0409D00B64B7B /* notosans_medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 23BBBBF721EECA3300B64B7B /* notosans_medium.ttf */; };
 		23BBBDE121F0409D00B64B7B /* NotoSans-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 23BBBBF821EECA3300B64B7B /* NotoSans-Bold.otf */; };
 		23BBBDE221F0409D00B64B7B /* notokr_regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 23BBBBF921EECA3300B64B7B /* notokr_regular.ttf */; };
@@ -320,12 +319,27 @@
 		23BBBDEF21F0409D00B64B7B /* american_typewriter.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 23BBBC0621EECA3300B64B7B /* american_typewriter.ttf */; };
 		23BBBDF021F0409D00B64B7B /* notokr_demilight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 23BBBC0721EECA3300B64B7B /* notokr_demilight.ttf */; };
 		23BBBDF121F0409D00B64B7B /* notosans_regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 23BBBC0821EECA3300B64B7B /* notosans_regular.ttf */; };
+		23BBBE0621F04F0900B64B7B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BBBBBA21EDB9AB00B64B7B /* AppDelegate.swift */; };
+		23BBBE0721F04F0900B64B7B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BBBBEC21EDC0A700B64B7B /* MainViewController.swift */; };
+		23BBBE0821F04F0900B64B7B /* LeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750F25B021EE3D55003A3FA6 /* LeftMenuViewController.swift */; };
+		23BBBE0921F04F0900B64B7B /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BBBC4121EF1D8B00B64B7B /* ProductDetailViewController.swift */; };
+		23BBBE0A21F04F0900B64B7B /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BBBC3F21EF1A7F00B64B7B /* StoreViewController.swift */; };
+		23BBBE0B21F04F0900B64B7B /* ConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BBBC1D21EEF6AF00B64B7B /* ConfigViewController.swift */; };
+		23BBBE0C21F04F0900B64B7B /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BBBC1B21EED51400B64B7B /* MenuTableViewCell.swift */; };
+		23BBBE0D21F04F0900B64B7B /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BBBC1F21EEFBA400B64B7B /* UIColorExtension.swift */; };
+		23BBBE0E21F04F0900B64B7B /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BBBBF421EDE04200B64B7B /* InfoView.swift */; };
+		23BBBE0F21F04F0900B64B7B /* BaseVerticalScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BBBBF221EDDE1900B64B7B /* BaseVerticalScrollView.swift */; };
+		23BBBE1021F04F0900B64B7B /* LeftPaddedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BBBBF021EDDE0F00B64B7B /* LeftPaddedTextField.swift */; };
+		23BBBE1121F04F0900B64B7B /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BBBBEA21EDBEA600B64B7B /* WeatherData.swift */; };
+		23BBBE1221F04F0900B64B7B /* SignAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758A33AA21EF7ED600EA2B50 /* SignAnnotationView.swift */; };
+		23BBBE1321F04F0900B64B7B /* 1920x1080-446505-mad-max-background-wallpaper-for-computer-free.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 23BBBD4021EF37F400B64B7B /* 1920x1080-446505-mad-max-background-wallpaper-for-computer-free.jpg */; };
+		23BBBE1421F04F0900B64B7B /* UIView_extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BBBBEE21EDD08100B64B7B /* UIView_extension.swift */; };
+		23BBBE1521F04F0900B64B7B /* CustomAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BBBBE821EDBB8C00B64B7B /* CustomAPI.swift */; };
 		26A03B8D65FFF5BB03691098 /* Pods_Mise.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AFDD39391D9CD3C5198F341 /* Pods_Mise.framework */; };
-		5C19A0B78DAEA3B6EBA2508A /* Pods_MiseUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E56F0E92F0506EF398BDA262 /* Pods_MiseUITests.framework */; };
 		750F25B121EE3D55003A3FA6 /* LeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750F25B021EE3D55003A3FA6 /* LeftMenuViewController.swift */; };
 		758A33AB21EF7ED600EA2B50 /* SignAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758A33AA21EF7ED600EA2B50 /* SignAnnotationView.swift */; };
 		758CCDB121EE0366000539D7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 758CCDB021EE0366000539D7 /* GoogleService-Info.plist */; };
-		B39534071C2EE54C69ACED18 /* Pods_MiseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6ED8677847C1862C042F5E0 /* Pods_MiseTests.framework */; };
+		DC98484A3F91720BD22422E4 /* Pods_MiseWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 806786847FCCFB93DDCC8623 /* Pods_MiseWidget.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -544,16 +558,15 @@
 		23BBBD5121F02AC200B64B7B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23BBBD5E21F035F400B64B7B /* MiseWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MiseWidget.entitlements; sourceTree = "<group>"; };
 		23BBBD6121F0388B00B64B7B /* Mise.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Mise.entitlements; sourceTree = "<group>"; };
-		4AD90BF4664FDA9F25F99389 /* Pods-MiseUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiseUITests.debug.xcconfig"; path = "Target Support Files/Pods-MiseUITests/Pods-MiseUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		25CA6E04D6556DF8192D7D24 /* Pods-MiseWidget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiseWidget.release.xcconfig"; path = "Target Support Files/Pods-MiseWidget/Pods-MiseWidget.release.xcconfig"; sourceTree = "<group>"; };
+		60F3A440D2A947328A79EFC8 /* Pods-MiseWidget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiseWidget.debug.xcconfig"; path = "Target Support Files/Pods-MiseWidget/Pods-MiseWidget.debug.xcconfig"; sourceTree = "<group>"; };
 		6C318A6B8E7574D96F46F7A5 /* Pods-Mise.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mise.debug.xcconfig"; path = "Target Support Files/Pods-Mise/Pods-Mise.debug.xcconfig"; sourceTree = "<group>"; };
-		6EA4EFA21B32D62ABDFF72FC /* Pods-MiseUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiseUITests.release.xcconfig"; path = "Target Support Files/Pods-MiseUITests/Pods-MiseUITests.release.xcconfig"; sourceTree = "<group>"; };
 		750F25B021EE3D55003A3FA6 /* LeftMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftMenuViewController.swift; sourceTree = "<group>"; };
 		758A33AA21EF7ED600EA2B50 /* SignAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignAnnotationView.swift; sourceTree = "<group>"; };
 		758CCDB021EE0366000539D7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7AFDD39391D9CD3C5198F341 /* Pods_Mise.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mise.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		806786847FCCFB93DDCC8623 /* Pods_MiseWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiseWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		97BDFADC6167248C32173D50 /* Pods-Mise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mise.release.xcconfig"; path = "Target Support Files/Pods-Mise/Pods-Mise.release.xcconfig"; sourceTree = "<group>"; };
-		9F411BB940480B6F476CE0C8 /* Pods-MiseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiseTests.release.xcconfig"; path = "Target Support Files/Pods-MiseTests/Pods-MiseTests.release.xcconfig"; sourceTree = "<group>"; };
-		C10FE8B7CE617772A35CCFEA /* Pods-MiseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiseTests.debug.xcconfig"; path = "Target Support Files/Pods-MiseTests/Pods-MiseTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D6ED8677847C1862C042F5E0 /* Pods_MiseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E56F0E92F0506EF398BDA262 /* Pods_MiseUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiseUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -571,7 +584,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B39534071C2EE54C69ACED18 /* Pods_MiseTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -579,7 +591,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C19A0B78DAEA3B6EBA2508A /* Pods_MiseUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -588,6 +599,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				23BBBD4A21F02AC200B64B7B /* NotificationCenter.framework in Frameworks */,
+				DC98484A3F91720BD22422E4 /* Pods_MiseWidget.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -601,6 +613,7 @@
 				D6ED8677847C1862C042F5E0 /* Pods_MiseTests.framework */,
 				E56F0E92F0506EF398BDA262 /* Pods_MiseUITests.framework */,
 				23BBBD4921F02AC200B64B7B /* NotificationCenter.framework */,
+				806786847FCCFB93DDCC8623 /* Pods_MiseWidget.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -853,10 +866,8 @@
 			children = (
 				6C318A6B8E7574D96F46F7A5 /* Pods-Mise.debug.xcconfig */,
 				97BDFADC6167248C32173D50 /* Pods-Mise.release.xcconfig */,
-				C10FE8B7CE617772A35CCFEA /* Pods-MiseTests.debug.xcconfig */,
-				9F411BB940480B6F476CE0C8 /* Pods-MiseTests.release.xcconfig */,
-				4AD90BF4664FDA9F25F99389 /* Pods-MiseUITests.debug.xcconfig */,
-				6EA4EFA21B32D62ABDFF72FC /* Pods-MiseUITests.release.xcconfig */,
+				60F3A440D2A947328A79EFC8 /* Pods-MiseWidget.debug.xcconfig */,
+				25CA6E04D6556DF8192D7D24 /* Pods-MiseWidget.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -889,7 +900,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 23BBBBE221EDB9AD00B64B7B /* Build configuration list for PBXNativeTarget "MiseTests" */;
 			buildPhases = (
-				FBFA721791B3B346D8239956 /* [CP] Check Pods Manifest.lock */,
 				23BBBBC721EDB9AD00B64B7B /* Sources */,
 				23BBBBC821EDB9AD00B64B7B /* Frameworks */,
 				23BBBBC921EDB9AD00B64B7B /* Resources */,
@@ -908,7 +918,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 23BBBBE521EDB9AD00B64B7B /* Build configuration list for PBXNativeTarget "MiseUITests" */;
 			buildPhases = (
-				991D8CCFF932A8FC57F789D6 /* [CP] Check Pods Manifest.lock */,
 				23BBBBD221EDB9AD00B64B7B /* Sources */,
 				23BBBBD321EDB9AD00B64B7B /* Frameworks */,
 				23BBBBD421EDB9AD00B64B7B /* Resources */,
@@ -927,6 +936,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 23BBBD5521F02AC200B64B7B /* Build configuration list for PBXNativeTarget "MiseWidget" */;
 			buildPhases = (
+				BB5C8DFE02CAF0FEB51B555F /* [CP] Check Pods Manifest.lock */,
 				23BBBD4421F02AC200B64B7B /* Sources */,
 				23BBBD4521F02AC200B64B7B /* Frameworks */,
 				23BBBD4621F02AC200B64B7B /* Resources */,
@@ -1180,6 +1190,7 @@
 				23BBBD9221F03E0200B64B7B /* vainMask2.png in Resources */,
 				23BBBDD221F03E0200B64B7B /* nuhaMask6.png in Resources */,
 				23BBBD8221F03E0200B64B7B /* milMask3.png in Resources */,
+				23BBBE1321F04F0900B64B7B /* 1920x1080-446505-mad-max-background-wallpaper-for-computer-free.jpg in Resources */,
 				23BBBDD321F03E0200B64B7B /* blueMask1.png in Resources */,
 				23BBBDCF21F03E0200B64B7B /* nuhaMask3.png in Resources */,
 				23BBBD6C21F03E0200B64B7B /* basicMask5.png in Resources */,
@@ -1341,24 +1352,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		991D8CCFF932A8FC57F789D6 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MiseUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		B3E566D778BB0BF1C905172F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1369,7 +1362,6 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AloeStackView/AloeStackView.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
@@ -1382,7 +1374,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AloeStackView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
@@ -1395,18 +1386,22 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Mise/Pods-Mise-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		FBFA721791B3B346D8239956 /* [CP] Check Pods Manifest.lock */ = {
+		BB5C8DFE02CAF0FEB51B555F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MiseTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-MiseWidget-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1459,8 +1454,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23BBBE0721F04F0900B64B7B /* MainViewController.swift in Sources */,
+				23BBBE0621F04F0900B64B7B /* AppDelegate.swift in Sources */,
+				23BBBE1021F04F0900B64B7B /* LeftPaddedTextField.swift in Sources */,
+				23BBBE0C21F04F0900B64B7B /* MenuTableViewCell.swift in Sources */,
+				23BBBE1221F04F0900B64B7B /* SignAnnotationView.swift in Sources */,
+				23BBBE1421F04F0900B64B7B /* UIView_extension.swift in Sources */,
+				23BBBE0F21F04F0900B64B7B /* BaseVerticalScrollView.swift in Sources */,
+				23BBBE0A21F04F0900B64B7B /* StoreViewController.swift in Sources */,
+				23BBBE0921F04F0900B64B7B /* ProductDetailViewController.swift in Sources */,
+				23BBBE0D21F04F0900B64B7B /* UIColorExtension.swift in Sources */,
+				23BBBE0B21F04F0900B64B7B /* ConfigViewController.swift in Sources */,
+				23BBBE0821F04F0900B64B7B /* LeftMenuViewController.swift in Sources */,
+				23BBBE0E21F04F0900B64B7B /* InfoView.swift in Sources */,
 				23BBBD4D21F02AC200B64B7B /* TodayViewController.swift in Sources */,
-				23BBBDDF21F03E9E00B64B7B /* UIColorExtension.swift in Sources */,
+				23BBBE1121F04F0900B64B7B /* WeatherData.swift in Sources */,
+				23BBBE1521F04F0900B64B7B /* CustomAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1676,7 +1685,6 @@
 		};
 		23BBBBE321EDB9AD00B64B7B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C10FE8B7CE617772A35CCFEA /* Pods-MiseTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1698,7 +1706,6 @@
 		};
 		23BBBBE421EDB9AD00B64B7B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9F411BB940480B6F476CE0C8 /* Pods-MiseTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1720,7 +1727,6 @@
 		};
 		23BBBBE621EDB9AD00B64B7B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4AD90BF4664FDA9F25F99389 /* Pods-MiseUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1741,7 +1747,6 @@
 		};
 		23BBBBE721EDB9AD00B64B7B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6EA4EFA21B32D62ABDFF72FC /* Pods-MiseUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1762,6 +1767,7 @@
 		};
 		23BBBD5621F02AC200B64B7B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 60F3A440D2A947328A79EFC8 /* Pods-MiseWidget.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = MiseWidget/MiseWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -1782,6 +1788,7 @@
 		};
 		23BBBD5721F02AC200B64B7B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 25CA6E04D6556DF8192D7D24 /* Pods-MiseWidget.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = MiseWidget/MiseWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;

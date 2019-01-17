@@ -7,8 +7,8 @@
 //
 
 import UIKit
-//import Snap
 import NotificationCenter
+import CoreLocation
 
 class TodayViewController: UIViewController, NCWidgetProviding {
         
@@ -52,14 +52,21 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     }
     
     func setData() {
-        let token = "7ba124cd957e5ac93963ee8aa2e8d7eb478d3c12"
 
-        NetworkHandler.getData(url: "http://api.waqi.info/feed/geo:\(33);\(33)/?token=\(token)")
         
-        if let time = UserDefaults.init(suiteName: GROUPIDENTIFIER)?.string(forKey: "time"), let aqi = UserDefaults.init(suiteName: GROUPIDENTIFIER)?.string(forKey: "domimentAQI"), let text = UserDefaults.init(suiteName: GROUPIDENTIFIER)?.string(forKey: "alertText")  {
-            widgetLb.numberOfLines = 0
-            widgetLb.attributedText = "\(time)\n\(aqi)\n\(text)".makeAttrString(font: .NotoSans(.bold, size: 14), color: .white)
+        CustomAPI.getDust(lat: "33", lng: "128") { (data) in
+            print(data.aqi)
+            print(data.dominentpol)
+            
+            if let time = UserDefaults.init(suiteName: GROUPIDENTIFIER)?.string(forKey: "time"), let aqi = UserDefaults.init(suiteName: GROUPIDENTIFIER)?.string(forKey: "domimentAQI"), let text = UserDefaults.init(suiteName: GROUPIDENTIFIER)?.string(forKey: "alertText")  {
+                self.widgetLb.numberOfLines = 0
+                self.widgetLb.attributedText = "\(data.time)\n\(data.aqi)㎍/m³\n\(text)".makeAttrString(font: .NotoSans(.bold, size: 14), color: .white)
+            }
+
         }
+        
+        
+
         if let image = UserDefaults.init(suiteName: GROUPIDENTIFIER)?.string(forKey: "imageName") {
             print(image)
             thumnailImv.image = UIImage.init(named: "\(image)1")
@@ -79,28 +86,5 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     
     
-    
-}
-
-class NetworkHandler {
-    
-    class func getData(url:String) {
-        
-        let session = URLSession(configuration: .default)
-        
-        let request = URLRequest.init(url: URL.init(string: url)!)
-        
-        let task = session.dataTask(with: request) {data, response, error in
-            
-            
-            print(data)
-            
-        }
-        
-        task.resume()
-        
-        
-        
-    }
     
 }
