@@ -47,7 +47,7 @@ class SignAnnotationView: MKAnnotationView {
             case 300...1000:
                signImageView.image = UIImage.init(named: "sign-6")
             default:
-                break
+                signImageView.image = UIImage.init(named: "sign")
             }
             
         }
@@ -71,7 +71,7 @@ class SignAnnotationView: MKAnnotationView {
             make.width.height.equalTo(60)
         }
         
-        signImageView.image = UIImage.init(named: "flags")
+        signImageView.image = UIImage.init(named: "sign")
         signImageView.snp.makeConstraints { (make) in
 //            make.edges.equalToSuperview()
             make.top.equalTo(10)

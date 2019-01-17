@@ -336,7 +336,7 @@ class MainViewController: UIViewController {
         
         
         let v1 = InfoView.init(title: "이산화질소", value: "\(weatherData.no2 ?? 0) ㎍/m", tag:0) // 습도
-        let v2 = InfoView.init(title: "오존", value: "\(weatherData.o3) ㎍/m³", tag:1) // 오존
+        let v2 = InfoView.init(title: "오존", value: "\(weatherData.o3 ?? 0) ㎍/m³", tag:1) // 오존
         let v3 = InfoView.init(title: "이산화황", value: "\(weatherData.so2 ?? 0) ㎍/m³", tag:2) // 이산화황
         let v4 = InfoView.init(title: "초미세먼지", value: "\(weatherData.pm25 ?? 0) ㎍/m³", tag:3) // 초미세먼지
         let v5 = InfoView.init(title: "미세먼지", value: "\(weatherData.pm10 ?? 0) ㎍/m³", tag:4) // 미세먼지
