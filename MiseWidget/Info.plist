@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>UIAppFonts</key>
+    <array>
+        <string>notokr_regular.ttf</string>
+        <string>american_typewriter_light.ttf</string>
+        <string>notokr_medium.ttf</string>
+        <string>american_typewriter_bold.ttf</string>
+        <string>notokr_thin.ttf</string>
+        <string>notokr_black.ttf</string>
+        <string>american_typewriter.ttf</string>
+        <string>notosans_black.ttf</string>
+        <string>notosans_bold.ttf</string>
+        <string>notosans_extrabold.ttf</string>
+        <string>notosans_light.ttf</string>
+        <string>notosans_medium.ttf</string>
+        <string>notosans_regular.ttf</string>
+        <string>notosans_semibold.ttf</string>
+    </array>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>MiseWidget</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>$(PRODUCT_NAME)</string>
+	<key>CFBundlePackageType</key>
+	<string>XPC!</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+	<key>NSExtension</key>
+	<dict>
+		<key>NSExtensionMainStoryboard</key>
+		<string>MainInterface</string>
+		<key>NSExtensionPointIdentifier</key>
+		<string>com.apple.widget-extension</string>
+	</dict>
+</dict>
+</plist>

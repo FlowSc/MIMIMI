@@ -9,6 +9,9 @@
 import Foundation
 import UIKit
 
+
+let GROUPIDENTIFIER = "group.mise.widget"
+
 extension UIColor {
     
     static var wellGreen:UIColor {
@@ -29,4 +32,37 @@ extension UIColor {
     static var hazardPurple:UIColor {
         return UIColor.init(red: 27/255, green: 0/255, blue: 33/255, alpha: 1)
     }
+}
+
+
+extension String {
+    
+    func makeAttrString(font:UIFont, color:UIColor) -> NSMutableAttributedString {
+        
+        let descTitle = NSMutableAttributedString.init(string:self)
+        
+        descTitle.addAttributes([NSAttributedString.Key.foregroundColor:color, NSAttributedString.Key.font:font], range: NSRange.init(location: 0, length: descTitle.length))
+        
+        return descTitle
+    }
+}
+
+enum NotoSansFontSize:String {
+    
+    case bold = "NotoSans-Bold"
+    case regular = "NotoSans-Regular"
+    case medium = "NotoSans-Medium"
+    case thin = "NotoSans-Light"
+    
+}
+
+extension UIFont {
+    
+    static func NotoSans(_ font:NotoSansFontSize, size:CGFloat) -> UIFont {
+        
+        
+        return UIFont.init(name: font.rawValue, size: size)!
+        
+    }
+    
 }

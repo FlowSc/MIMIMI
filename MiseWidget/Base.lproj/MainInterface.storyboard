@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="M4Y-Lb-cyx">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Today View Controller-->
+        <scene sceneID="cwh-vc-ff4">
+            <objects>
+                <viewController id="M4Y-Lb-cyx" customClass="TodayViewController" customModule="MiseWidget" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" simulatedAppContext="notificationCenter" id="S3S-Oj-5AN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="37"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eFz-Gv-Iga">
+                                <rect key="frame" x="10" y="10" width="17" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="eFz-Gv-Iga" secondAttribute="height" multiplier="1:1" id="MId-lF-8uk"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VyX-OZ-dNA">
+                                <rect key="frame" x="37" y="0.0" width="0.0" height="37"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tpi-M3-uba">
+                                <rect key="frame" x="280" y="0.0" width="30" height="37"/>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="ssy-KU-ocm" firstAttribute="bottom" secondItem="VyX-OZ-dNA" secondAttribute="bottom" id="AIc-zh-vRs"/>
+                            <constraint firstItem="eFz-Gv-Iga" firstAttribute="top" secondItem="ssy-KU-ocm" secondAttribute="top" constant="10" id="AJS-Pb-mhn"/>
+                            <constraint firstItem="VyX-OZ-dNA" firstAttribute="top" secondItem="ssy-KU-ocm" secondAttribute="top" id="HIP-CN-yDu"/>
+                            <constraint firstItem="ssy-KU-ocm" firstAttribute="trailing" secondItem="tpi-M3-uba" secondAttribute="trailing" constant="10" id="KCW-HY-xcF"/>
+                            <constraint firstItem="eFz-Gv-Iga" firstAttribute="leading" secondItem="ssy-KU-ocm" secondAttribute="leading" constant="10" id="Par-5J-qiq"/>
+                            <constraint firstItem="VyX-OZ-dNA" firstAttribute="leading" secondItem="eFz-Gv-Iga" secondAttribute="trailing" constant="10" id="VTj-gL-Sw6"/>
+                            <constraint firstItem="eFz-Gv-Iga" firstAttribute="bottom" secondItem="ssy-KU-ocm" secondAttribute="bottom" constant="-10" id="mva-cD-ik9"/>
+                            <constraint firstItem="ssy-KU-ocm" firstAttribute="bottom" secondItem="tpi-M3-uba" secondAttribute="bottom" id="qA8-qO-AvI"/>
+                            <constraint firstItem="tpi-M3-uba" firstAttribute="top" secondItem="ssy-KU-ocm" secondAttribute="top" id="zLO-9r-vrn"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ssy-KU-ocm"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="37"/>
+                    <connections>
+                        <outlet property="moveToAppBtn" destination="tpi-M3-uba" id="GKN-pu-LfJ"/>
+                        <outlet property="thumnailImv" destination="eFz-Gv-Iga" id="nec-XH-BMQ"/>
+                        <outlet property="widgetLb" destination="VyX-OZ-dNA" id="bCA-CC-MD0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vXp-U4-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="52.799999999999997" y="26.53673163418291"/>
+        </scene>
+    </scenes>
+</document>

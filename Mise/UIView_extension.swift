@@ -271,34 +271,3 @@ class CenterAlignedCollectionViewFlowLayout: UICollectionViewFlowLayout {
     }
 }
 
-extension String {
-    
-    func makeAttrString(font:UIFont, color:UIColor) -> NSMutableAttributedString {
-        
-        let descTitle = NSMutableAttributedString.init(string:self)
-        
-        descTitle.addAttributes([NSAttributedString.Key.foregroundColor:color, NSAttributedString.Key.font:font], range: NSRange.init(location: 0, length: descTitle.length))
-        
-        return descTitle
-    }
-}
-
-enum NotoSansFontSize:String {
-    
-    case bold = "NotoSans-Bold"
-    case regular = "NotoSans-Regular"
-    case medium = "NotoSans-Medium"
-    case thin = "NotoSans-Light"
-    
-}
-
-extension UIFont {
-    
-    static func NotoSans(_ font:NotoSansFontSize, size:CGFloat) -> UIFont {
-        
-        
-        return UIFont.init(name: font.rawValue, size: size)!
-        
-    }
-
-}

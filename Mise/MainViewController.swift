@@ -40,6 +40,12 @@ class MainViewController: UIViewController {
         
         super.viewDidLoad()
         setUI()
+        
+        
+        
+        UserDefaults.init(suiteName: GROUPIDENTIFIER)?.set(SELECTEDMASKIMAGE, forKey: "imageName")
+
+        
         self.navigationController?.isNavigationBarHidden = true
 
         locationManager = CLLocationManager()
@@ -220,10 +226,11 @@ class MainViewController: UIViewController {
         print("TIMEIS")
         
         if let dt = dateFormatter.date(from: weatherData.time) {
-            dateFormatter.dateFormat = "yyyy년 MM월 dd일 HH시 mm분 기준"
+            dateFormatter.dateFormat = "yyyy.MM.dd HH:mm"
             
             let std = dateFormatter.string(from: dt)
-            
+            UserDefaults.init(suiteName: GROUPIDENTIFIER)?.set(std, forKey: "time")
+
                     self.locationLb.attributedText = "\(locationName)\n\(std)".makeAttrString(font: .NotoSans(.bold, size: 20), color: .white)
         }else{
                 self.locationLb.attributedText = "\(locationName)".makeAttrString(font: .NotoSans(.bold, size: 20), color: .white)
@@ -259,6 +266,11 @@ class MainViewController: UIViewController {
             break
 
         }
+        
+        
+        
+//        UserDefaults.init(suiteName: <#T##String?#>)
+
         
         locationLb.numberOfLines = 2
         locationLb.adjustsFontSizeToFitWidth = true
@@ -301,6 +313,10 @@ class MainViewController: UIViewController {
 
 
         }
+        
+        UserDefaults.init(suiteName: GROUPIDENTIFIER)?.set(self.dustLb.text ?? "", forKey: "domimentAQI")
+        UserDefaults.init(suiteName: GROUPIDENTIFIER)?.set(self.alertLb.text ?? "", forKey: "alertText")
+
         
         let v1 = InfoView.init(title: "이산화질소", value: "\(weatherData.no2 ?? 0) ppm", tag:0) // 습도
         let v2 = InfoView.init(title: "오존", value: "\(weatherData.o3 ?? 0) ppm", tag:1) // 오존

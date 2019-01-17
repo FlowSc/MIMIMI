@@ -6,24 +6,34 @@ target 'Mise' do
   use_frameworks!
 
   # Pods for Mise
-	pod 'Alamofire'
-	pod 'RealmSwift'
-	pod 'SnapKit'
-	pod 'SwiftyJSON'
-	pod 'AloeStackView'
-	pod 'ObjectMapper'
+	  pod 'Alamofire'
+	  pod 'RealmSwift'
+	  pod 'SnapKit'
+	  pod 'SwiftyJSON'
+	  pod 'AloeStackView'
+	  pod 'ObjectMapper'
     pod 'Firebase'
     pod 'Google-Mobile-Ads-SDK'
     pod 'Hero'
 
+end
      target 'MiseTests' do
     inherit! :search_paths
-    # Pods for testing
-  end
+end
+	target 'MiseWidget' do
+	use_frameworks!
+  pod 'Alamofire'
+  pod 'RealmSwift'
+  pod 'SnapKit'
+  pod 'SwiftyJSON'
+  pod 'AloeStackView'
+  pod 'ObjectMapper'
+  pod 'Firebase'
+  pod 'Google-Mobile-Ads-SDK'
+  pod 'Hero'
+end
 
   target 'MiseUITests' do
     inherit! :search_paths
     # Pods for testing
-  end
-
 end
