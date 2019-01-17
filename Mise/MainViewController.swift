@@ -40,9 +40,7 @@ class MainViewController: UIViewController {
         
         super.viewDidLoad()
         setUI()
-//        getInfo()
-        
-        
+                
         UserDefaults.init(suiteName: GROUPIDENTIFIER)?.set(SELECTEDMASKIMAGE, forKey: "imageName")
 
         
@@ -256,7 +254,7 @@ class MainViewController: UIViewController {
             self.dustLb.attributedText = "미세먼지: \(weatherData.aqi) ㎍/m³".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
 
         case "o3":
-            self.dustLb.attributedText = "오존: \(weatherData.aqi) ㎍/m³".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
+            self.dustLb.attributedText = "오존: \(weatherData.aqi / 1000)ppm³".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
 
         case "so2":
             self.dustLb.attributedText = "이산화황: \(weatherData.aqi) ㎍/m³".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
@@ -320,10 +318,13 @@ class MainViewController: UIViewController {
         
         UserDefaults.init(suiteName: GROUPIDENTIFIER)?.set(self.dustLb.text ?? "", forKey: "domimentAQI")
         UserDefaults.init(suiteName: GROUPIDENTIFIER)?.set(self.alertLb.text ?? "", forKey: "alertText")
+        let nformatter = NumberFormatter()
 
+        nformatter.maximumFractionDigits = 3
+        
         
         let v1 = InfoView.init(title: "이산화질소", value: "\(weatherData.no2 ?? 0) ppm", tag:0) // 습도
-        let v2 = InfoView.init(title: "오존", value: "\(weatherData.o3 ?? 0) ppm", tag:1) // 오존
+        let v2 = InfoView.init(title: "오존", value: "0\(nformatter.string(from: (NSNumber.init(value: (weatherData.o3 ?? 0) / 1000))) ?? "0")ppm", tag:1) // 오존
         let v3 = InfoView.init(title: "이산화황", value: "\(weatherData.so2 ?? 0) ppm", tag:2) // 이산화황
         let v4 = InfoView.init(title: "초미세먼지", value: "\(weatherData.pm25 ?? 0) ㎍/m³", tag:3) // 초미세먼지
         let v5 = InfoView.init(title: "미세먼지", value: "\(weatherData.pm10 ?? 0) ㎍/m³", tag:4) // 미세먼지

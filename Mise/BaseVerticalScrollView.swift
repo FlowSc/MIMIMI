@@ -86,15 +86,17 @@ class BaseHorizontalScrollView:UIView {
             
             
             
-            make.height.equalTo(UIWindow().bounds.height > 800 ? 300 : 230)
-            make.centerY.equalToSuperview().offset(50)
+//            make.height.equalTo(UIWindow().bounds.height > 800 ? 350 : 300)
+            make.bottom.equalTo(vc.view.safeArea.bottom).offset(-50)
+            make.top.equalTo(vc.view.safeArea.top)
             make.leading.trailing.equalToSuperview()
             
         }
         
         scrollView.addSubview(contentView)
         contentView.snp.makeConstraints { (make) in
-            make.height.equalTo(UIWindow().bounds.height > 800 ? 300 : 230)
+            make.height.equalToSuperview()
+//            make.height.equalTo(UIWindow().bounds.height > 800 ? 350 : 300)
             make.centerY.leading.trailing.equalToSuperview()
         }
         scrollView.isPagingEnabled = true
