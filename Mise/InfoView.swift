@@ -50,9 +50,13 @@ class InfoView: UIView {
         titleLb.textAlignment = .center
         titleLb.adjustsFontSizeToFitWidth = true
         infoLb.textAlignment = .center
+        infoLb.adjustsFontSizeToFitWidth = true
+
         infoLb.snp.makeConstraints { (make) in
-            make.leading.bottom.trailing.equalToSuperview()
-//            make.height.equalToSuperview()
+            make.leading.equalTo(2)
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview()
+            //            make.height.equalToSuperview()
             make.top.equalTo(titleLb.snp.bottom)
         }
     }

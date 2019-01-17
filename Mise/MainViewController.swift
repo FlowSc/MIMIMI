@@ -15,7 +15,7 @@ import GoogleMobileAds
 //import URWeatherView
 
 class MainViewController: UIViewController {
-
+    
     @IBOutlet weak var leftMenuView: UIView!
     var bannerView: GADBannerView!
     let baseScrollView = BaseVerticalScrollView()
@@ -32,7 +32,7 @@ class MainViewController: UIViewController {
     var dismissGesture = UITapGestureRecognizer()
     var locationManager:CLLocationManager!
     var canUpdated:Bool {
-            return CLLocationManager.locationServicesEnabled()
+        return CLLocationManager.locationServicesEnabled()
     }
     let menuBtn = UIButton()
     
@@ -40,18 +40,18 @@ class MainViewController: UIViewController {
         
         super.viewDidLoad()
         setUI()
-                
+        
         UserDefaults.init(suiteName: GROUPIDENTIFIER)?.set(SELECTEDMASKIMAGE, forKey: "imageName")
-
+        
         
         self.navigationController?.isNavigationBarHidden = true
-
+        
         locationManager = CLLocationManager()
         locationManager.delegate = self
         mapView.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         dismissGesture.addTarget(self, action: #selector(dismissMenu))
-
+        
     }
     
     @objc func dismissMenu() {
@@ -68,12 +68,12 @@ class MainViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = true
         getInfo()
         UserDefaults.init(suiteName: GROUPIDENTIFIER)?.set(SELECTEDMASKIMAGE, forKey: "imageName")
-
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-         getInfo()
+        getInfo()
     }
     
     @objc func callMenu(sender:UIButton) {
@@ -81,7 +81,7 @@ class MainViewController: UIViewController {
         sender.isSelected = !(sender.isSelected)
         
         if sender.isSelected {
-
+            
             self.baseScrollView.contentView.addGestureRecognizer(dismissGesture)
             UIView.animate(withDuration: 0.5) {
                 self.leftMenuView.snp.updateConstraints { (make) in
@@ -91,7 +91,7 @@ class MainViewController: UIViewController {
             }
         }else{
             self.baseScrollView.contentView.removeGestureRecognizer(dismissGesture)
-
+            
             UIView.animate(withDuration: 0.5) {
                 self.leftMenuView.snp.updateConstraints { (make) in
                     make.leading.equalTo(self.view.snp.leading).offset(-self.view.bounds.width)
@@ -99,20 +99,20 @@ class MainViewController: UIViewController {
                 self.view.layoutIfNeeded()
             }
         }
-
-
+        
+        
         
     }
     
     func setUI() {
-
+        
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
         self.view.backgroundColor = UIColor.wellGreen
-
+        
         baseScrollView.contentView.addSubview([thumImageView, locationLb, dustLb, infoStackView, infoStackView2, alertLb, mapView, bannerView, menuBtn])
         view.addSubview([baseScrollView])
         baseScrollView.setScrollView(vc: self)
-
+        
         baseScrollView.snp.remakeConstraints { (make) in
             make.top.leading.trailing.equalToSuperview()
             make.bottom.equalTo(-50)
@@ -130,7 +130,7 @@ class MainViewController: UIViewController {
         tapGesture.addTarget(self, action: #selector(shaking))
         thumImageView.addGestureRecognizer(tapGesture)
         thumImageView.isUserInteractionEnabled = true
-
+        
         thumImageView.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
             make.top.equalTo(270)
@@ -141,7 +141,7 @@ class MainViewController: UIViewController {
         locationLb.snp.makeConstraints { (make) in
             make.bottom.equalTo(thumImageView.snp.top).offset(-20)
             make.leading.equalTo(10)
-//            make.height.equalTo(60)
+            //            make.height.equalTo(60)
             make.centerX.equalToSuperview()
         }
         
@@ -174,7 +174,7 @@ class MainViewController: UIViewController {
             make.leading.equalTo(10)
             make.height.equalTo(100)
             make.centerX.equalToSuperview()
-
+            
         }
         
         mapView.snp.makeConstraints { (make) in
@@ -182,10 +182,10 @@ class MainViewController: UIViewController {
             make.top.equalTo(infoStackView2.snp.bottom).offset(40)
             make.leading.equalTo(10)
             make.centerX.equalToSuperview()
-//            make.bottom.equalTo(-20)
+            //            make.bottom.equalTo(-20)
         }
         mapView.showsUserLocation = true
-
+        
         infoStackView.axis = .horizontal
         infoStackView.distribution = .fillEqually
         infoStackView2.distribution = .fillEqually
@@ -210,7 +210,7 @@ class MainViewController: UIViewController {
         bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
-
+        
     }
     
     @objc func shaking() {
@@ -232,45 +232,61 @@ class MainViewController: UIViewController {
             
             let std = dateFormatter.string(from: dt)
             UserDefaults.init(suiteName: GROUPIDENTIFIER)?.set(std, forKey: "time")
-
+            
+            if let _ = locationName.components(separatedBy: "(").first{
+                
+                
+                if let aaa = locationName.strstr(needle: "(", beforeNeedle: true) {
+                    
+                    print(aaa)
+                    if let bbb = locationName.strstr(needle: "(", beforeNeedle: false)?.strstr(needle: ")", beforeNeedle: true) {
+                        
+                        self.locationLb.attributedText = "\(aaa)\n\(bbb)\n\(std)".makeAttrString(font: .NotoSans(.bold, size: 20), color: .white)
+                    }
+                }else{
                     self.locationLb.attributedText = "\(locationName)\n\(std)".makeAttrString(font: .NotoSans(.bold, size: 20), color: .white)
+                }
+                
+            }
+            
+            
         }else{
-                self.locationLb.attributedText = "\(locationName)".makeAttrString(font: .NotoSans(.bold, size: 20), color: .white)
+            self.locationLb.attributedText = "\(locationName)".makeAttrString(font: .NotoSans(.bold, size: 20), color: .white)
         }
-
-    
-
+        
+        
+        
         
         _ = self.infoStackView.arrangedSubviews.map({$0.removeFromSuperview()})
         _ = self.infoStackView2.arrangedSubviews.map({$0.removeFromSuperview()})
-
-
+        
+        
         switch weatherData.dominentpol {
             
         case "pm25":
             self.dustLb.attributedText = "초미세먼지: \(weatherData.aqi) ㎍/m³".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
-
+            
         case "pm10":
             self.dustLb.attributedText = "미세먼지: \(weatherData.aqi) ㎍/m³".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
-
+            
         case "o3":
-            self.dustLb.attributedText = "오존: \(weatherData.aqi / 1000)ppm³".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
-
+            self.dustLb.attributedText = "오존: \(weatherData.aqi / 1000) ㎍/m³".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
+            
         case "so2":
             self.dustLb.attributedText = "이산화황: \(weatherData.aqi) ㎍/m³".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
-
+            
         case "no2":
             self.dustLb.attributedText = "이산화질소: \(weatherData.aqi) ㎍/m³".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
-
+            
         case "co":
             self.dustLb.attributedText = "일산화탄소: \(weatherData.aqi) ㎍/m³".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
         default:
             break
-
+            
         }
         
         
-        locationLb.numberOfLines = 2
+        locationLb.numberOfLines = 0
         locationLb.adjustsFontSizeToFitWidth = true
         
         switch weatherData.alertLevel! {
@@ -279,57 +295,57 @@ class MainViewController: UIViewController {
             self.alertLb.attributedText = "뭐, 나가도 괜찮습니다.\n목숨이 아깝지 않다면.".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
             self.thumImageView.image = UIImage.init(named: "\(SELECTEDMASKIMAGE)4")
             self.view.backgroundColor = UIColor.unhealthyRed
-
+            
         case .danger:
             self.alertLb.attributedText = "목숨이 아깝지 않더라도\n나가지 말아야 할 때가 있습니다.".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
             self.thumImageView.image = UIImage.init(named: "\(SELECTEDMASKIMAGE)6")
             self.view.backgroundColor = UIColor.hazardPurple
-
+            
         case .little:
             self.thumImageView.image = UIImage.init(named: "\(SELECTEDMASKIMAGE)3")
             self.view.backgroundColor = UIColor.unhealthyTangerine
             self.alertLb.attributedText = "목이 칼칼하다면\n기분탓은 아닐겁니다.".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
-
+            
         case .normal:
             self.thumImageView.image = UIImage.init(named: "\(SELECTEDMASKIMAGE)2")
             self.view.backgroundColor = UIColor.normalYellow
             self.alertLb.attributedText = "이정도는 이제 익숙해졌습니다.".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
-
+            
         case .safe:
-//            self.alertLb.attributedText = "목숨이 아깝지 않더라도\n나가지 말아야 할 때가 있습니다.".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
-//            self.thumImageView.image = UIImage.init(named: "basicMask6")
-//            self.view.backgroundColor = UIColor.hazardPurple
-
+            //            self.alertLb.attributedText = "목숨이 아깝지 않더라도\n나가지 말아야 할 때가 있습니다.".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
+            //            self.thumImageView.image = UIImage.init(named: "basicMask6")
+            //            self.view.backgroundColor = UIColor.hazardPurple
+            
             self.thumImageView.image = UIImage.init(named: "\(SELECTEDMASKIMAGE)1")
             self.alertLb.attributedText = "산책나가는 것을\n두려워 하지 않아도 됩니다.".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
             self.view.backgroundColor = UIColor.wellGreen
-
+            
         case .veryBad:
             self.thumImageView.image = UIImage.init(named: "\(SELECTEDMASKIMAGE)5")
             self.alertLb.attributedText = "뭐, 나가도 괜찮습니다.\n목숨이 아깝지 않다면.".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
             self.view.backgroundColor = UIColor.unhealthyPurple
-
-
+            
+            
         }
         
         UserDefaults.init(suiteName: GROUPIDENTIFIER)?.set(self.dustLb.text ?? "", forKey: "domimentAQI")
         UserDefaults.init(suiteName: GROUPIDENTIFIER)?.set(self.alertLb.text ?? "", forKey: "alertText")
         let nformatter = NumberFormatter()
-
+        
         nformatter.maximumFractionDigits = 3
         
         
-        let v1 = InfoView.init(title: "이산화질소", value: "\(weatherData.no2 ?? 0) ppm", tag:0) // 습도
-        let v2 = InfoView.init(title: "오존", value: "0\(nformatter.string(from: (NSNumber.init(value: (weatherData.o3 ?? 0) / 1000))) ?? "0")ppm", tag:1) // 오존
-        let v3 = InfoView.init(title: "이산화황", value: "0\(nformatter.string(from: (NSNumber.init(value: (weatherData.so2 ?? 0) / 1000))) ?? "0")ppm", tag:2) // 이산화황
+        let v1 = InfoView.init(title: "이산화질소", value: "\(weatherData.no2 ?? 0) ㎍/m", tag:0) // 습도
+        let v2 = InfoView.init(title: "오존", value: "\(weatherData.o3) ㎍/m³", tag:1) // 오존
+        let v3 = InfoView.init(title: "이산화황", value: "\(weatherData.so2 ?? 0) ㎍/m³", tag:2) // 이산화황
         let v4 = InfoView.init(title: "초미세먼지", value: "\(weatherData.pm25 ?? 0) ㎍/m³", tag:3) // 초미세먼지
         let v5 = InfoView.init(title: "미세먼지", value: "\(weatherData.pm10 ?? 0) ㎍/m³", tag:4) // 미세먼지
-//        let v6 = InfoView.init(title: "Pressure", value: "\(weatherData.pressure ?? 0)") // 기압
-//        let v7 = InfoView.init(title: "Wind", value: "\(weatherData.wind ?? 0)") // 풍향
-        let v8 = InfoView.init(title: "일산화탄소", value: "0\(nformatter.string(from: (NSNumber.init(value: (weatherData.co ?? 0) / 1000))) ?? "0")ppm", tag:5) // 일산화탄소
+        //        let v6 = InfoView.init(title: "Pressure", value: "\(weatherData.pressure ?? 0)") // 기압
+        //        let v7 = InfoView.init(title: "Wind", value: "\(weatherData.wind ?? 0)") // 풍향
+        let v8 = InfoView.init(title: "일산화탄소", value: "0\(nformatter.string(from: (NSNumber.init(value: (weatherData.co ?? 0) / 1000))) ?? "0") ㎍/m", tag:5) // 일산화탄소
         let v9 = InfoView.init(title: "기온", value: "\(weatherData.temperature ?? 0) °C", tag:6) // 기온
-//        let v10 = InfoView.init(title: "rain", value: "\(weatherData.rain ?? 0)") // 강수확률
-
+        //        let v10 = InfoView.init(title: "rain", value: "\(weatherData.rain ?? 0)") // 강수확률
+        
         
         _ = [v3, v4, v5].map({
             infoStackView.addArrangedSubview($0)
@@ -347,8 +363,8 @@ class MainViewController: UIViewController {
                 $0.delegate = self
             })
         }
-
-
+        
+        
     }
     
     func centerMapOnLocation(_ location: CLLocation, mapView: MKMapView) {
@@ -362,75 +378,75 @@ class MainViewController: UIViewController {
     func getInfo(location:CLLocation) {
         
         
-            CLGeocoder().reverseGeocodeLocation(location, preferredLocale: Locale.init(identifier: "en")) { (places, error) in
+        CLGeocoder().reverseGeocodeLocation(location, preferredLocale: Locale.init(identifier: "en")) { (places, error) in
+            
+            
+            if let place = places?[0] {
                 
-                
-                if let place = places?[0] {
+                CustomAPI.getDust(lat:"\(location.coordinate.latitude)", lng: "\(location.coordinate.longitude)", completion: { (weather) in
                     
-                    CustomAPI.getDust(lat:"\(location.coordinate.latitude)", lng: "\(location.coordinate.longitude)", completion: { (weather) in
+                    var weatherr = weather
+                    
+                    if weather.temperature == nil {
                         
-                        var weatherr = weather
                         
-                        if weather.temperature == nil {
+                        CustomAPI.getDust(city: place.administrativeArea ?? "", completion: { (weather) in
                             
                             
-                            CustomAPI.getDust(city: place.administrativeArea ?? "", completion: { (weather) in
-                                
-                                
-                                if let _weather = weather {
-                                    weatherr.setTemperature(_weather.temperature)
-                                    print("temerature nil")
-                                    UserDefaults.standard.removeObject(forKey: "AppleLanguages")
-                                    self.centerMapOnLocation(location, mapView: self.mapView)
-                                    self.setData(weatherr, locationName: _weather.name)
-                                }else{
-                                    CustomAPI.getDust(city: place.subAdministrativeArea ?? "", completion: { (weather) in
-                                        if let _weather = weather {
-                                            weatherr.setTemperature(_weather.temperature)
-                                            print("temerature nil")
-                                            //                                            place.
-                                            UserDefaults.standard.removeObject(forKey: "AppleLanguages")
-                                            self.centerMapOnLocation(location, mapView: self.mapView)
-                                            self.setData(weatherr, locationName: _weather.name)
-                                        }
-                                    })
-                                }
-                                
-                                
-                            })
+                            if let _weather = weather {
+                                weatherr.setTemperature(_weather.temperature)
+                                print("temerature nil")
+                                UserDefaults.standard.removeObject(forKey: "AppleLanguages")
+                                self.centerMapOnLocation(location, mapView: self.mapView)
+                                self.setData(weatherr, locationName: _weather.name)
+                            }else{
+                                CustomAPI.getDust(city: place.subAdministrativeArea ?? "", completion: { (weather) in
+                                    if let _weather = weather {
+                                        weatherr.setTemperature(_weather.temperature)
+                                        print("temerature nil")
+                                        //                                            place.
+                                        UserDefaults.standard.removeObject(forKey: "AppleLanguages")
+                                        self.centerMapOnLocation(location, mapView: self.mapView)
+                                        self.setData(weatherr, locationName: _weather.name)
+                                    }
+                                })
+                            }
                             
-                        }else{
-                            self.centerMapOnLocation(location, mapView: self.mapView)
                             
-                            self.setData(weatherr, locationName: weatherr.name)
-                        }
+                        })
                         
-                    })
-                }
+                    }else{
+                        self.centerMapOnLocation(location, mapView: self.mapView)
+                        
+                        self.setData(weatherr, locationName: weatherr.name)
+                    }
+                    
+                })
             }
+        }
     }
     
     func getInfo() {
         
         locationManager.startUpdatingLocation()
-
-
+        
+        
         if let myLocation = locationManager.location {
-
+            
             print(myLocation, "MYLOCATION")
-
+            
             CLGeocoder().reverseGeocodeLocation(myLocation, preferredLocale: Locale.init(identifier: "en")) { (places, error) in
-
-
+                
+                
                 if let place = places?[0] {
                     
                     CustomAPI.getDust(lat:"\(myLocation.coordinate.latitude)", lng: "\(myLocation.coordinate.longitude)", completion: { (weather) in
-
+                        
                         var weatherr = weather
-
+                        
                         if weather.temperature == nil {
                             
-
+                            
                             CustomAPI.getDust(city: place.administrativeArea ?? "", completion: { (weather) in
                                 
                                 
@@ -445,7 +461,7 @@ class MainViewController: UIViewController {
                                         if let _weather = weather {
                                             weatherr.setTemperature(_weather.temperature)
                                             print("temerature nil")
-//                                            place.
+                                            //                                            place.
                                             UserDefaults.standard.removeObject(forKey: "AppleLanguages")
                                             self.centerMapOnLocation(myLocation, mapView: self.mapView)
                                             self.setData(weatherr, locationName: _weather.name)
@@ -453,7 +469,7 @@ class MainViewController: UIViewController {
                                     })
                                 }
                                 
-                             
+                                
                             })
                             
                         }else{
@@ -461,35 +477,35 @@ class MainViewController: UIViewController {
                             
                             self.setData(weatherr, locationName: weatherr.name)
                         }
-                    
+                        
                     })
                 }
             }
         }
         
-
-//            if let myLocation = locationManager.location {
-//
-//                UserDefaults.standard.set(["en"], forKey: "AppleLanguages")
-//
-//                print(myLocation)
-//
-//                CLGeocoder().reverseGeocodeLocation(myLocation) { (places, error) in
-//
-//                    if let place = places?[0] {
-//                        print(place)
-//                        print("~~")
-//
-//                        CustomAPI.getDust(city: place.administrativeArea!, completion: { (weather) in
-//                            print(weather)
-//
-//                            self.setData(weather, locationName: weather.name)
-//                            UserDefaults.standard.removeObject(forKey: "AppleLanguages")
-//
-//                        })
-//                    }
-//                }
-//            }
+        
+        //            if let myLocation = locationManager.location {
+        //
+        //                UserDefaults.standard.set(["en"], forKey: "AppleLanguages")
+        //
+        //                print(myLocation)
+        //
+        //                CLGeocoder().reverseGeocodeLocation(myLocation) { (places, error) in
+        //
+        //                    if let place = places?[0] {
+        //                        print(place)
+        //                        print("~~")
+        //
+        //                        CustomAPI.getDust(city: place.administrativeArea!, completion: { (weather) in
+        //                            print(weather)
+        //
+        //                            self.setData(weather, locationName: weather.name)
+        //                            UserDefaults.standard.removeObject(forKey: "AppleLanguages")
+        //
+        //                        })
+        //                    }
+        //                }
+        //            }
     }
 }
 
@@ -499,7 +515,7 @@ extension MainViewController:CLLocationManagerDelegate {
         print(error)
     }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        print(locations)
+        //        print(locations)
     }
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
@@ -508,31 +524,31 @@ extension MainViewController:CLLocationManagerDelegate {
             print(" case .authorizedAlways:")
             locationManager.startUpdatingLocation()
             getInfo()
-
+            
         case .authorizedWhenInUse:
             print(" case .authorizedWhenInUse:")
             locationManager.startUpdatingLocation()
             getInfo()
-
+            
         case .denied:
             print(" case .denied:")
-
+            
         case .restricted:
             print(" case .restricted:")
-
+            
         case .notDetermined:
-//            locationManager.requestLocation()
+            //            locationManager.requestLocation()
             locationManager.requestAlwaysAuthorization()
-        
-//            manager.completion
-        
-
+            
+            //            manager.completion
+            
+            
             print(" case .notDetermined:")
             
         }
     }
     
-//    locatio
+    //    locatio
     
 }
 
@@ -554,7 +570,7 @@ extension MainViewController:MKMapViewDelegate {
         print(view.annotation?.coordinate, "LOCATION")
         
         if let selectedLocation = view.annotation?.coordinate {
-         
+            
             let location = CLLocation.init(coordinate: selectedLocation, altitude: CLLocationDistance.init(), horizontalAccuracy: .init(), verticalAccuracy: .init(), timestamp: .init())
             self.getInfo(location:location)
             
@@ -574,7 +590,7 @@ extension MainViewController:MKMapViewDelegate {
                 self.mapView.addAnnotations(self.annotations)
                 
             }
-//            CLLocation.ini2d
+            //            CLLocation.ini2d
         }
         
     }
@@ -584,7 +600,7 @@ extension MainViewController:MKMapViewDelegate {
         
         if !(annotation is MKUserLocation) {
             let annotationV = SignAnnotationView.init(annotation: annotation, reuseIdentifier: nil)
-//            annotationV.canShowCallout = true
+            //            annotationV.canShowCallout = true
             
             return annotationV
         }else{
@@ -612,9 +628,9 @@ extension MainViewController:MKMapViewDelegate {
     }
     
     func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
-
-
-
+        
+        
+        
         
     }
     
@@ -640,6 +656,20 @@ extension UIView {
         animation.toValue = NSValue(cgPoint: CGPoint(x: self.center.x + 10, y: self.center.y))
         
         self.layer.add(animation, forKey: "position")
+    }
+    
+}
+
+extension String {
+    
+    func strstr(needle: String, beforeNeedle: Bool = false) -> String? {
+        guard let range = self.range(of: needle) else { return nil }
+        
+        if beforeNeedle {
+            return self.substring(to: range.lowerBound)
+        }
+        
+        return self.substring(from: range.upperBound)
     }
     
 }
