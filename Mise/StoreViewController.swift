@@ -13,7 +13,7 @@ typealias thumnailTuple = (image:UIImage, title:String, identifier:String)
 
 class StoreViewController: UIViewController {
     
-    let thumnails:[thumnailTuple] = [(UIImage.init(named: "basicMask1")!, "기본", "basicMask"), (UIImage.init(named: "bioMask1")!, "기본", "bioMask"), (UIImage.init(named: "fireMask1")!, "기본", "fireMask"), (UIImage.init(named: "madMask1")!, "기본", "madMask"), (UIImage.init(named: "milMask1")!, "기본", "milMask"), (UIImage.init(named: "seMask1")!, "기본", "seMask"), (UIImage.init(named: "toxicMask1")!, "기본", "toxicMask"), (UIImage.init(named: "vainMask1")!, "기본", "vainMask"), (UIImage.init(named: "metwinMask1")!, "기본", "metwinMask"), (UIImage.init(named: "weaponMask1")!, "기본", "weaponMask"), (UIImage.init(named: "emerMask1")!, "기본", "emerMask"), (UIImage.init(named: "nuMask1")!, "기본", "nuMask"), (UIImage.init(named: "paintMask1")!, "기본", "paintMask"), (UIImage.init(named: "seaMask1")!, "기본", "seaMask"), (UIImage.init(named: "sfMask1")!, "기본", "sfMask"), (UIImage.init(named: "ffMask1")!, "기본", "ffMask"), (UIImage.init(named: "hazardMask1")!, "기본", "hazardMask"), (UIImage.init(named: "nuhaMask1")!, "기본", "nuhaMask"), (UIImage.init(named: "blueMask1")!, "기본", "blueMask"), (UIImage.init(named: "longMask1")!, "기본", "longMask"), (UIImage.init(named: "gasMask1")!, "기본", "gasMask")]
+    let thumnails:[thumnailTuple] = [(UIImage.init(named: "basicMask1")!, "기본마스크", "basicMask"), (UIImage.init(named: "bioMask1")!, "노란머리마스크", "bioMask"), (UIImage.init(named: "fireMask1")!, "불타는열정마스크", "fireMask"), (UIImage.init(named: "madMask1")!, "기본", "미친과학자마스크"), (UIImage.init(named: "milMask1")!, "기본", "milMask"), (UIImage.init(named: "seMask1")!, "기본", "seMask"), (UIImage.init(named: "toxicMask1")!, "기본", "toxicMask"), (UIImage.init(named: "vainMask1")!, "기본", "vainMask"), (UIImage.init(named: "metwinMask1")!, "기본", "metwinMask"), (UIImage.init(named: "weaponMask1")!, "기본", "weaponMask"), (UIImage.init(named: "emerMask1")!, "기본", "emerMask"), (UIImage.init(named: "nuMask1")!, "기본", "nuMask"), (UIImage.init(named: "paintMask1")!, "기본", "paintMask"), (UIImage.init(named: "seaMask1")!, "기본", "seaMask"), (UIImage.init(named: "sfMask1")!, "기본", "sfMask"), (UIImage.init(named: "ffMask1")!, "기본", "ffMask"), (UIImage.init(named: "hazardMask1")!, "기본", "hazardMask"), (UIImage.init(named: "nuhaMask1")!, "기본", "nuhaMask"), (UIImage.init(named: "blueMask1")!, "기본", "blueMask"), (UIImage.init(named: "longMask1")!, "기본", "longMask"), (UIImage.init(named: "gasMask1")!, "기본", "gasMask")]
     
     
     func setDelegate() {
@@ -53,7 +53,7 @@ extension StoreViewController:UICollectionViewDelegate, UICollectionViewDataSour
         let cellItem = thumnails[indexPath.item]
         
         cell.thumImv.image = cellItem.image
-        cell.titleLb.text = cellItem.title
+        cell.titleLb.attributedText = cellItem.title.makeAttrString(font: .NotoSans(.bold, size: 12), color: .black)
         
         return cell
     }

@@ -58,6 +58,36 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             print(data.aqi)
             print(data.dominentpol)
             
+            
+            switch data.alertLevel! {
+                
+            case .bad:
+                self.view.backgroundColor = UIColor.unhealthyRed
+                
+            case .danger:
+              
+                self.view.backgroundColor = UIColor.hazardPurple
+                
+            case .little:
+          
+                self.view.backgroundColor = UIColor.unhealthyTangerine
+
+            case .normal:
+          
+                self.view.backgroundColor = UIColor.normalYellow
+
+            case .safe:
+           
+                self.view.backgroundColor = UIColor.wellGreen
+                
+            case .veryBad:
+             
+                self.view.backgroundColor = UIColor.unhealthyPurple
+                
+            }
+            
+            
+            
             if let time = UserDefaults.init(suiteName: GROUPIDENTIFIER)?.string(forKey: "time"), let aqi = UserDefaults.init(suiteName: GROUPIDENTIFIER)?.string(forKey: "domimentAQI"), let text = UserDefaults.init(suiteName: GROUPIDENTIFIER)?.string(forKey: "alertText")  {
                 self.widgetLb.numberOfLines = 0
                 self.widgetLb.attributedText = "\(data.time)\n\(data.aqi)㎍/m³\n\(text)".makeAttrString(font: .NotoSans(.bold, size: 14), color: .white)
