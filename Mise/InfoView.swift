@@ -37,7 +37,9 @@ class InfoView: UIView {
         self.addGestureRecognizer(tapGesture)
         tapGesture.addTarget(self, action: #selector(callPopUp))
         titleLb.snp.makeConstraints { (make) in
-            make.top.leading.trailing.equalToSuperview()
+            make.top.equalToSuperview()
+            make.leading.equalTo(3)
+            make.centerX.equalToSuperview()
             make.height.equalTo(50)
         }
         divider.snp.makeConstraints { (make) in
