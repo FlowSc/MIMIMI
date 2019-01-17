@@ -52,9 +52,7 @@ extension StoreViewController:UICollectionViewDelegate, UICollectionViewDataSour
 
         let cellItem = thumnails[indexPath.item]
         
-        cell.thumImv.image = cellItem.image
-        cell.titleLb.attributedText = cellItem.title.makeAttrString(font: .NotoSans(.bold, size: 12), color: .black)
-        
+        cell.setData(image: cellItem.image, title: cellItem.title, isPurchased: indexPath.row == 0 ? true : false)
         return cell
     }
     
@@ -67,7 +65,7 @@ extension StoreViewController:UICollectionViewDelegate, UICollectionViewDataSour
         
         let cellItem = thumnails[indexPath.row]
         
-        vc.setData(title: cellItem.identifier)
+        vc.setData(title: cellItem.identifier, maskName: cellItem.title)
 //        cellItem.image.imageAsset.map({$0.na})
         
         self.navigationController?.pushViewController(vc, animated: true)
@@ -80,6 +78,7 @@ class ProductCollectionViewCell:UICollectionViewCell {
     
     let thumImv = UIImageView()
     let titleLb = UILabel()
+    let lockImv = UIImageView.init(image: UIImage.init(named: "lock-icon"))
     
     
     override init(frame: CGRect) {
@@ -87,10 +86,18 @@ class ProductCollectionViewCell:UICollectionViewCell {
         setUI()
     }
     
-    
-    func setUI() {
+    func setData(image:UIImage, title:String, isPurchased:Bool) {
         
-        self.addSubview([thumImv, titleLb])
+        self.thumImv.image = image
+        self.titleLb.attributedText = title.makeAttrString(font: .NotoSans(.bold, size: 14), color: .black)
+        self.lockImv.isHidden = isPurchased
+
+    }
+    
+    
+    private func setUI() {
+        
+        self.addSubview([thumImv, titleLb, lockImv])
         
         thumImv.snp.makeConstraints { (make) in
             make.top.leading.trailing.equalToSuperview()
@@ -99,6 +106,10 @@ class ProductCollectionViewCell:UICollectionViewCell {
         titleLb.snp.makeConstraints { (make) in
             make.top.equalTo(thumImv.snp.bottom).offset(10)
             make.leading.trailing.bottom.equalToSuperview()
+        }
+        lockImv.snp.makeConstraints { (make) in
+            make.top.trailing.equalToSuperview()
+            make.width.height.equalTo(25)
         }
         
         titleLb.textAlignment = .center

@@ -13,7 +13,9 @@ var SELECTEDMASKIMAGE = UserDefaults.standard.string(forKey: "currentMask") ?? "
 
 class ConfigViewController: UIViewController, BasicViewControllerDelegate {
     
-    let menuTuples:[MenuTuple] = [(image:UIImage.init(named: "trophy")!, title:"트로피"), (image:UIImage.init(named: "store")!, title:"store"), (image:UIImage.init(named: "config")!, title:"설정")]
+    typealias ConfigTuple = (image:UIImage, title:String, desc:String)
+    
+    let menuTuples:[ConfigTuple] = [(image:UIImage.init(named: "envelope")!, title:"개발자에게 문의/건의하기", ""), (image:UIImage.init(named: "information")!, title:"버전 정보", "V 1.0")]
 
     
     func setUI() {
@@ -22,7 +24,9 @@ class ConfigViewController: UIViewController, BasicViewControllerDelegate {
             make.edges.equalToSuperview()
         }
         tableView.register(MenuTableViewCell.self, forCellReuseIdentifier: "MenuTableViewCell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "ConfigCell")
         tableView.isScrollEnabled = false
+        tableView.groupSectionHeaderElimination()
         tableView.backgroundColor = .white
         tableView.reloadData()
     }
@@ -37,7 +41,7 @@ class ConfigViewController: UIViewController, BasicViewControllerDelegate {
     }
     
     
-    let tableView = UITableView()
+    let tableView = UITableView.init(frame: .zero, style: .grouped)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +58,8 @@ class ConfigViewController: UIViewController, BasicViewControllerDelegate {
 }
 
 extension ConfigViewController:UITableViewDelegate, UITableViewDataSource {
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return menuTuples.count
     }
@@ -67,7 +73,7 @@ extension ConfigViewController:UITableViewDelegate, UITableViewDataSource {
             
             let cellItem = menuTuples[indexPath.row]
             
-            cell.setData(img: cellItem.image, title: cellItem.title)
+            cell.setData(img: cellItem.image, title: cellItem.title, infoString: cellItem.desc)
             
             return cell
             
@@ -78,4 +84,11 @@ extension ConfigViewController:UITableViewDelegate, UITableViewDataSource {
     
     
     
+}
+
+extension UITableView {
+    func groupSectionHeaderElimination(){
+        self.sectionHeaderHeight = 0
+        self.tableHeaderView = UIView.init(frame: CGRect.init(origin: .zero, size: CGSize.init(width: 0, height: CGFloat.leastNormalMagnitude)))
+    }
 }

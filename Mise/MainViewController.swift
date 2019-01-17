@@ -325,12 +325,12 @@ class MainViewController: UIViewController {
         
         let v1 = InfoView.init(title: "이산화질소", value: "\(weatherData.no2 ?? 0) ppm", tag:0) // 습도
         let v2 = InfoView.init(title: "오존", value: "0\(nformatter.string(from: (NSNumber.init(value: (weatherData.o3 ?? 0) / 1000))) ?? "0")ppm", tag:1) // 오존
-        let v3 = InfoView.init(title: "이산화황", value: "\(weatherData.so2 ?? 0) ppm", tag:2) // 이산화황
+        let v3 = InfoView.init(title: "이산화황", value: "0\(nformatter.string(from: (NSNumber.init(value: (weatherData.so2 ?? 0) / 1000))) ?? "0")ppm", tag:2) // 이산화황
         let v4 = InfoView.init(title: "초미세먼지", value: "\(weatherData.pm25 ?? 0) ㎍/m³", tag:3) // 초미세먼지
         let v5 = InfoView.init(title: "미세먼지", value: "\(weatherData.pm10 ?? 0) ㎍/m³", tag:4) // 미세먼지
 //        let v6 = InfoView.init(title: "Pressure", value: "\(weatherData.pressure ?? 0)") // 기압
 //        let v7 = InfoView.init(title: "Wind", value: "\(weatherData.wind ?? 0)") // 풍향
-        let v8 = InfoView.init(title: "일산화탄소", value: "\(weatherData.co ?? 0) ㎍/m³", tag:5) // 일산화탄소
+        let v8 = InfoView.init(title: "일산화탄소", value: "0\(nformatter.string(from: (NSNumber.init(value: (weatherData.co ?? 0) / 1000))) ?? "0")ppm", tag:5) // 일산화탄소
         let v9 = InfoView.init(title: "기온", value: "\(weatherData.temperature ?? 0) °C", tag:6) // 기온
 //        let v10 = InfoView.init(title: "rain", value: "\(weatherData.rain ?? 0)") // 강수확률
 

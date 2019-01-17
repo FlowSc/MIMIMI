@@ -13,7 +13,8 @@ typealias MenuTuple = (image:UIImage, title:String)
 
 class LeftMenuViewController: UIViewController, BasicViewControllerDelegate {
     
-    let menuTuples:[MenuTuple] = [(image:UIImage.init(named: "trophy")!, title:"트로피"), (image:UIImage.init(named: "store")!, title:"store"), (image:UIImage.init(named: "config")!, title:"설정")]
+//    (image:UIImage.init(named: "trophy")!, title:"트로피"),
+    let menuTuples:[MenuTuple] = [(image:UIImage.init(named: "store")!, title:"MASK STORE"), (image:UIImage.init(named: "config")!, title:"설정")]
     let signUpBtn = BottomButton()
     let signInBtn = BottomButton()
     
@@ -134,7 +135,7 @@ extension LeftMenuViewController:UITableViewDelegate, UITableViewDataSource {
             
             let cellItem = menuTuples[indexPath.row]
             
-            cell.setData(img: cellItem.image, title: cellItem.title)
+            cell.setData(img: cellItem.image, title: cellItem.title, infoString: nil)
             
             return cell
             
@@ -154,6 +155,18 @@ extension LeftMenuViewController:UITableViewDelegate, UITableViewDataSource {
         switch indexPath.row {
             
             
+        case 2:
+            guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "StoreViewController") as? StoreViewController else {return}
+            
+            
+            if let pv = self.parent as? UINavigationController {
+                
+                if let mvc = pv.navigationController?.viewControllers.filter({$0 is MainViewController}).first as? MainViewController{
+                    pv.navigationController?.pushViewController(vc, animated: true)
+                    mvc.dismissMenu()
+                }
+                
+            }
         case 0:
             guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "StoreViewController") as? StoreViewController else {return}
             
@@ -167,18 +180,6 @@ extension LeftMenuViewController:UITableViewDelegate, UITableViewDataSource {
                 
             }
         case 1:
-            guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "StoreViewController") as? StoreViewController else {return}
-            
-            
-            if let pv = self.parent as? UINavigationController {
-                
-                if let mvc = pv.navigationController?.viewControllers.filter({$0 is MainViewController}).first as? MainViewController{
-                    pv.navigationController?.pushViewController(vc, animated: true)
-                    mvc.dismissMenu()
-                }
-                
-            }
-        case 2:
             guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "ConfigViewController") as? ConfigViewController else {return}
             
             
