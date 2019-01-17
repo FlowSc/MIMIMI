@@ -18,8 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1920x1080-446505-mad-max-background-wallpaper-for-computer-free.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Fho-Hy-80U">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="6e2f6ae04ff967d752a4237bd5b82b53.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Fho-Hy-80U">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="basicMask1.png" translatesAutoresizingMaskIntoConstraints="NO" id="Vek-nC-qie">
                                 <rect key="frame" x="37.5" y="93.5" width="300" height="350"/>
@@ -38,12 +38,12 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="HK8-UC-xlE" firstAttribute="top" secondItem="Vek-nC-qie" secondAttribute="bottom" constant="20" id="CtO-WK-iTN"/>
-                            <constraint firstItem="Fho-Hy-80U" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="NXS-C5-0yv"/>
+                            <constraint firstItem="Fho-Hy-80U" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="NXS-C5-0yv"/>
                             <constraint firstItem="Vek-nC-qie" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" constant="-75" id="P5Z-W1-fVV"/>
                             <constraint firstItem="Vek-nC-qie" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="ZTg-E3-0kN"/>
                             <constraint firstItem="HK8-UC-xlE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dbc-XC-afD"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Fho-Hy-80U" secondAttribute="trailing" id="dtW-bB-bQW"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Fho-Hy-80U" secondAttribute="bottom" id="eVH-5L-TZ6"/>
+                            <constraint firstAttribute="bottom" secondItem="Fho-Hy-80U" secondAttribute="bottom" id="eVH-5L-TZ6"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="HK8-UC-xlE" secondAttribute="trailing" id="ne9-Ht-mIO"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="HK8-UC-xlE" secondAttribute="bottom" id="ov7-HW-sTK"/>
                             <constraint firstItem="Fho-Hy-80U" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="y3c-Ui-hUn"/>
@@ -57,7 +57,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="1920x1080-446505-mad-max-background-wallpaper-for-computer-free.jpg" width="1920" height="1080"/>
+        <image name="6e2f6ae04ff967d752a4237bd5b82b53.jpg" width="395" height="575"/>
         <image name="basicMask1.png" width="512" height="512"/>
     </resources>
 </document>
