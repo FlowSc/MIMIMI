@@ -19,6 +19,7 @@ class ConfigViewController: UIViewController, BasicViewControllerDelegate {
 
     
     func setUI() {
+        self.title = "Config".localized
         view.addSubview(tableView)
         tableView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()

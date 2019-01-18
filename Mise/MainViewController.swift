@@ -185,6 +185,7 @@ class MainViewController: UIViewController {
         }
         aqiNoticeLb.snp.makeConstraints { (make) in
 //            make.top.equalTo(dustLb.snp.bottom).offset(10)
+            make.leading.equalTo(10)
             make.trailing.equalTo(questionImv.snp.leading).offset(-10)
             make.centerY.equalTo(questionImv.snp.centerY)
         }
@@ -193,6 +194,7 @@ class MainViewController: UIViewController {
         questionImv.addGestureRecognizer(infoCallGesture)
         infoCallGesture.addTarget(self, action: #selector(callInfoPopup))
         aqiNoticeLb.isUserInteractionEnabled = true
+        aqiNoticeLb.adjustsFontSizeToFitWidth = true
         questionImv.isUserInteractionEnabled = true
         aqiNoticeLb.isHidden = true
         questionImv.isHidden = true
