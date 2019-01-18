@@ -35,7 +35,14 @@ class MainViewController: UIViewController {
     var canUpdated:Bool {
         return CLLocationManager.locationServicesEnabled()
     }
+    var questionImv = UIImageView.init(image: UIImage.init(named: "question")!)
     let menuBtn = UIButton()
+    var infoCallGesture = UITapGestureRecognizer()
+    
+    @objc func callInfoPopup() {
+        
+        PopUp.info(vc: self)
+    }
     
     override func viewDidLoad() {
         
@@ -110,7 +117,7 @@ class MainViewController: UIViewController {
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
         self.view.backgroundColor = UIColor.wellGreen
         
-        baseScrollView.contentView.addSubview([thumImageView, locationLb, dustLb, infoStackView, infoStackView2, alertLb, mapView, bannerView, menuBtn, aqiNoticeLb])
+        baseScrollView.contentView.addSubview([thumImageView, locationLb, dustLb, infoStackView, infoStackView2, alertLb, mapView, bannerView, menuBtn, aqiNoticeLb, questionImv])
         view.addSubview([baseScrollView])
         baseScrollView.setScrollView(vc: self)
         
@@ -120,6 +127,7 @@ class MainViewController: UIViewController {
             make.bottom.equalTo(-50)
         }
         
+        aqiNoticeLb.isHidden = true
 
         
         menuBtn.addTarget(self, action: #selector(callMenu(sender:)), for: .touchUpInside)
@@ -167,10 +175,25 @@ class MainViewController: UIViewController {
             make.leading.equalTo(10)
         }
         
-        aqiNoticeLb.snp.makeConstraints { (make) in
-            make.top.equalTo(dustLb.snp.bottom).offset(10)
+        
+        
+        questionImv.snp.makeConstraints { (make) in
+            make.width.height.equalTo(20)
             make.trailing.equalTo(-10)
+            make.top.equalTo(dustLb.snp.bottom).offset(10)
         }
+        aqiNoticeLb.snp.makeConstraints { (make) in
+//            make.top.equalTo(dustLb.snp.bottom).offset(10)
+            make.trailing.equalTo(questionImv.snp.leading).offset(-10)
+            make.centerY.equalTo(questionImv.snp.centerY)
+        }
+        
+        aqiNoticeLb.addGestureRecognizer(infoCallGesture)
+        questionImv.addGestureRecognizer(infoCallGesture)
+        infoCallGesture.addTarget(self, action: #selector(callInfoPopup))
+        aqiNoticeLb.isUserInteractionEnabled = true
+        questionImv.isUserInteractionEnabled = true
+        
         aqiNoticeLb.textAlignment = .right
         
         aqiNoticeLb.attributedText = "AQI (Air Quality Index) Standard".makeAttrString(font: .NotoSans(.bold, size: 18), color: .white)
@@ -459,6 +482,8 @@ class MainViewController: UIViewController {
                     CustomAPI.getDust(lat:"\(myLocation.coordinate.latitude)", lng: "\(myLocation.coordinate.longitude)", completion: { (weather) in
                         
                         var weatherr = weather
+                        self.aqiNoticeLb.isHidden = false
+                        self.aqiNoticeLb.isUserInteractionEnabled = true
                         
                         if weather.temperature == nil {
                             
