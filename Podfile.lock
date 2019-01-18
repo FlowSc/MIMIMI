@@ -1,6 +1,5 @@
 PODS:
   - Alamofire (4.8.0)
-  - AloeStackView (1.0.1)
   - Firebase (5.15.0):
     - Firebase/Core (= 5.15.0)
   - Firebase/Core (5.15.0):
@@ -53,29 +52,19 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
-  - ObjectMapper (3.4.2)
-  - Realm (3.13.1):
-    - Realm/Headers (= 3.13.1)
-  - Realm/Headers (3.13.1)
-  - RealmSwift (3.13.1):
-    - Realm (= 3.13.1)
   - SnapKit (4.2.0)
   - SwiftyJSON (4.2.0)
 
 DEPENDENCIES:
   - Alamofire
-  - AloeStackView
   - Firebase
   - Google-Mobile-Ads-SDK
-  - ObjectMapper
-  - RealmSwift
   - SnapKit
   - SwiftyJSON
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
-    - AloeStackView
     - Firebase
     - FirebaseAnalytics
     - FirebaseCore
@@ -84,15 +73,11 @@ SPEC REPOS:
     - GoogleAppMeasurement
     - GoogleUtilities
     - nanopb
-    - ObjectMapper
-    - Realm
-    - RealmSwift
     - SnapKit
     - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
-  AloeStackView: d22c006da4510db5e220968234174654b5ed6ea5
   Firebase: 8bb9268bff82374f2cbaaabb143e725743c316ae
   FirebaseAnalytics: c06f9d70577d79074214700a71fd5d39de5550fb
   FirebaseCore: 35747502d9e8c6ee217385ad04446c7c2aaf9c5c
@@ -101,12 +86,9 @@ SPEC CHECKSUMS:
   GoogleAppMeasurement: 98b71f5e04142793729a5ef23e5b96651ff4b70f
   GoogleUtilities: 95996bea7c7d9b8fb811b7507669a4a8762f80c7
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
-  ObjectMapper: 0d4402610f4e468903ae64629eec4784531e5c51
-  Realm: 50071da38fe079e0735e47c9f2eae738c68c5996
-  RealmSwift: 8a1e6a02b7a08cd17a31e3115143fb69fe5f3fb9
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: 95f534ad95b26af58f9c3fdce19dc4c47bfe1808
+PODFILE CHECKSUM: ae72392f4df218ca08cab88ad3e9aeccd8f48a94
 
 COCOAPODS: 1.6.0.beta.2

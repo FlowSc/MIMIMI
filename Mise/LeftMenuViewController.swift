@@ -12,9 +12,8 @@ import UIKit
 typealias MenuTuple = (image:UIImage, title:String)
 
 class LeftMenuViewController: UIViewController, BasicViewControllerDelegate {
-    
-//    (image:UIImage.init(named: "trophy")!, title:"트로피"),
-    let menuTuples:[MenuTuple] = [(image:UIImage.init(named: "store")!, title:"MASK STORE"), (image:UIImage.init(named: "config")!, title:"설정")]
+
+    let menuTuples:[MenuTuple] = [(image:UIImage.init(named: "store")!, title:"방독면 보관소"), (image:UIImage.init(named: "config")!, title:"설정")]
     let signUpBtn = BottomButton()
     let signInBtn = BottomButton()
     
@@ -46,7 +45,7 @@ class LeftMenuViewController: UIViewController, BasicViewControllerDelegate {
 //            make.leading.equalTo(signInBtn.snp.trailing).offset(10)
 //        }
         
-        signInBtn.setAttributedTitle("구매내역 복원하기".makeAttrString(font: .NotoSans(.bold, size: 15), color: .black), for: .normal)
+        signInBtn.setAttributedTitle("PRO 버전 구매하기".makeAttrString(font: .NotoSans(.bold, size: 15), color: .black), for: .normal)
         
 //        signUpBtn.setAttributedTitle("회원가입".makeAttrString(font: .NotoSans(.bold, size: 15), color: .black), for: .normal)
         
@@ -114,7 +113,7 @@ extension LeftMenuViewController:UITableViewDelegate, UITableViewDataSource {
         
         let headerView = MenuHeaderView()
         
-        headerView.setData(image: UIImage.init(named: "\(SELECTEDMASKIMAGE)1")!, title: "방독면 챙기십쇼")
+        headerView.setData(image: UIImage.init(named: "\(SELECTEDMASKIMAGE)1")!, title: "\(UserDefaults.standard.string(forKey: "maskName") ?? "기본마스크") 착용 중")
 //        headerView.backgroundColor = .blue
         
         

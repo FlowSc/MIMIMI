@@ -86,12 +86,13 @@ class ProductDetailViewController: UIViewController {
         
         sender.isUserInteractionEnabled = false
         
-        if let _imgTitle = ImageTitle {
+        if let _imgTitle = ImageTitle, let _maskName = maskName {
             print(_imgTitle)
             SELECTEDMASKIMAGE = _imgTitle
             
             UserDefaults.standard.set(_imgTitle, forKey: "currentMask")
             UserDefaults.init(suiteName: GROUPIDENTIFIER)?.set(SELECTEDMASKIMAGE, forKey: "imageName")
+            UserDefaults.standard.set(_maskName, forKey: "maskName")
             
         }
         

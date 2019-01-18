@@ -126,8 +126,6 @@ class MainViewController: UIViewController {
             make.leading.trailing.equalToSuperview()
             make.bottom.equalTo(-50)
         }
-        
-        aqiNoticeLb.isHidden = true
 
         
         menuBtn.addTarget(self, action: #selector(callMenu(sender:)), for: .touchUpInside)
@@ -193,6 +191,8 @@ class MainViewController: UIViewController {
         infoCallGesture.addTarget(self, action: #selector(callInfoPopup))
         aqiNoticeLb.isUserInteractionEnabled = true
         questionImv.isUserInteractionEnabled = true
+        aqiNoticeLb.isHidden = true
+        questionImv.isHidden = true
         
         aqiNoticeLb.textAlignment = .right
         
@@ -483,6 +483,7 @@ class MainViewController: UIViewController {
                         
                         var weatherr = weather
                         self.aqiNoticeLb.isHidden = false
+                        self.questionImv.isHidden = false
                         self.aqiNoticeLb.isUserInteractionEnabled = true
                         
                         if weather.temperature == nil {
@@ -497,6 +498,8 @@ class MainViewController: UIViewController {
                                     UserDefaults.standard.removeObject(forKey: "AppleLanguages")
                                     self.centerMapOnLocation(myLocation, mapView: self.mapView)
                                     self.setData(weatherr, locationName: _weather.name)
+                                    self.reloadMapAnnotation(self.mapView)
+
                                 }else{
                                     CustomAPI.getDust(city: place.subAdministrativeArea ?? "", completion: { (weather) in
                                         if let _weather = weather {
@@ -506,6 +509,8 @@ class MainViewController: UIViewController {
                                             UserDefaults.standard.removeObject(forKey: "AppleLanguages")
                                             self.centerMapOnLocation(myLocation, mapView: self.mapView)
                                             self.setData(weatherr, locationName: _weather.name)
+                                            self.reloadMapAnnotation(self.mapView)
+
                                         }
                                     })
                                 }
@@ -515,7 +520,7 @@ class MainViewController: UIViewController {
                             
                         }else{
                             self.centerMapOnLocation(myLocation, mapView: self.mapView)
-                            
+                            self.reloadMapAnnotation(self.mapView)
                             self.setData(weatherr, locationName: weatherr.name)
                         }
                         
@@ -608,30 +613,14 @@ extension MainViewController:MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
-        print(view.annotation?.coordinate, "LOCATION")
         
         if let selectedLocation = view.annotation?.coordinate {
             
             let location = CLLocation.init(coordinate: selectedLocation, altitude: CLLocationDistance.init(), horizontalAccuracy: .init(), verticalAccuracy: .init(), timestamp: .init())
             self.getInfo(location:location)
             
-            CustomAPI.getDustMap(topLeft: mapView.convert(CGPoint.init(x: 0, y: 0), toCoordinateFrom: mapView), bottomRight: mapView.convert(CGPoint.init(x: mapView.bounds.width, y: mapView.bounds.height), toCoordinateFrom: mapView)) { (annos) in
-                
-                var currentAnnos:[MKAnnotation] = []
-                
-                _ = annos.map({
-                    let annotation = MKPointAnnotation.init()
-                    annotation.coordinate = $0.geo
-                    annotation.title = $0.aqi
-                    currentAnnos.append(annotation)
-                })
-                self.annotations = currentAnnos
-                
-                self.mapView.removeAnnotations(self.mapView.annotations)
-                self.mapView.addAnnotations(self.annotations)
-                
-            }
-            //            CLLocation.ini2d
+            reloadMapAnnotation(mapView)
+
         }
         
     }
@@ -650,6 +639,12 @@ extension MainViewController:MKMapViewDelegate {
     }
     
     func mapViewWillStartLoadingMap(_ mapView: MKMapView) {
+
+        reloadMapAnnotation(mapView)
+    }
+    
+    func reloadMapAnnotation(_ mapView:MKMapView) {
+        
         CustomAPI.getDustMap(topLeft: mapView.convert(CGPoint.init(x: 0, y: 0), toCoordinateFrom: mapView), bottomRight: mapView.convert(CGPoint.init(x: mapView.bounds.width, y: mapView.bounds.height), toCoordinateFrom: mapView)) { (annos) in
             
             var currentAnnos:[MKAnnotation] = []
@@ -666,7 +661,9 @@ extension MainViewController:MKMapViewDelegate {
             self.mapView.addAnnotations(self.annotations)
             
         }
+        
     }
+    
     
     func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
         
