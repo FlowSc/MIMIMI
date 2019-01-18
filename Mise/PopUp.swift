@@ -39,12 +39,6 @@ class PopUpView:UIView, WKUIDelegate, WKNavigationDelegate {
         popupView.setBorder(color: .clear, width: 0.1, cornerRadius: 3)
         popupView.addSubview([infoWebView])
         
-//        titleLb.snp.makeConstraints { (make) in
-//            make.leading.equalTo(10)
-//            make.centerX.equalToSuperview()
-//            make.top.equalTo(10)
-//            make.height.equalTo(40)
-//        }
         infoWebView.uiDelegate = self
         infoWebView.navigationDelegate = self
         
@@ -79,6 +73,89 @@ class PopUpView:UIView, WKUIDelegate, WKNavigationDelegate {
     
 }
 
+class PurhcasePopUpView:UIView {
+    
+    let baseView = UIView()
+    let popupView = UIView()
+    let titleLb = UILabel()
+    let buttonView = UIView()
+    let buyBtn = BottomButton()
+    let cancelButton = BottomButton()
+    var delegate:PurchasePopupDelegate?
+    let infoLb = UILabel()
+
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setUI()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setUI() {
+        self.addSubview([baseView, popupView])
+        baseView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+        baseView.backgroundColor = UIColor.black.withAlphaComponent(0.7)
+        popupView.snp.makeConstraints { (make) in
+            make.center.equalTo(baseView.snp.center)
+            make.width.equalTo(310)
+            make.height.equalTo(320)
+        }
+        popupView.setBorder(color: .clear, width: 0.1, cornerRadius: 3)
+        popupView.addSubview([buttonView, infoLb])
+        buttonView.addSubview([buyBtn, cancelButton])
+        
+        buttonView.snp.makeConstraints { (make) in
+            make.bottom.leading.trailing.equalToSuperview()
+            make.height.equalTo(80)
+        }
+        
+        infoLb.snp.makeConstraints { (make) in
+            make.top.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(buttonView.snp.top)
+        }
+        infoLb.numberOfLines = 0
+        infoLb.attributedText = "PurchaseInfo".localized.makeAttrString(font: .NotoSans(.bold, size: 15), color: .black)
+        infoLb.textAlignment = .center
+        buyBtn.snp.makeConstraints { (make) in
+            make.leading.equalTo(10)
+            make.bottom.equalTo(-10)
+            make.height.equalTo(60)
+        }
+        cancelButton.snp.makeConstraints { (make) in
+            make.trailing.equalTo(-10)
+            make.bottom.equalTo(-10)
+            make.height.equalTo(60)
+            make.leading.equalTo(buyBtn.snp.trailing).offset(10)
+            make.width.equalTo(buyBtn.snp.width)
+        }
+        
+        cancelButton.addTarget(self, action: #selector(removePopup), for: .touchUpInside)
+        cancelButton.setAttributedTitle("안살래요".makeAttrString(font: .NotoSans(.bold, size: 15), color: .black), for: .normal)
+        buyBtn.setAttributedTitle("구매하기".makeAttrString(font: .NotoSans(.bold, size: 15), color: .black), for: .normal)
+        buyBtn.addTarget(self, action: #selector(buy(sender:)), for: .touchUpInside)
+        popupView.backgroundColor = .white
+        
+    }
+    
+    @objc func buy(sender:UIButton) {
+        
+        delegate?.callAppstore(sender: sender)
+    }
+    
+    @objc func removePopup() {
+        self.removeFromSuperview()
+    }
+}
+
+protocol PurchasePopupDelegate {
+    func callAppstore(sender:UIButton)
+}
+
 struct PopUp {
     
     static func info(vc:UIViewController, title:String, url:String) {
@@ -90,5 +167,13 @@ struct PopUp {
         }
         pv.setData(title: title, url: url)
         
+    }
+    
+    static func purchase(vc:UIViewController) {
+        let pv = PurhcasePopUpView()
+        vc.parent?.view.addSubview(pv)
+        pv.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
     }
 }

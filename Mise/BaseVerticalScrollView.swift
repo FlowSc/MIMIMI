@@ -12,7 +12,7 @@ import SnapKit
 
 class BaseVerticalScrollView:UIView {
     
-    private let scrollView = UIScrollView()
+    let scrollView = UIScrollView()
     let contentView = UIView()
     
     

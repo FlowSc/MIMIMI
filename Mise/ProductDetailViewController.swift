@@ -8,7 +8,11 @@
 
 import UIKit
 
-class ProductDetailViewController: UIViewController {
+class ProductDetailViewController: UIViewController, PurchasePopupDelegate {
+    
+    func callAppstore(sender: UIButton) {
+        print("CALL!!")
+    }
     
     let btn = UIButton()
     var ImageTitle:String?
@@ -102,6 +106,14 @@ class ProductDetailViewController: UIViewController {
         
     }
     
+    @objc func callBtn(sender:UIButton) {
+        let pv = PurhcasePopUpView()
+        self.view.addSubview(pv)
+        pv.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+        pv.delegate = self
+    }
 
     /*
     // MARK: - Navigation

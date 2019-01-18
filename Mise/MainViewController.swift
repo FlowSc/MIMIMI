@@ -49,7 +49,6 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         setUI()
         
-//        setData(, locationName: "")
         
         UserDefaults.init(suiteName: GROUPIDENTIFIER)?.set(SELECTEDMASKIMAGE, forKey: "imageName")
         
@@ -115,13 +114,14 @@ class MainViewController: UIViewController {
     }
     
     func setUI() {
-        
+        LoadingIndicator.start(vc: self)
+
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
-        self.view.backgroundColor = UIColor.wellGreen
+        self.view.backgroundColor = UIColor.white
         
         baseScrollView.contentView.addSubview([thumImageView, locationLb, dustLb, infoStackView, infoStackView2, alertLb, mapView, bannerView, menuBtn, aqiNoticeLb, questionImv])
         view.addSubview([baseScrollView])
-        thumImageView.image = UIImage.init(named: "basicMask1")
+//        thumImageView.image = UIImage.init(named: "basicMask1")
         baseScrollView.setScrollView(vc: self)
         
         baseScrollView.snp.remakeConstraints { (make) in
@@ -138,30 +138,31 @@ class MainViewController: UIViewController {
         thumImageView.addGestureRecognizer(tapGesture)
         thumImageView.isUserInteractionEnabled = true
         
-        thumImageView.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
-            make.top.equalTo(270)
-            make.width.equalToSuperview().multipliedBy(0.7)
-            make.height.equalTo(250)
-        }
-        
-        locationLb.snp.makeConstraints { (make) in
-            make.bottom.equalTo(thumImageView.snp.top).offset(-20)
-            make.leading.equalTo(10)
-            //            make.height.equalTo(60)
-            make.centerX.equalToSuperview()
-        }
-        
-        alertLb.snp.makeConstraints { (make) in
-            make.bottom.equalTo(locationLb.snp.top).offset(-10)
-            make.centerX.equalToSuperview()
-            make.leading.equalTo(10)
-        }
-        
+
         menuBtn.snp.makeConstraints { (make) in
             make.width.height.equalTo(40)
             make.trailing.equalToSuperview().offset(-20)
             make.top.equalTo(10)
+        
+        }
+        alertLb.snp.makeConstraints { (make) in
+            make.top.equalTo(menuBtn.snp.bottom).offset(10)
+            make.centerX.equalToSuperview()
+            make.leading.equalTo(10)
+        }
+        
+        locationLb.snp.makeConstraints { (make) in
+            make.top.equalTo(alertLb.snp.bottom).offset(20)
+            make.leading.equalTo(10)
+            make.centerX.equalToSuperview()
+        }
+        
+
+        thumImageView.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(locationLb.snp.bottom).offset(10)
+            make.width.equalToSuperview().multipliedBy(0.7)
+            make.height.equalTo(250)
         }
         
         alertLb.textAlignment = .center
@@ -439,12 +440,16 @@ class MainViewController: UIViewController {
 //                                UserDefaults.standard.removeObject(forKey: "AppleLanguages")
                                 self.centerMapOnLocation(location, mapView: self.mapView)
                                 self.setData(weatherr, locationName: _weather.name)
+                                LoadingIndicator.stop(vc: self)
+
                             }else{
                                 CustomAPI.getDust(city: place.subAdministrativeArea ?? "", completion: { (weather) in
                                     if let _weather = weather {
 //                                        UserDefaults.standard.removeObject(forKey: "AppleLanguages")
                                         self.centerMapOnLocation(location, mapView: self.mapView)
                                         self.setData(weatherr, locationName: _weather.name)
+                                        LoadingIndicator.stop(vc: self)
+
                                     }
                                 })
                             }
@@ -454,7 +459,7 @@ class MainViewController: UIViewController {
                         
                     }else{
                         self.centerMapOnLocation(location, mapView: self.mapView)
-                        
+                        LoadingIndicator.stop(vc: self)
                         self.setData(weatherr, locationName: weatherr.name)
                     }
                     
@@ -508,7 +513,10 @@ class MainViewController: UIViewController {
 //                                    UserDefaults.standard.removeObject(forKey: "AppleLanguages")
                                     self.centerMapOnLocation(myLocation, mapView: self.mapView)
                                     self.setData(weatherr, locationName: _weather.name)
+                                    self.baseScrollView.scrollView.scrollsToTop = true
                                     self.reloadMapAnnotation(self.mapView)
+                                    LoadingIndicator.stop(vc: self)
+
 
                                 }else{
                                     CustomAPI.getDust(city: place.subAdministrativeArea ?? "", completion: { (weather) in
@@ -517,7 +525,10 @@ class MainViewController: UIViewController {
 //                                            UserDefaults.standard.removeObject(forKey: "AppleLanguages")
                                             self.centerMapOnLocation(myLocation, mapView: self.mapView)
                                             self.setData(weatherr, locationName: _weather.name)
+                                            self.baseScrollView.scrollView.scrollsToTop = true
                                             self.reloadMapAnnotation(self.mapView)
+                                            LoadingIndicator.stop(vc: self)
+
 
                                         }
                                     })
@@ -526,7 +537,10 @@ class MainViewController: UIViewController {
                         }else{
                             self.centerMapOnLocation(myLocation, mapView: self.mapView)
                             self.reloadMapAnnotation(self.mapView)
+                            self.baseScrollView.scrollView.scrollsToTop = true
                             self.setData(weatherr, locationName: weatherr.name)
+                            LoadingIndicator.stop(vc: self)
+
                         }
                     })
                 }

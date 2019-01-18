@@ -11,7 +11,13 @@ import UIKit
 
 typealias MenuTuple = (image:UIImage, title:String)
 
-class LeftMenuViewController: UIViewController, BasicViewControllerDelegate {
+class LeftMenuViewController: UIViewController, BasicViewControllerDelegate, PurchasePopupDelegate {
+    func callAppstore(sender: UIButton) {
+        sender.isUserInteractionEnabled = false
+        
+        print("CALL APPSTORE")
+    }
+    
 
     let menuTuples:[MenuTuple] = [(image:UIImage.init(named: "store")!, title:"maskStorage".localized), (image:UIImage.init(named: "config")!, title:"Config".localized)]
     let signUpBtn = BottomButton()
@@ -46,7 +52,7 @@ class LeftMenuViewController: UIViewController, BasicViewControllerDelegate {
 //        }
         
         signInBtn.setAttributedTitle("purchasePro".localized.makeAttrString(font: .NotoSans(.bold, size: 15), color: .black), for: .normal)
-        
+        signInBtn.addTarget(self, action: #selector(callPurchase), for: .touchUpInside)
 //        signUpBtn.setAttributedTitle("회원가입".makeAttrString(font: .NotoSans(.bold, size: 15), color: .black), for: .normal)
         
 //        bottomView.backgroundColor = .red
@@ -55,6 +61,22 @@ class LeftMenuViewController: UIViewController, BasicViewControllerDelegate {
         tableView.backgroundColor = .white
         tableView.reloadData()
         
+    }
+    
+    @objc func callPurchase(){
+
+        if let pv = self.parent as? UINavigationController {
+            
+            if let mvc = pv.navigationController?.viewControllers.filter({$0 is MainViewController}).first as? MainViewController{
+                let pv = PurhcasePopUpView()
+                mvc.view.addSubview(pv)
+                pv.snp.makeConstraints { (make) in
+                    make.edges.equalToSuperview()
+                }
+                pv.delegate = self
+            }
+            
+        }
     }
     
     func setDelegate() {
