@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import MessageUI
 
 var SELECTEDMASKIMAGE = UserDefaults.standard.string(forKey: "currentMask") ?? "basicMask"
 
@@ -82,7 +82,36 @@ extension ConfigViewController:UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            
+            if !MFMailComposeViewController.canSendMail() {
+                print("NO!")
+                return
+            }
+//            MFMailComposeViewController.
+            if MFMailComposeViewController.canSendMail() {
+                let mail = MFMailComposeViewController()
+                mail.mailComposeDelegate = self
+                mail.setToRecipients(["zelatool@gmail.com"])
+                mail.setMessageBody("", isHTML: false)
+            
+                present(mail, animated: true)
+            } else {
+                // show failure alert
+            }
+            
+        }
+    }
     
+    
+}
+
+extension ConfigViewController:MFMailComposeViewControllerDelegate {
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
+    }
     
 }
 

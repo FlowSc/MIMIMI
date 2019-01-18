@@ -472,18 +472,12 @@ class MainViewController: UIViewController {
         
         locationManager.startUpdatingLocation()
         
-        print(UserDefaults.standard.array(forKey: "AppleLanguages"))
-        print("FIRST")
-        
         if let myLocation = locationManager.location {
             
             CLGeocoder().reverseGeocodeLocation(myLocation, preferredLocale: Locale.init(identifier: "en")) { (places, error) in
                 
                 
                 if let place = places?[0] {
-                    
-                    print(place.administrativeArea)
-                    print("FIRSTTTT")
                     
                     CustomAPI.getDust(lat:"\(myLocation.coordinate.latitude)", lng: "\(myLocation.coordinate.longitude)", completion: { (weather) in
                         
@@ -492,16 +486,8 @@ class MainViewController: UIViewController {
                         self.questionImv.isHidden = false
                         self.aqiNoticeLb.isUserInteractionEnabled = true
                         
-                        print(UserDefaults.standard.array(forKey: "AppleLanguages"))
-                        print("OBJECT")
-                        
-//                        _ = Locale.init(identifier: "en")
-                        
                         _ = Locale.init(identifier: UserDefaults.standard.array(forKey: "AppleLanguages")![0] as! String == "ko" ? "ko":"en")
                         
-                        print(place.administrativeArea)
-                        print("Secion")
-
                         if weather.temperature == nil {
                             
 
@@ -510,7 +496,6 @@ class MainViewController: UIViewController {
                                 
                                 if let _weather = weather {
                                     weatherr.setTemperature(_weather.temperature)
-//                                    UserDefaults.standard.removeObject(forKey: "AppleLanguages")
                                     self.centerMapOnLocation(myLocation, mapView: self.mapView)
                                     self.setData(weatherr, locationName: _weather.name)
                                     self.baseScrollView.scrollView.scrollsToTop = true
@@ -522,7 +507,6 @@ class MainViewController: UIViewController {
                                     CustomAPI.getDust(city: place.subAdministrativeArea ?? "", completion: { (weather) in
                                         if let _weather = weather {
                                             weatherr.setTemperature(_weather.temperature)
-//                                            UserDefaults.standard.removeObject(forKey: "AppleLanguages")
                                             self.centerMapOnLocation(myLocation, mapView: self.mapView)
                                             self.setData(weatherr, locationName: _weather.name)
                                             self.baseScrollView.scrollView.scrollsToTop = true
