@@ -41,7 +41,7 @@ class MainViewController: UIViewController {
     
     @objc func callInfoPopup() {
         
-        PopUp.info(vc: self)
+        PopUp.info(vc: self, title: "AQI?", url: "https://ko.m.wikipedia.org/wiki/대기질_지수")
     }
     
     override func viewDidLoad() {
@@ -159,7 +159,6 @@ class MainViewController: UIViewController {
             make.width.height.equalTo(40)
             make.trailing.equalToSuperview().offset(-20)
             make.top.equalTo(10)
-//            make.bottom.greaterThanOrEqualTo(alertLb.snp.top).offset(10)
         }
         
         alertLb.textAlignment = .center
@@ -677,8 +676,35 @@ extension MainViewController:MKMapViewDelegate {
 extension MainViewController:InfoViewDelegate {
     func callDetailPopUp(sender: Int) {
         print(sender)
+        
+        switch sender {
+        case 0:
+            PopUp.info(vc: self, title: "이산화질소", url: "https://ko.m.wikipedia.org/wiki/대기질_지수")
+            
+        case 1:
+            PopUp.info(vc: self, title: "오존", url: "https://ko.m.wikipedia.org/wiki/이산화_질소")
+
+        case 2:
+            PopUp.info(vc: self, title: "이산화황", url: "https://ko.m.wikipedia.org/wiki/이산화_황")
+
+        case 3:
+            PopUp.info(vc: self, title: "초미세먼지", url: "https://ko.m.wikipedia.org/wiki/미세먼지")
+
+        case 4:
+            PopUp.info(vc: self, title: "미세먼지", url: "https://ko.m.wikipedia.org/wiki/미세먼지")
+
+        case 5:
+            PopUp.info(vc: self, title: "일산화탄소", url: "https://ko.m.wikipedia.org/wiki/일산화_탄소")
+
+        case 6:
+//            PopUp.info(vc: self, title: "AQI?", url: "https://ko.m.wikipedia.org/wiki/대기질_지수")
+            break
+        default:
+            break
+            
+        }
 //        PopUp.info(vc: <#T##UIViewController#>)
-        PopUp.info(vc: self)
+//        PopUp.info(vc: self)
     }
     
     
