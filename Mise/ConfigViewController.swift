@@ -15,7 +15,7 @@ class ConfigViewController: UIViewController, BasicViewControllerDelegate {
     
     typealias ConfigTuple = (image:UIImage, title:String, desc:String)
     
-    let menuTuples:[ConfigTuple] = [(image:UIImage.init(named: "envelope")!, title:"개발자에게 문의/건의하기", ""), (image:UIImage.init(named: "information")!, title:"버전 정보", "V 1.0")]
+    let menuTuples:[ConfigTuple] = [(image:UIImage.init(named: "envelope")!, title:"askDeveloper".localized, ""), (image:UIImage.init(named: "information")!, title:"versionInfo".localized, "V 1.0")]
 
     
     func setUI() {

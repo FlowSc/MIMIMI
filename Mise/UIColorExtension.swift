@@ -45,6 +45,14 @@ extension String {
         
         return descTitle
     }
+    
+   
+        var localized: String {
+            return NSLocalizedString(self, tableName: "Localizable", value: "**\(self)**", comment: "")
+        }
+        
+        
+    
 }
 
 enum NotoSansFontSize:String {

@@ -1,0 +1,46 @@
+/* 
+  Localizable.strings
+  Mise
+
+  Created by Seongchan Kang on 18/01/2019.
+  Copyright © 2019 Seongchan Kang. All rights reserved.
+*/
+
+"AQI" = "AQI";
+"AQItitle" = "AQI (Air Quality Index) Standard";
+"pm25" = "PM2.5";
+"pm10" = "PM10";
+"o3" = "o3";
+"no2" = "NO2";
+"CO" = "CO";
+"so2" = "SO2";
+"Temp" = "Temp";
+"badDesc" = "Do not";
+"dangerDesc" = "Danger!";
+"littleBadDesc" = "Little";
+"normalDesc" = "normal";
+"safeDesc" = "safe";
+"veryBadDesc" = "veryBad";
+"unchecked" = "unchecked";
+"no2Url" = "https://en.wikipedia.org/wiki/Nitrogen_dioxide";
+"o3Url" = "https://en.wikipedia.org/wiki/Ozone";
+"so2Url" = "https://en.wikipedia.org/wiki/Sulfur_dioxide";
+"pmUrl" =  "https://en.wikipedia.org/wiki/Particulates";
+"coUrl" = "https://en.wikipedia.org/wiki/Carbon_monoxide";
+"aqiUrl" = "http://aqicn.org/scale/";
+"maskStorage" = "Mask Storage";
+"Config" = "Config";
+"purchasePro" = "Pro Purchase";
+"wearingMask" = "Wearing %@";
+"wearingBtn" = "We";
+"askDeveloper" = "Ask";
+"versionInfo" = "Version";
+"badTitle" = "Bad";
+"normalTitle" = "Moderate";
+"sensitiveTitle" = "Unhealthy for Sensitive";
+"unhealthyTitle" = "Unhealty";
+"veryUnhealthyTitle" = "Very Unhealthy";
+"hazardousTitle" = "Hazardous";
+"goodTitle" = "Good";
+
+

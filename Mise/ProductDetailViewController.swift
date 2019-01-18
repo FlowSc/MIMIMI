@@ -45,7 +45,7 @@ class ProductDetailViewController: UIViewController {
             make.height.equalTo(80)
         }
         
-        btn.setAttributedTitle("구매하기".makeAttrString(font: .NotoSans(.bold, size: 20), color: .white), for: .normal)
+        btn.setAttributedTitle("wearingBtn".localized.makeAttrString(font: .NotoSans(.bold, size: 20), color: .white), for: .normal)
         btn.setBackgroundColor(color: .black, forState: .normal)
         btn.addTarget(self, action: #selector(buyProduct(sender:)), for: .touchUpInside)
 

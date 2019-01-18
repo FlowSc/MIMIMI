@@ -1,0 +1,44 @@
+/* 
+  Localizable.strings
+  Mise
+
+  Created by Seongchan Kang on 18/01/2019.
+  Copyright © 2019 Seongchan Kang. All rights reserved.
+*/
+
+"AQI" = "AQI";
+"AQItitle" = "AQI (Air Quality Index) 기준";
+"pm25" = "초미세먼지";
+"pm10" = "미세먼지";
+"o3" = "오존";
+"no2" = "이산화질소";
+"CO" = "일산화탄소";
+"so2" = "이산화황";
+"Temp" = "기온";
+"badDesc" = "나가지 마세요";
+"dangerDesc" = "정말로 위험합니다";
+"littleBadDesc" = "목이 칼칼해집니다";
+"normalDesc" = "그럭저럭 괜찮습니다";
+"safeDesc" = "산책하기 좋은 날씨입니다";
+"veryBadDesc" = "정말 나쁩니다";
+"unchecked" = "측정불가";
+"no2Url" = "https://ko.m.wikipedia.org/wiki/이산화_질소";
+"o3Url" = "https://ko.m.wikipedia.org/wiki/오존";
+"so2Url" = "https://ko.m.wikipedia.org/wiki/이산화_황";
+"pmUrl" =  "https://ko.m.wikipedia.org/wiki/미세먼지";
+"coUrl" = "https://ko.m.wikipedia.org/wiki/일산화_탄소";
+"aqiUrl" = "http://aqicn.org/scale/kr";
+"maskStorage" = "방독면 보관소";
+"Config" = "설정";
+"purchasePro" = "프로버전 구매하기";
+"wearingMask" = "%@ 착용중";
+"wearingBtn" = "착용하기";
+"askDeveloper" = "개발자에게 문의/건의하기";
+"versionInfo" = "버전 정보";
+"badTitle" = "나쁨";
+"normalTitle" = "보통";
+"sensitiveTitle" = "민감군 영향";
+"unhealthyTitle" = "나쁨";
+"veryUnhealthyTitle" = "매우 나쁨";
+"hazardousTitle" = "위험함";
+"goodTitle" = "좋음";

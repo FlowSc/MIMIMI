@@ -41,7 +41,7 @@ class MainViewController: UIViewController {
     
     @objc func callInfoPopup() {
         
-        PopUp.info(vc: self, title: "AQI?", url: "http://aqicn.org/scale/kr")
+        PopUp.info(vc: self, title: "AQItitle".localized, url: "aqiUrl".localized)
     }
     
     override func viewDidLoad() {
@@ -195,7 +195,7 @@ class MainViewController: UIViewController {
         
         aqiNoticeLb.textAlignment = .right
         
-        aqiNoticeLb.attributedText = "AQI (Air Quality Index) Standard".makeAttrString(font: .NotoSans(.bold, size: 18), color: .white)
+        aqiNoticeLb.attributedText = "AQItitle".localized.makeAttrString(font: .NotoSans(.bold, size: 18), color: .white)
         
         dustLb.adjustsFontSizeToFitWidth = true
         infoStackView.snp.makeConstraints { (make) in
@@ -297,22 +297,22 @@ class MainViewController: UIViewController {
         switch weatherData.dominentpol {
             
         case "pm25":
-            self.dustLb.attributedText = "초미세먼지: \(weatherData.aqi)".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
+            self.dustLb.attributedText = "\("pm25".localized): \(weatherData.aqi)".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
             
         case "pm10":
-            self.dustLb.attributedText = "미세먼지: \(weatherData.aqi)".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
+            self.dustLb.attributedText = "\("pm10".localized): \(weatherData.aqi)".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
             
         case "o3":
-            self.dustLb.attributedText = "오존: \(weatherData.aqi / 1000)".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
+            self.dustLb.attributedText = "\("o3".localized): \(weatherData.aqi / 1000)".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
             
         case "so2":
-            self.dustLb.attributedText = "이산화황: \(weatherData.aqi)".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
+            self.dustLb.attributedText = "\("so2".localized): \(weatherData.aqi)".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
             
         case "no2":
-            self.dustLb.attributedText = "이산화질소: \(weatherData.aqi)".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
+            self.dustLb.attributedText = "\("no2".localized): \(weatherData.aqi)".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
             
         case "co":
-            self.dustLb.attributedText = "일산화탄소: \(weatherData.aqi)".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
+            self.dustLb.attributedText = "\("CO".localized): \(weatherData.aqi)".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
         default:
             break
             
@@ -325,33 +325,33 @@ class MainViewController: UIViewController {
         switch weatherData.alertLevel! {
             
         case .bad:
-            self.alertLb.attributedText = "오늘은 실외활동을 최대한 자제해주세요!".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
+            self.alertLb.attributedText = "badDesc".localized.makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
             self.thumImageView.image = UIImage.init(named: "\(SELECTEDMASKIMAGE)4")
             self.view.backgroundColor = UIColor.unhealthyRed
             
         case .danger:
-            self.alertLb.attributedText = "오늘만큼은 무슨 일이 있어도 집밖으로 나가지 마세요!".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
+            self.alertLb.attributedText = "dangerDesc".localized.makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
             self.thumImageView.image = UIImage.init(named: "\(SELECTEDMASKIMAGE)6")
             self.view.backgroundColor = UIColor.hazardPurple
             
         case .little:
             self.thumImageView.image = UIImage.init(named: "\(SELECTEDMASKIMAGE)3")
             self.view.backgroundColor = UIColor.unhealthyTangerine
-            self.alertLb.attributedText = "조금은 목이 칼칼해지는 날씨입니다.".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
+            self.alertLb.attributedText = "littleBadDesc".localized.makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
             
         case .normal:
             self.thumImageView.image = UIImage.init(named: "\(SELECTEDMASKIMAGE)2")
             self.view.backgroundColor = UIColor.normalYellow
-            self.alertLb.attributedText = "그럭저럭 돌아다닐 수 있는 날씨입니다.".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
+            self.alertLb.attributedText = "normalDesc".localized.makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
             
         case .safe:
             self.thumImageView.image = UIImage.init(named: "\(SELECTEDMASKIMAGE)1")
-            self.alertLb.attributedText = "맑은 공기를 마음껏 마실 수 있는 날씨입니다.".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
+            self.alertLb.attributedText = "safeDesc".localized.makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
             self.view.backgroundColor = UIColor.wellGreen
             
         case .veryBad:
             self.thumImageView.image = UIImage.init(named: "\(SELECTEDMASKIMAGE)5")
-            self.alertLb.attributedText = "오늘만큼은 집밖으로 나가지 마세요!".makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
+            self.alertLb.attributedText = "veryBadDesc".localized.makeAttrString(font: .NotoSans(.bold, size: 30), color: .white)
             self.view.backgroundColor = UIColor.unhealthyPurple
             
             
@@ -363,15 +363,15 @@ class MainViewController: UIViewController {
         
         nformatter.maximumFractionDigits = 3
         
-        let v1 = InfoView.init(title: "이산화질소", value: "\(Int(weatherData.no2 ?? -100))", tag:0) // 습도
-        let v2 = InfoView.init(title: "오존", value: "\(Int(weatherData.o3 ?? -100))", tag:1) // 오존
-        let v3 = InfoView.init(title: "이산화황", value: "\(Int(weatherData.so2 ?? -100))", tag:2) // 이산화황
-        let v4 = InfoView.init(title: "초미세먼지", value: "\(Int(weatherData.pm25 ?? -100))", tag:3) // 초미세먼지
-        let v5 = InfoView.init(title: "미세먼지", value: "\(Int(weatherData.pm10 ?? -100))", tag:4) // 미세먼지
+        let v1 = InfoView.init(title: "no2".localized, value: "\(Int(weatherData.no2 ?? -100))", tag:0) // 습도
+        let v2 = InfoView.init(title: "o3".localized, value: "\(Int(weatherData.o3 ?? -100))", tag:1) // 오존
+        let v3 = InfoView.init(title: "so2".localized, value: "\(Int(weatherData.so2 ?? -100))", tag:2) // 이산화황
+        let v4 = InfoView.init(title: "pm25".localized, value: "\(Int(weatherData.pm25 ?? -100))", tag:3) // 초미세먼지
+        let v5 = InfoView.init(title: "pm10".localized, value: "\(Int(weatherData.pm10 ?? -100))", tag:4) // 미세먼지
         //        let v6 = InfoView.init(title: "Pressure", value: "\(weatherData.pressure ?? 0)") // 기압
         //        let v7 = InfoView.init(title: "Wind", value: "\(weatherData.wind ?? 0)") // 풍향
-        let v8 = InfoView.init(title: "일산화탄소", value: "\(Int(weatherData.co ?? -100))", tag:5) // 일산화탄소
-        let v9 = InfoView.init(title: "기온", value: "\(weatherData.temperature ?? -100) °C", tag:6) // 기온
+        let v8 = InfoView.init(title: "CO".localized, value: "\(Int(weatherData.co ?? -100))", tag:5) // 일산화탄소
+        let v9 = InfoView.init(title: "Temp".localized, value: "\(weatherData.temperature ?? -100) °C", tag:6) // 기온
         //        let v10 = InfoView.init(title: "rain", value: "\(weatherData.rain ?? 0)") // 강수확률
         
         
@@ -379,7 +379,7 @@ class MainViewController: UIViewController {
             infoStackView.addArrangedSubview($0)
             
             if ($0.infoLb.text?.contains("-100"))! {
-                    $0.infoLb.attributedText = "측정불가".makeAttrString(font: .NotoSans(.bold, size: 18), color: .white)
+                    $0.infoLb.attributedText = "unchecked".localized.makeAttrString(font: .NotoSans(.bold, size: 18), color: .white)
             }
             $0.delegate = self
         })
@@ -388,7 +388,7 @@ class MainViewController: UIViewController {
             _ = [v8, v2, v1].map({
                 infoStackView2.addArrangedSubview($0)
                 if ($0.infoLb.text?.contains("-100"))! {
-                    $0.infoLb.attributedText = "측정불가".makeAttrString(font: .NotoSans(.bold, size: 18), color: .white)
+                    $0.infoLb.attributedText = "unchecked".localized.makeAttrString(font: .NotoSans(.bold, size: 18), color: .white)
                 }
                 $0.delegate = self
             })
@@ -396,7 +396,7 @@ class MainViewController: UIViewController {
             _ = [v8, v2, v1, v9].map({
                 infoStackView2.addArrangedSubview($0)
                 if ($0.infoLb.text?.contains("-100"))! {
-                    $0.infoLb.attributedText = "측정불가".makeAttrString(font: .NotoSans(.bold, size: 18), color: .white)
+                    $0.infoLb.attributedText = "unchecked".localized.makeAttrString(font: .NotoSans(.bold, size: 18), color: .white)
                 }
                 $0.delegate = self
             })
@@ -433,17 +433,13 @@ class MainViewController: UIViewController {
                             
                             if let _weather = weather {
                                 weatherr.setTemperature(_weather.temperature)
-                                print("temerature nil")
-                                UserDefaults.standard.removeObject(forKey: "AppleLanguages")
+//                                UserDefaults.standard.removeObject(forKey: "AppleLanguages")
                                 self.centerMapOnLocation(location, mapView: self.mapView)
                                 self.setData(weatherr, locationName: _weather.name)
                             }else{
                                 CustomAPI.getDust(city: place.subAdministrativeArea ?? "", completion: { (weather) in
                                     if let _weather = weather {
-                                        weatherr.setTemperature(_weather.temperature)
-                                        print("temerature nil")
-                                        //                                            place.
-                                        UserDefaults.standard.removeObject(forKey: "AppleLanguages")
+//                                        UserDefaults.standard.removeObject(forKey: "AppleLanguages")
                                         self.centerMapOnLocation(location, mapView: self.mapView)
                                         self.setData(weatherr, locationName: _weather.name)
                                     }
@@ -468,15 +464,18 @@ class MainViewController: UIViewController {
         
         locationManager.startUpdatingLocation()
         
+        print(UserDefaults.standard.array(forKey: "AppleLanguages"))
+        print("FIRST")
         
         if let myLocation = locationManager.location {
-            
-            print(myLocation, "MYLOCATION")
             
             CLGeocoder().reverseGeocodeLocation(myLocation, preferredLocale: Locale.init(identifier: "en")) { (places, error) in
                 
                 
                 if let place = places?[0] {
+                    
+                    print(place.administrativeArea)
+                    print("FIRSTTTT")
                     
                     CustomAPI.getDust(lat:"\(myLocation.coordinate.latitude)", lng: "\(myLocation.coordinate.longitude)", completion: { (weather) in
                         
@@ -485,16 +484,25 @@ class MainViewController: UIViewController {
                         self.questionImv.isHidden = false
                         self.aqiNoticeLb.isUserInteractionEnabled = true
                         
+                        print(UserDefaults.standard.array(forKey: "AppleLanguages"))
+                        print("OBJECT")
+                        
+//                        _ = Locale.init(identifier: "en")
+                        
+                        _ = Locale.init(identifier: UserDefaults.standard.array(forKey: "AppleLanguages")![0] as! String == "ko" ? "ko":"en")
+                        
+                        print(place.administrativeArea)
+                        print("Secion")
+
                         if weather.temperature == nil {
                             
-                            
+
                             CustomAPI.getDust(city: place.administrativeArea ?? "", completion: { (weather) in
                                 
                                 
                                 if let _weather = weather {
                                     weatherr.setTemperature(_weather.temperature)
-                                    print("temerature nil")
-                                    UserDefaults.standard.removeObject(forKey: "AppleLanguages")
+//                                    UserDefaults.standard.removeObject(forKey: "AppleLanguages")
                                     self.centerMapOnLocation(myLocation, mapView: self.mapView)
                                     self.setData(weatherr, locationName: _weather.name)
                                     self.reloadMapAnnotation(self.mapView)
@@ -503,9 +511,7 @@ class MainViewController: UIViewController {
                                     CustomAPI.getDust(city: place.subAdministrativeArea ?? "", completion: { (weather) in
                                         if let _weather = weather {
                                             weatherr.setTemperature(_weather.temperature)
-                                            print("temerature nil")
-                                            //                                            place.
-                                            UserDefaults.standard.removeObject(forKey: "AppleLanguages")
+//                                            UserDefaults.standard.removeObject(forKey: "AppleLanguages")
                                             self.centerMapOnLocation(myLocation, mapView: self.mapView)
                                             self.setData(weatherr, locationName: _weather.name)
                                             self.reloadMapAnnotation(self.mapView)
@@ -513,22 +519,16 @@ class MainViewController: UIViewController {
                                         }
                                     })
                                 }
-                                
-                                
                             })
-                            
                         }else{
                             self.centerMapOnLocation(myLocation, mapView: self.mapView)
                             self.reloadMapAnnotation(self.mapView)
                             self.setData(weatherr, locationName: weatherr.name)
                         }
-                        
                     })
                 }
             }
         }
-        
-        
         //            if let myLocation = locationManager.location {
         //
         //                UserDefaults.standard.set(["en"], forKey: "AppleLanguages")
@@ -559,9 +559,7 @@ extension MainViewController:CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error)
     }
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        //        print(locations)
-    }
+
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
             
@@ -679,22 +677,22 @@ extension MainViewController:InfoViewDelegate {
         
         switch sender {
         case 0:
-            PopUp.info(vc: self, title: "이산화질소", url: "https://ko.m.wikipedia.org/wiki/대기질_지수")
+            PopUp.info(vc: self, title: "no2".localized, url: "no2Url".localized)
             
         case 1:
-            PopUp.info(vc: self, title: "오존", url: "https://ko.m.wikipedia.org/wiki/이산화_질소")
+            PopUp.info(vc: self, title: "o3".localized, url: "o3Url".localized)
 
         case 2:
-            PopUp.info(vc: self, title: "이산화황", url: "https://ko.m.wikipedia.org/wiki/이산화_황")
+            PopUp.info(vc: self, title: "so2".localized, url: "so2Url".localized)
 
         case 3:
-            PopUp.info(vc: self, title: "초미세먼지", url: "https://ko.m.wikipedia.org/wiki/미세먼지")
+            PopUp.info(vc: self, title: "pm25".localized, url: "pmUrl".localized)
 
         case 4:
-            PopUp.info(vc: self, title: "미세먼지", url: "https://ko.m.wikipedia.org/wiki/미세먼지")
+            PopUp.info(vc: self, title: "pm10".localized, url: "pmUrl".localized)
 
         case 5:
-            PopUp.info(vc: self, title: "일산화탄소", url: "https://ko.m.wikipedia.org/wiki/일산화_탄소")
+            PopUp.info(vc: self, title: "CO".localized, url: "coUrl".localized)
 
         case 6:
 //            PopUp.info(vc: self, title: "AQI?", url: "https://ko.m.wikipedia.org/wiki/대기질_지수")
