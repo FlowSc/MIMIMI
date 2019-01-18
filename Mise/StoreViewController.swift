@@ -13,7 +13,7 @@ typealias thumnailTuple = (image:UIImage, title:String, identifier:String)
 
 class StoreViewController: UIViewController {
     
-    let thumnails:[thumnailTuple] = [(UIImage.init(named: "basicMask1")!, "기본마스크", "basicMask"), (UIImage.init(named: "bioMask1")!, "노란머리마스크", "bioMask"), (UIImage.init(named: "fireMask1")!, "불타는열정마스크", "fireMask"), (UIImage.init(named: "madMask1")!, "기본", "madMask"), (UIImage.init(named: "milMask1")!, "기본", "milMask"), (UIImage.init(named: "seMask1")!, "기본", "seMask"), (UIImage.init(named: "toxicMask1")!, "기본", "toxicMask"), (UIImage.init(named: "vainMask1")!, "기본", "vainMask"), (UIImage.init(named: "metwinMask1")!, "기본", "metwinMask"), (UIImage.init(named: "weaponMask1")!, "기본", "weaponMask"), (UIImage.init(named: "emerMask1")!, "기본", "emerMask"), (UIImage.init(named: "nuMask1")!, "기본", "nuMask"), (UIImage.init(named: "paintMask1")!, "기본", "paintMask"), (UIImage.init(named: "seaMask1")!, "기본", "seaMask"), (UIImage.init(named: "sfMask1")!, "기본", "sfMask"), (UIImage.init(named: "ffMask1")!, "기본", "ffMask"), (UIImage.init(named: "hazardMask1")!, "기본", "hazardMask"), (UIImage.init(named: "nuhaMask1")!, "기본", "nuhaMask"), (UIImage.init(named: "blueMask1")!, "기본", "blueMask"), (UIImage.init(named: "longMask1")!, "기본", "longMask"), (UIImage.init(named: "gasMask1")!, "기본", "gasMask")]
+    let thumnails:[thumnailTuple] = [(UIImage.init(named: "basicMask1")!, "basicMask".localized, "basicMask"), (UIImage.init(named: "bioMask1")!, "yellowMask".localized, "bioMask"), (UIImage.init(named: "fireMask1")!, "fireMask".localized, "fireMask"), (UIImage.init(named: "madMask1")!, "madMask".localized, "madMask"), (UIImage.init(named: "milMask1")!, "yellowEye".localized, "milMask"), (UIImage.init(named: "seMask1")!, "welding".localized, "seMask"), (UIImage.init(named: "toxicMask1")!, "detect".localized, "toxicMask"), (UIImage.init(named: "vainMask1")!, "vain".localized, "vainMask"), (UIImage.init(named: "metwinMask1")!, "iron".localized, "metwinMask"), (UIImage.init(named: "weaponMask1")!, "wheel".localized, "weaponMask"), (UIImage.init(named: "emerMask1")!, "narrow".localized, "emerMask"), (UIImage.init(named: "nuMask1")!, "laser".localized, "nuMask"), (UIImage.init(named: "paintMask1")!, "sea".localized, "paintMask"), (UIImage.init(named: "seaMask1")!, "alien".localized, "seaMask"), (UIImage.init(named: "sfMask1")!, "cross".localized, "sfMask"), (UIImage.init(named: "ffMask1")!, "firefighter".localized, "ffMask"), (UIImage.init(named: "hazardMask1")!, "nuclear".localized, "hazardMask"), (UIImage.init(named: "nuhaMask1")!, "robot".localized, "nuhaMask"), (UIImage.init(named: "blueMask1")!, "asura".localized, "blueMask"), (UIImage.init(named: "longMask1")!, "bug".localized, "longMask"), (UIImage.init(named: "gasMask1")!, "bigEye".localized, "gasMask")]
     
     
     func setDelegate() {
@@ -32,6 +32,7 @@ class StoreViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = false
+        self.title = "maskStorage".localized
         setDelegate()
 
         // Do any additional setup after loading the view.

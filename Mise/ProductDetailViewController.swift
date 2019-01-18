@@ -131,7 +131,7 @@ class ProductInfoView:UIView {
         self.addSubview([thumnailImv, titleLb, descLb])
         
         thumnailImv.snp.makeConstraints { (make) in
-            make.top.equalTo(10)
+            make.top.equalTo(20)
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(300)
         }
@@ -140,7 +140,7 @@ class ProductInfoView:UIView {
             make.leading.equalTo(20)
             make.centerX.equalToSuperview()
             make.top.equalTo(thumnailImv.snp.bottom).offset(10)
-            make.height.equalTo(30)
+            make.height.equalTo(40)
         }
         titleLb.textAlignment = .center
         descLb.snp.makeConstraints { (make) in

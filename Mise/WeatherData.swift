@@ -45,6 +45,7 @@ struct WeatherData {
     var so2:Float?
     var dominentpol:String
     var alertLevel:AlertLevel?
+
     
     init(json:JSON) {
         

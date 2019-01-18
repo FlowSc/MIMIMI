@@ -49,6 +49,8 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         setUI()
         
+//        setData(, locationName: "")
+        
         UserDefaults.init(suiteName: GROUPIDENTIFIER)?.set(SELECTEDMASKIMAGE, forKey: "imageName")
         
         
@@ -119,6 +121,7 @@ class MainViewController: UIViewController {
         
         baseScrollView.contentView.addSubview([thumImageView, locationLb, dustLb, infoStackView, infoStackView2, alertLb, mapView, bannerView, menuBtn, aqiNoticeLb, questionImv])
         view.addSubview([baseScrollView])
+        thumImageView.image = UIImage.init(named: "basicMask1")
         baseScrollView.setScrollView(vc: self)
         
         baseScrollView.snp.remakeConstraints { (make) in
@@ -566,13 +569,16 @@ extension MainViewController:CLLocationManagerDelegate {
         case .authorizedAlways:
             print(" case .authorizedAlways:")
             locationManager.startUpdatingLocation()
-            getInfo()
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
+                self.getInfo()
+            }
             
         case .authorizedWhenInUse:
             print(" case .authorizedWhenInUse:")
             locationManager.startUpdatingLocation()
-            getInfo()
-            
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
+                self.getInfo()
+            }
         case .denied:
             print(" case .denied:")
             
