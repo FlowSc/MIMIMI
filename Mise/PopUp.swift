@@ -36,7 +36,7 @@ class PopUpView:UIView, WKUIDelegate, WKNavigationDelegate {
             make.width.equalTo(310)
             make.height.equalTo(500)
         }
-        
+        popupView.setBorder(color: .clear, width: 0.1, cornerRadius: 3)
         popupView.addSubview([infoWebView])
         
 //        titleLb.snp.makeConstraints { (make) in

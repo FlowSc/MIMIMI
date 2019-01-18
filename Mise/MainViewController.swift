@@ -41,7 +41,7 @@ class MainViewController: UIViewController {
     
     @objc func callInfoPopup() {
         
-        PopUp.info(vc: self, title: "AQI?", url: "https://ko.m.wikipedia.org/wiki/대기질_지수")
+        PopUp.info(vc: self, title: "AQI?", url: "http://aqicn.org/scale/kr")
     }
     
     override func viewDidLoad() {
