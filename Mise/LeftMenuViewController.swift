@@ -50,7 +50,13 @@ class LeftMenuViewController: UIViewController, BasicViewControllerDelegate, Pur
             
             pv.removeFromSuperview()
 
+            // 구매 완료 후 나오는 팝업
+            let av = UIAlertController.init(title: "구매완료", message: "구매가 완료되었습니다.", preferredStyle: UIAlertController.Style.alert)
+            let action = UIAlertAction.init(title: "확인", style: .cancel, handler: nil)
             
+            av.addAction(action)
+            
+            self.present(av, animated: true, completion: nil)
             
             sender.isUserInteractionEnabled = true
          

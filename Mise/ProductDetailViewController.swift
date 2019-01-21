@@ -7,12 +7,11 @@
 //
 
 import UIKit
+import StoreKit
 
-class ProductDetailViewController: UIViewController, PurchasePopupDelegate {
-    
-    func callAppstore(sender: UIButton) {
-        print("CALL!!")
-    }
+
+class ProductDetailViewController: UIViewController {
+
     
     let btn = UIButton()
     var ImageTitle:String?
@@ -88,8 +87,25 @@ class ProductDetailViewController: UIViewController, PurchasePopupDelegate {
     
     @objc func buyProduct(sender:UIButton) {
         
+        
+        
         sender.isUserInteractionEnabled = false
         
+        
+        if UserDefaults.standard.bool(forKey: "isProversion") {
+            setMask()
+        }else{
+           callBtn(sender: sender)
+        }
+        
+        
+
+        
+        sender.isUserInteractionEnabled = true
+        
+    }
+    
+    func setMask() {
         if let _imgTitle = ImageTitle, let _maskName = maskName {
             print(_imgTitle)
             SELECTEDMASKIMAGE = _imgTitle
@@ -101,10 +117,8 @@ class ProductDetailViewController: UIViewController, PurchasePopupDelegate {
         }
         
         self.navigationController?.popToRootViewController(animated: true)
-        
-        sender.isUserInteractionEnabled = true
-        
     }
+    
     
     @objc func callBtn(sender:UIButton) {
         let pv = PurhcasePopUpView()
@@ -125,6 +139,45 @@ class ProductDetailViewController: UIViewController, PurchasePopupDelegate {
     }
     */
 
+}
+
+extension ProductDetailViewController:PurchasePopupDelegate {
+    func callAppstore(sender: UIButton) {
+        sender.isUserInteractionEnabled = false
+        
+        if let pv = sender.superview?.superview?.superview as? PurhcasePopUpView {
+            
+            
+            
+            //            guard let _product = product else {
+            //                pv.removeFromSuperview()
+            //
+            //                sender.isUserInteractionEnabled = true
+            //                return }
+            //
+            //            let payment = SKPayment.init(product: _product)
+            //            SKPaymentQueue.default().add(payment)
+            UserDefaults.standard.set(true, forKey: "isProversion")
+            
+            pv.removeFromSuperview()
+            
+            // 구매 완료 후 나오는 팝업
+            let av = UIAlertController.init(title: "구매완료", message: "구매가 완료되었습니다.", preferredStyle: UIAlertController.Style.alert)
+            let action = UIAlertAction.init(title: "확인", style: .cancel, handler: nil)
+            
+            av.addAction(action)
+            
+           self.present(av, animated: true, completion: nil)
+            
+//            av.adda
+            sender.isUserInteractionEnabled = true
+
+        }
+    }
+    
+    
+    
+    
 }
 
 class ProductInfoView:UIView {

@@ -67,41 +67,61 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             CustomAPI.getDust(lat:"\(myLocation.coordinate.latitude)", lng: "\(myLocation.coordinate.longitude)") { (data) in
                 print(data.aqi)
                 print(data.dominentpol)
-                
+                self.widgetLb.numberOfLines = 0
+
                 
                 switch data.alertLevel! {
                     
                 case .bad:
                     self.view.backgroundColor = UIColor.unhealthyRed
                     
-                case .danger:
+                    let attrS = "\(data.time)\n\(data.aqi)㎍/m³\n".makeAttrString(font: .NotoSans(.bold, size: 14), color: .white)
+                    attrS.append("badDesc".localized.makeAttrString(font: .NotoSans(.bold, size: 14), color: .white))
                     
+                    self.widgetLb.attributedText = attrS
+//                    self.widgetLb.attributedText.add
+
+                case .danger:
+                    let attrS = "\(data.time)\n\(data.aqi)㎍/m³\n".makeAttrString(font: .NotoSans(.bold, size: 14), color: .white)
+                    attrS.append("dangerDesc".localized.makeAttrString(font: .NotoSans(.bold, size: 14), color: .white))
+                    
+                    self.widgetLb.attributedText = attrS
                     self.view.backgroundColor = UIColor.hazardPurple
                     
                 case .little:
+                    let attrS = "\(data.time)\n\(data.aqi)㎍/m³\n".makeAttrString(font: .NotoSans(.bold, size: 14), color: .white)
+                    attrS.append("littleBadDesc".localized.makeAttrString(font: .NotoSans(.bold, size: 14), color: .white))
                     
+                    self.widgetLb.attributedText = attrS
                     self.view.backgroundColor = UIColor.unhealthyTangerine
                     
                 case .normal:
+                    let attrS = "\(data.time)\n\(data.aqi)㎍/m³\n".makeAttrString(font: .NotoSans(.bold, size: 14), color: .white)
+                    attrS.append("normalDesc".localized.makeAttrString(font: .NotoSans(.bold, size: 14), color: .white))
                     
+                    self.widgetLb.attributedText = attrS
                     self.view.backgroundColor = UIColor.normalYellow
                     
                 case .safe:
+                    let attrS = "\(data.time)\n\(data.aqi)㎍/m³\n".makeAttrString(font: .NotoSans(.bold, size: 14), color: .white)
+                    attrS.append("safeDesc".localized.makeAttrString(font: .NotoSans(.bold, size: 14), color: .white))
                     
+                    self.widgetLb.attributedText = attrS
                     self.view.backgroundColor = UIColor.wellGreen
                     
                 case .veryBad:
+                    let attrS = "\(data.time)\n\(data.aqi)㎍/m³\n".makeAttrString(font: .NotoSans(.bold, size: 14), color: .white)
+                    attrS.append("veryBadDesc".localized.makeAttrString(font: .NotoSans(.bold, size: 14), color: .white))
                     
+                    self.widgetLb.attributedText = attrS
                     self.view.backgroundColor = UIColor.unhealthyPurple
                     
                 }
                 
                 
-                
-                if let time = UserDefaults.init(suiteName: GROUPIDENTIFIER)?.string(forKey: "time"), let aqi = UserDefaults.init(suiteName: GROUPIDENTIFIER)?.string(forKey: "domimentAQI"), let text = UserDefaults.init(suiteName: GROUPIDENTIFIER)?.string(forKey: "alertText")  {
-                    self.widgetLb.numberOfLines = 0
-                    self.widgetLb.attributedText = "\(data.time)\n\(data.aqi)㎍/m³\n\(text)".makeAttrString(font: .NotoSans(.bold, size: 14), color: .white)
-                }
+//
+//                if let time = UserDefaults.init(suiteName: GROUPIDENTIFIER)?.string(forKey: "time"), let aqi = UserDefaults.init(suiteName: GROUPIDENTIFIER)?.string(forKey: "domimentAQI"), let text = UserDefaults.init(suiteName: GROUPIDENTIFIER)?.string(forKey: "alertText")  {
+//                }
                 
             }
             

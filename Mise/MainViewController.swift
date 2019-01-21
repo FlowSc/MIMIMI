@@ -12,8 +12,6 @@ import MapKit
 import SnapKit
 import GoogleMobileAds
 
-//import URWeatherView
-
 class MainViewController: UIViewController {
     
     @IBOutlet weak var leftMenuView: UIView!
@@ -42,6 +40,7 @@ class MainViewController: UIViewController {
     @objc func callInfoPopup() {
         
         PopUp.info(vc: self, title: "AQItitle".localized, url: "aqiUrl".localized)
+        
     }
     
     override func viewDidLoad() {
@@ -117,6 +116,10 @@ class MainViewController: UIViewController {
     }
     
     func setUI() {
+        
+        UserDefaults.standard.set(false, forKey: "isProversion")
+
+        
         LoadingIndicator.start(vc: self)
 
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
@@ -704,32 +707,32 @@ extension MainViewController:InfoViewDelegate {
     func callDetailPopUp(sender: Int) {
         print(sender)
         
-        switch sender {
-        case 0:
-            PopUp.info(vc: self, title: "no2".localized, url: "no2Url".localized)
-            
-        case 1:
-            PopUp.info(vc: self, title: "o3".localized, url: "o3Url".localized)
-
-        case 2:
-            PopUp.info(vc: self, title: "so2".localized, url: "so2Url".localized)
-
-        case 3:
-            PopUp.info(vc: self, title: "pm25".localized, url: "pmUrl".localized)
-
-        case 4:
-            PopUp.info(vc: self, title: "pm10".localized, url: "pmUrl".localized)
-
-        case 5:
-            PopUp.info(vc: self, title: "CO".localized, url: "coUrl".localized)
-
-        case 6:
-//            PopUp.info(vc: self, title: "AQI?", url: "https://ko.m.wikipedia.org/wiki/대기질_지수")
-            break
-        default:
-            break
-            
-        }
+//        switch sender {
+//        case 0:
+//            PopUp.info(vc: self, title: "no2".localized, url: "no2Url".localized)
+//            
+//        case 1:
+//            PopUp.info(vc: self, title: "o3".localized, url: "o3Url".localized)
+//
+//        case 2:
+//            PopUp.info(vc: self, title: "so2".localized, url: "so2Url".localized)
+//
+//        case 3:
+//            PopUp.info(vc: self, title: "pm25".localized, url: "pmUrl".localized)
+//
+//        case 4:
+//            PopUp.info(vc: self, title: "pm10".localized, url: "pmUrl".localized)
+//
+//        case 5:
+//            PopUp.info(vc: self, title: "CO".localized, url: "coUrl".localized)
+//
+//        case 6:
+////            PopUp.info(vc: self, title: "AQI?", url: "https://ko.m.wikipedia.org/wiki/대기질_지수")
+//            break
+//        default:
+//            break
+//            
+//        }
 //        PopUp.info(vc: <#T##UIViewController#>)
 //        PopUp.info(vc: self)
     }

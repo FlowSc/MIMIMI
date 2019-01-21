@@ -19,7 +19,9 @@ class StoreViewController: UIViewController {
     func setDelegate() {
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.register(CollectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "header")
         collectionView.register(ProductCollectionViewCell.self, forCellWithReuseIdentifier: "ProductCollectionViewCell")
+//        collectionView.header
         collectionView.reloadData()
     }
     
@@ -44,6 +46,35 @@ class StoreViewController: UIViewController {
 }
 
 extension StoreViewController:UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+    
+
+        if kind == "UICollectionElementKindSectionHeader" {
+        
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for: indexPath) as! CollectionHeaderView
+            
+                header.topLb.attributedText = "storeInfo".localized.makeAttrString(font: .NotoSans(.bold, size: 14), color: .black)
+
+            return header
+        }else{
+            return UICollectionReusableView()
+        }
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        
+        if UserDefaults.standard.bool(forKey: "isProversion") {
+            return CGSize.init(width: view.frame.width, height: 0)
+
+        }else{
+            return CGSize.init(width: view.frame.width, height: 60)
+
+        }
+        
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return thumnails.count
     }
@@ -123,6 +154,32 @@ class ProductCollectionViewCell:UICollectionViewCell {
         }
         
         titleLb.textAlignment = .center
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+}
+
+class CollectionHeaderView:UICollectionReusableView {
+    
+    let topLb = UILabel()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setUI()
+    }
+    
+    private func setUI() {
+        self.addSubview(topLb)
+        topLb.snp.makeConstraints { (make) in
+           make.leading.equalTo(10)
+            make.centerX.equalToSuperview()
+            make.top.bottom.equalToSuperview()
+        }
+        topLb.numberOfLines = 0
+        topLb.adjustsFontSizeToFitWidth = true
     }
     
     required init?(coder aDecoder: NSCoder) {
