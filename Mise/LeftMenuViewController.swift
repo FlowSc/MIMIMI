@@ -39,6 +39,8 @@ class LeftMenuViewController: UIViewController, BasicViewControllerDelegate, Pur
             
 
 
+         
+            self.checkPro()
             
    
             if let mvc = self.parent?.parent as? MainViewController {
@@ -102,6 +104,9 @@ class LeftMenuViewController: UIViewController, BasicViewControllerDelegate, Pur
         
         signInBtn.setAttributedTitle("purchasePro".localized.makeAttrString(font: .NotoSans(.bold, size: 15), color: .black), for: .normal)
         signInBtn.addTarget(self, action: #selector(callPurchase), for: .touchUpInside)
+        
+        
+        
 //        signUpBtn.setAttributedTitle("회원가입".makeAttrString(font: .NotoSans(.bold, size: 15), color: .black), for: .normal)
         
 //        bottomView.backgroundColor = .red
@@ -123,6 +128,11 @@ class LeftMenuViewController: UIViewController, BasicViewControllerDelegate, Pur
             request.start()
         }
         
+    }
+    
+    func checkPro() {
+        bottomView.isHidden = UserDefaults.standard.bool(forKey: "isProversion")
+        view.layoutIfNeeded()
     }
     
     @objc func callPurchase(){
@@ -171,6 +181,7 @@ class LeftMenuViewController: UIViewController, BasicViewControllerDelegate, Pur
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.checkPro()
         self.tableView.reloadData()
     }
     
