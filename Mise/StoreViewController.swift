@@ -53,7 +53,16 @@ extension StoreViewController:UICollectionViewDelegate, UICollectionViewDataSour
 
         let cellItem = thumnails[indexPath.item]
         
-        cell.setData(image: cellItem.image, title: cellItem.title, isPurchased: indexPath.row == 0 ? true : false)
+        let isPro = UserDefaults.standard.bool(forKey: "isProversion")
+        
+        if isPro {
+            cell.setData(image: cellItem.image, title: cellItem.title, isPurchased: true)
+
+        }else{
+            cell.setData(image: cellItem.image, title: cellItem.title, isPurchased: indexPath.row == 0 ? true : false)
+
+        }
+        
         return cell
     }
     

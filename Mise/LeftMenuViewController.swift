@@ -7,17 +7,60 @@
 //
 
 import UIKit
+import StoreKit
 
 
 typealias MenuTuple = (image:UIImage, title:String)
 
+
 class LeftMenuViewController: UIViewController, BasicViewControllerDelegate, PurchasePopupDelegate {
+    
     func callAppstore(sender: UIButton) {
         sender.isUserInteractionEnabled = false
         
-        print("CALL APPSTORE")
+        
+        
+        
+        if let pv = sender.superview?.superview?.superview as? PurhcasePopUpView {
+            
+            
+            
+//            guard let _product = product else {
+//                pv.removeFromSuperview()
+//
+//                sender.isUserInteractionEnabled = true
+//                return }
+//
+//            let payment = SKPayment.init(product: _product)
+//            SKPaymentQueue.default().add(payment)
+            UserDefaults.standard.set(true, forKey: "isProversion")
+
+
+            
+
+
+            
+   
+            if let mvc = self.parent?.parent as? MainViewController {
+                mvc.viewWillAppear(true)
+                mvc.checkPro()
+                mvc.view.layoutIfNeeded()
+            }
+//            print("VV")
+            
+            pv.removeFromSuperview()
+
+            
+            
+            sender.isUserInteractionEnabled = true
+         
+
+            
+        }
     }
     
+    var product:SKProduct?
+    var productId = "pro1"
 
     let menuTuples:[MenuTuple] = [(image:UIImage.init(named: "store")!, title:"maskStorage".localized), (image:UIImage.init(named: "config")!, title:"Config".localized)]
     let signUpBtn = BottomButton()
@@ -63,6 +106,19 @@ class LeftMenuViewController: UIViewController, BasicViewControllerDelegate, Pur
         
     }
     
+    func getProductInfo() {
+        
+        if SKPaymentQueue.canMakePayments() {
+            
+            let request = SKProductsRequest.init(productIdentifiers: [self.productId])
+            
+            SKPaymentQueue.default().add(self)
+            request.delegate = self
+            request.start()
+        }
+        
+    }
+    
     @objc func callPurchase(){
 
         if let pv = self.parent as? UINavigationController {
@@ -100,7 +156,7 @@ class LeftMenuViewController: UIViewController, BasicViewControllerDelegate, Pur
         setUI()
         setDelegate()
         setAction()
-        
+        getProductInfo()
         
         
         
@@ -112,19 +168,6 @@ class LeftMenuViewController: UIViewController, BasicViewControllerDelegate, Pur
         self.tableView.reloadData()
     }
     
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension LeftMenuViewController:UITableViewDelegate, UITableViewDataSource {
@@ -229,6 +272,62 @@ extension LeftMenuViewController:UITableViewDelegate, UITableViewDataSource {
         
         print(indexPath.row)
     }
+    
+}
+
+extension LeftMenuViewController:SKPaymentTransactionObserver, SKProductsRequestDelegate {
+    
+    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        
+        for tr in transactions {
+            
+            switch tr.transactionState {
+                
+            case .purchased:
+                print("purchased")
+                SKPaymentQueue.default().finishTransaction(tr)
+                self.afterPurchased()
+            case .restored:
+                print("restored")
+                SKPaymentQueue.default().finishTransaction(tr)
+                self.afterPurchased()
+
+            case .failed:
+                print("failed")
+                SKPaymentQueue.default().finishTransaction(tr)
+
+            default:
+                print("XX")
+                
+            }
+            
+        }
+        
+    }
+    
+    func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
+        
+        let products = response.products
+        
+        if products.count != 0 {
+            self.product = products[0]
+            print(products)
+            print("PRODODODO")
+        }else{
+            print("ERROR")
+        }
+        
+    }
+    
+    func afterPurchased() {
+        
+        UserDefaults.standard.set(true, forKey: "isProversion")
+        
+    }
+    
+    
+    
+    
     
 }
 

@@ -11,7 +11,13 @@ import Firebase
 import GoogleMobileAds
 import AVKit
 
+
+var KEYWINDOW:UIWindow?
+
+
 @UIApplicationMain
+
+
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
@@ -20,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
+//        KEYWINDOW = application.keyWindow
         GADMobileAds.configure(withApplicationID: "ca-app-pub-9212649214874133~9081365050")
 
         return true

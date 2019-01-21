@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		236C35CD21F5606100C85EC4 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 236C35CC21F5606100C85EC4 /* StoreKit.framework */; };
 		23BBBBBB21EDB9AB00B64B7B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BBBBBA21EDB9AB00B64B7B /* AppDelegate.swift */; };
 		23BBBBC021EDB9AB00B64B7B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23BBBBBE21EDB9AB00B64B7B /* Main.storyboard */; };
 		23BBBBC221EDB9AD00B64B7B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23BBBBC121EDB9AD00B64B7B /* Assets.xcassets */; };
@@ -395,6 +396,7 @@
 /* Begin PBXFileReference section */
 		1959179BF8481FD09E9B698D /* Pods-Mise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mise.release.xcconfig"; path = "Target Support Files/Pods-Mise/Pods-Mise.release.xcconfig"; sourceTree = "<group>"; };
 		1F28C2BAB7103EDF75EDE95E /* Pods_MiseWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiseWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		236C35CC21F5606100C85EC4 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		23BBBBB721EDB9AB00B64B7B /* Mise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23BBBBBA21EDB9AB00B64B7B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23BBBBBF21EDB9AB00B64B7B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -599,6 +601,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6C5D2677A239DDCF791E0E08 /* Pods_Mise.framework in Frameworks */,
+				236C35CD21F5606100C85EC4 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -631,6 +634,7 @@
 		1C2A52064AD5D4926CBACA29 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				236C35CC21F5606100C85EC4 /* StoreKit.framework */,
 				23BBBD4921F02AC200B64B7B /* NotificationCenter.framework */,
 				A6836431A449DCA6FF72A218 /* Pods_Mise.framework */,
 				1F28C2BAB7103EDF75EDE95E /* Pods_MiseWidget.framework */,
@@ -992,6 +996,9 @@
 						CreatedOnToolsVersion = 10.1;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.InAppPurchase = {
 								enabled = 1;
 							};
 						};

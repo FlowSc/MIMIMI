@@ -67,15 +67,18 @@ class MainViewController: UIViewController {
         UIView.animate(withDuration: 0.5) {
             self.leftMenuView.snp.updateConstraints { (make) in
                 make.leading.equalTo(self.view.snp.leading).offset(-self.view.bounds.width)
+                
             }
             self.view.layoutIfNeeded()
         }
+        self.menuBtn.isSelected = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
         getInfo()
+        checkPro()
         UserDefaults.init(suiteName: GROUPIDENTIFIER)?.set(SELECTEDMASKIMAGE, forKey: "imageName")
         
     }
@@ -235,6 +238,10 @@ class MainViewController: UIViewController {
         infoStackView.spacing = 0
         dustLb.textAlignment = .center
         thumImageView.contentMode = .scaleAspectFit
+        
+        
+        
+        
         bannerView.snp.makeConstraints { (make) in
             make.top.equalTo(mapView.snp.bottom).offset(10)
             make.leading.bottom.trailing.equalToSuperview()
@@ -252,6 +259,22 @@ class MainViewController: UIViewController {
         bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
+        checkPro()
+        
+    }
+    
+    func checkPro() {
+        
+        if UserDefaults.standard.bool(forKey: "isProversion") {
+            bannerView.snp.updateConstraints { (make) in
+                make.height.equalTo(0)
+            }
+        }else{
+            bannerView.snp.updateConstraints { (make) in
+                make.height.equalTo(50)
+            }
+        }
+        view.layoutIfNeeded()
         
     }
     
