@@ -510,6 +510,7 @@ class MainViewController: UIViewController {
                     CustomAPI.getDust(lat:"\(myLocation.coordinate.latitude)", lng: "\(myLocation.coordinate.longitude)", completion: { (weather) in
                         
                         var weatherr = weather
+                        print(weatherr)
                         self.aqiNoticeLb.isHidden = false
                         self.questionImv.isHidden = false
                         self.aqiNoticeLb.isUserInteractionEnabled = true

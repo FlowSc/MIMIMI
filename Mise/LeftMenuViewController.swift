@@ -326,6 +326,13 @@ extension LeftMenuViewController:SKPaymentTransactionObserver, SKProductsRequest
         
         let products = response.products
         
+//
+//        for i in products {
+//
+//            i.productIdentifier == "
+//        }
+//
+        
         if products.count != 0 {
             self.product = products[0]
             print(products)
