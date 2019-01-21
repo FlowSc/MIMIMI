@@ -18,7 +18,7 @@ class LeftMenuViewController: UIViewController, BasicViewControllerDelegate, Pur
     func callAppstore(sender: UIButton) {
         sender.isUserInteractionEnabled = false
         
-        
+//        SKPaymentQueue().restoreCompletedTransactions()
         
         
         if let pv = sender.superview?.superview?.superview as? PurhcasePopUpView {
@@ -322,9 +322,17 @@ extension LeftMenuViewController:SKPaymentTransactionObserver, SKProductsRequest
         
     }
     
+//    restore
+    
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         
         let products = response.products
+        
+    
+        for i in response.products {
+            print(i)
+        }
+        
         
 //
 //        for i in products {
