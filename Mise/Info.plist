@@ -30,7 +30,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>2</string>
+	<string>3</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -39,11 +39,11 @@
 		<true/>
 	</dict>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>ddd</string>
+	<string>현재 위치의 기상 정보를 얻기 위한 위치정보제공에 동의합니다.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>dd</string>
+	<string>현재 위치의 기상 정보를 얻기 위한 위치정보제공에 동의합니다.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>dd</string>
+	<string>현재 위치의 기상 정보를 얻기 위한 위치정보제공에 동의합니다.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>notokr_regular.ttf</string>

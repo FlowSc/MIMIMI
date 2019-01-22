@@ -287,16 +287,16 @@ extension LeftMenuViewController:UITableViewDelegate, UITableViewDataSource {
 
 extension LeftMenuViewController:SKPaymentTransactionObserver, SKProductsRequestDelegate {
     
-    func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
-        
-        
-        for tr in queue.transactions {
-            
-            if tr.payment.productIdentifier == "pro1" {
-               self.afterRestored()
-            }
-        }
-    }
+//    func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
+//        
+//        
+//        for tr in queue.transactions {
+//            
+//            if tr.payment.productIdentifier == "pro1" {
+//               self.afterRestored()
+//            }
+//        }
+//    }
     
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         
