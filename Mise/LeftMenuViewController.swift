@@ -16,6 +16,7 @@ typealias MenuTuple = (image:UIImage, title:String)
 class LeftMenuViewController: UIViewController, BasicViewControllerDelegate, PurchasePopupDelegate {
     
     func callAppstore(sender: UIButton) {
+        
         sender.isUserInteractionEnabled = false
         
 //        SKPaymentQueue().restoreCompletedTransactions()
@@ -25,21 +26,14 @@ class LeftMenuViewController: UIViewController, BasicViewControllerDelegate, Pur
             
             
             
-//            guard let _product = product else {
-//                pv.removeFromSuperview()
-//
-//                sender.isUserInteractionEnabled = true
-//                return }
-//
-//            let payment = SKPayment.init(product: _product)
-//            SKPaymentQueue.default().add(payment)
-            UserDefaults.standard.set(true, forKey: "isProversion")
+            guard let _product = product else {
+                pv.removeFromSuperview()
 
+                sender.isUserInteractionEnabled = true
+                return }
+            let payment = SKPayment.init(product: _product)
+            SKPaymentQueue.default().add(payment)
 
-            
-
-
-         
             self.checkPro()
             
    
@@ -48,17 +42,11 @@ class LeftMenuViewController: UIViewController, BasicViewControllerDelegate, Pur
                 mvc.checkPro()
                 mvc.view.layoutIfNeeded()
             }
-//            print("VV")
             
             pv.removeFromSuperview()
 
             // 구매 완료 후 나오는 팝업
-            let av = UIAlertController.init(title: "구매완료", message: "구매가 완료되었습니다.", preferredStyle: UIAlertController.Style.alert)
-            let action = UIAlertAction.init(title: "확인", style: .cancel, handler: nil)
-            
-            av.addAction(action)
-            
-            self.present(av, animated: true, completion: nil)
+
             
             sender.isUserInteractionEnabled = true
          
@@ -133,6 +121,11 @@ class LeftMenuViewController: UIViewController, BasicViewControllerDelegate, Pur
     func checkPro() {
         bottomView.isHidden = UserDefaults.standard.bool(forKey: "isProversion")
         view.layoutIfNeeded()
+    }
+    
+    @objc func restorePurhcase() {
+        SKPaymentQueue.default().add(self)
+        SKPaymentQueue.default().restoreCompletedTransactions()
     }
     
     @objc func callPurchase(){
@@ -294,6 +287,17 @@ extension LeftMenuViewController:UITableViewDelegate, UITableViewDataSource {
 
 extension LeftMenuViewController:SKPaymentTransactionObserver, SKProductsRequestDelegate {
     
+    func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
+        
+        
+        for tr in queue.transactions {
+            
+            if tr.payment.productIdentifier == "pro1" {
+               self.afterRestored()
+            }
+        }
+    }
+    
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         
         for tr in transactions {
@@ -307,7 +311,7 @@ extension LeftMenuViewController:SKPaymentTransactionObserver, SKProductsRequest
             case .restored:
                 print("restored")
                 SKPaymentQueue.default().finishTransaction(tr)
-                self.afterPurchased()
+                self.afterRestored()
 
             case .failed:
                 print("failed")
@@ -328,19 +332,6 @@ extension LeftMenuViewController:SKPaymentTransactionObserver, SKProductsRequest
         
         let products = response.products
         
-    
-        for i in response.products {
-            print(i)
-        }
-        
-        
-//
-//        for i in products {
-//
-//            i.productIdentifier == "
-//        }
-//
-        
         if products.count != 0 {
             self.product = products[0]
             print(products)
@@ -354,6 +345,26 @@ extension LeftMenuViewController:SKPaymentTransactionObserver, SKProductsRequest
     func afterPurchased() {
         
         UserDefaults.standard.set(true, forKey: "isProversion")
+        
+        let av = UIAlertController.init(title: "purchased!".localized, message: "purchaseDesc".localized, preferredStyle: UIAlertController.Style.alert)
+        let action = UIAlertAction.init(title: "confirm".localized, style: .cancel, handler: nil)
+        
+        av.addAction(action)
+        
+        self.present(av, animated: true, completion: nil)
+        
+    }
+    
+    func afterRestored() {
+        
+        UserDefaults.standard.set(true, forKey: "isProversion")
+        
+        let av = UIAlertController.init(title: "restored!".localized, message: "restoredDesc".localized, preferredStyle: UIAlertController.Style.alert)
+        let action = UIAlertAction.init(title: "confirm".localized, style: .cancel, handler: nil)
+        
+        av.addAction(action)
+        
+        self.present(av, animated: true, completion: nil)
         
     }
     

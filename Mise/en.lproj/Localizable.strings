@@ -32,7 +32,7 @@
 "Config" = "Config";
 "purchasePro" = "Pro Purchase";
 "wearingMask" = "Wearing %@";
-"wearingBtn" = "We";
+"wearingBtn" = "Wearing";
 "askDeveloper" = "Ask";
 "versionInfo" = "Version";
 "badTitle" = "Bad";
@@ -84,5 +84,12 @@
 "asuraDesc" = "Asura";
 "bugDesc" = "Grasshopper";
 "bigEyeDesc" = "Big Eyes";
-"PurchaseInfo" = "미세한 방독면을 설치해주셔서 감사합니다!\n\n프로 버전을 구매할 시\n광고 제거 혜택과 동시에 \n방독면 보관소에 있는 \n여러가지 방독면들을 사용할 수 있습니다.\n\n감사합니다.";
-"storeInfo" = "프로버전을 구매하시면 방독면들을 사용하실 수 있습니다.";
+"PurchaseInfo" = "Thank you for installing this application!\n\nIf you purchase the Pro version,\nyou can get the ad removal benefit and \nuse the all gas masks in Mask Storage! \n\n Thank you!.";
+"storeInfo" = "If you purchase the Pro version, you can use all gas masks in Mask Storage!";
+"purchaseDesc" = "Your purchase is complete";
+"purchased!" = "Purchased!";
+"restored!" = "Restored!!";
+"restoredDesc" = "Your restoration is complete";
+"confirm" = "Confirm";
+"purchaseOk" = "Purchase";
+"purchaseNo" = "No thanks";

@@ -135,8 +135,8 @@ class PurhcasePopUpView:UIView {
         }
         
         cancelButton.addTarget(self, action: #selector(removePopup), for: .touchUpInside)
-        cancelButton.setAttributedTitle("안살래요".makeAttrString(font: .NotoSans(.bold, size: 15), color: .black), for: .normal)
-        buyBtn.setAttributedTitle("구매하기".makeAttrString(font: .NotoSans(.bold, size: 15), color: .black), for: .normal)
+        cancelButton.setAttributedTitle("purchaseNo".localized.makeAttrString(font: .NotoSans(.bold, size: 15), color: .black), for: .normal)
+        buyBtn.setAttributedTitle("purchaseOk".localized.makeAttrString(font: .NotoSans(.bold, size: 15), color: .black), for: .normal)
         buyBtn.addTarget(self, action: #selector(buy(sender:)), for: .touchUpInside)
         popupView.backgroundColor = .white
         

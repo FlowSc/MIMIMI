@@ -127,7 +127,6 @@ class MainViewController: UIViewController {
         
         baseScrollView.contentView.addSubview([thumImageView, locationLb, dustLb, infoStackView, infoStackView2, alertLb, mapView, bannerView, menuBtn, aqiNoticeLb, questionImv])
         view.addSubview([baseScrollView])
-//        thumImageView.image = UIImage.init(named: "basicMask1")
         baseScrollView.setScrollView(vc: self)
         
         baseScrollView.snp.remakeConstraints { (make) in

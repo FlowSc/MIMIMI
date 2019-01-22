@@ -65,3 +65,10 @@
 "bigEye" = "왕눈";
 "PurchaseInfo" = "미세한 방독면을 설치해주셔서 감사합니다!\n\n프로 버전을 구매할 시\n광고 제거 혜택과 동시에 \n방독면 보관소에 있는 \n여러가지 방독면들을 사용할 수 있습니다.\n\n감사합니다.";
 "storeInfo" = "프로버전을 구매하시면 방독면들을 사용하실 수 있습니다.";
+"purchaseDesc" = "구매가 완료되었습니다.";
+"purchased!" = "구매완료!";
+"restored!" = "복원완료!";
+"restoredDesc" = "구매내역 복원이 완료되었습니다.";
+"confirm" = "확인";
+"purchaseOk" = "구매하기";
+"purchaseNo" = "안살래요";

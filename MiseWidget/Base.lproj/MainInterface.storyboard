@@ -31,12 +31,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tpi-M3-uba">
-                                <rect key="frame" x="280" y="0.0" width="30" height="37"/>
+                                <rect key="frame" x="47" y="0.0" width="263" height="37"/>
                             </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="ssy-KU-ocm" firstAttribute="bottom" secondItem="VyX-OZ-dNA" secondAttribute="bottom" id="AIc-zh-vRs"/>
                             <constraint firstItem="eFz-Gv-Iga" firstAttribute="top" secondItem="ssy-KU-ocm" secondAttribute="top" constant="10" id="AJS-Pb-mhn"/>
+                            <constraint firstItem="tpi-M3-uba" firstAttribute="leading" secondItem="VyX-OZ-dNA" secondAttribute="trailing" constant="10" id="Bza-DG-1FR"/>
                             <constraint firstItem="VyX-OZ-dNA" firstAttribute="top" secondItem="ssy-KU-ocm" secondAttribute="top" id="HIP-CN-yDu"/>
                             <constraint firstItem="ssy-KU-ocm" firstAttribute="trailing" secondItem="tpi-M3-uba" secondAttribute="trailing" constant="10" id="KCW-HY-xcF"/>
                             <constraint firstItem="eFz-Gv-Iga" firstAttribute="leading" secondItem="ssy-KU-ocm" secondAttribute="leading" constant="10" id="Par-5J-qiq"/>
