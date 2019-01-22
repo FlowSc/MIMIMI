@@ -15,11 +15,11 @@
 "CO" = "CO";
 "so2" = "SO2";
 "Temp" = "Temp";
-"badDesc" = "Bad!\nPlease do not go out!";
-"dangerDesc" = "Danger!\nPlease do not go out!";
-"littleBadDesc" = "Little Bad!\nThe bronchus gets sick.";
-"normalDesc" = "Moderate\nIt's fine weather.";
-"safeDesc" = "Safe\nIt is the weather to taste fresh air!";
+"badDesc" = "Please do not go out!";
+"dangerDesc" = "Please do not go out!";
+"littleBadDesc" = "The bronchus gets sick.";
+"normalDesc" = "It's fine weather.";
+"safeDesc" = "It is the weather to taste fresh air!";
 "veryBadDesc" = "Very Bad!\nPlease do not go out!";
 "unchecked" = "unchecked";
 "no2Url" = "https://en.wikipedia.org/wiki/Nitrogen_dioxide";

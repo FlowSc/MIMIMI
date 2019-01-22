@@ -67,50 +67,64 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             CustomAPI.getDust(lat:"\(myLocation.coordinate.latitude)", lng: "\(myLocation.coordinate.longitude)") { (data) in
                 print(data.aqi)
                 print(data.dominentpol)
+                var dominent:String?
                 self.widgetLb.numberOfLines = 0
 
+                
+                switch data.dominentpol {
+                case "pm25":dominent = "pm25".localized
+                case "pm10":dominent = "pm10".localized
+                case "o3":dominent = "o3".localized
+                case "so2":dominent = "so2".localized
+                case "no2":dominent = "no2".localized
+                case "co":dominent = "CO".localized
+                default:
+                    break
+                    
+                }
+                
                 
                 switch data.alertLevel! {
                     
                 case .bad:
                     self.view.backgroundColor = UIColor.unhealthyRed
                     
-                    let attrS = "\(data.time)\n\(data.aqi)\n".makeAttrString(font: .NotoSans(.bold, size: 14), color: .white)
+                    let attrS = "\(data.time)\n\(dominent ?? ""):\(data.aqi)\n".makeAttrString(font: .NotoSans(.bold, size: 14), color: .white)
                     attrS.append("badDesc".localized.makeAttrString(font: .NotoSans(.bold, size: 14), color: .white))
                     
                     self.widgetLb.attributedText = attrS
 //                    self.widgetLb.attributedText.add
 
                 case .danger:
-                    let attrS = "\(data.time)\n\(data.aqi)\n".makeAttrString(font: .NotoSans(.bold, size: 14), color: .white)
+                    let attrS = "\(data.time)\n\(dominent ?? ""):\(data.aqi)\n".makeAttrString(font: .NotoSans(.bold, size: 14), color: .white)
                     attrS.append("dangerDesc".localized.makeAttrString(font: .NotoSans(.bold, size: 14), color: .white))
                     
                     self.widgetLb.attributedText = attrS
                     self.view.backgroundColor = UIColor.hazardPurple
                     
                 case .little:
-                    let attrS = "\(data.time)\n\(data.aqi)\n".makeAttrString(font: .NotoSans(.bold, size: 14), color: .white)
+                    let attrS = "\(data.time)\n\(dominent ?? ""):\(data.aqi)\n".makeAttrString(font: .NotoSans(.bold, size: 14), color: .white)
                     attrS.append("littleBadDesc".localized.makeAttrString(font: .NotoSans(.bold, size: 14), color: .white))
                     
                     self.widgetLb.attributedText = attrS
                     self.view.backgroundColor = UIColor.unhealthyTangerine
                     
                 case .normal:
-                    let attrS = "\(data.time)\n\(data.aqi)\n".makeAttrString(font: .NotoSans(.bold, size: 14), color: .white)
+                    let attrS = "\(data.time)\n\(dominent ?? ""):\(data.aqi)\n".makeAttrString(font: .NotoSans(.bold, size: 14), color: .white)
                     attrS.append("normalDesc".localized.makeAttrString(font: .NotoSans(.bold, size: 14), color: .white))
                     
                     self.widgetLb.attributedText = attrS
                     self.view.backgroundColor = UIColor.normalYellow
                     
                 case .safe:
-                    let attrS = "\(data.time)\n\(data.aqi)\n".makeAttrString(font: .NotoSans(.bold, size: 14), color: .white)
+                    let attrS = "\(data.time)\n\(dominent ?? ""):\(data.aqi)\n".makeAttrString(font: .NotoSans(.bold, size: 14), color: .white)
                     attrS.append("safeDesc".localized.makeAttrString(font: .NotoSans(.bold, size: 14), color: .white))
                     
                     self.widgetLb.attributedText = attrS
                     self.view.backgroundColor = UIColor.wellGreen
                     
                 case .veryBad:
-                    let attrS = "\(data.time)\n\(data.aqi)\n".makeAttrString(font: .NotoSans(.bold, size: 14), color: .white)
+                    let attrS = "\(data.time)\n\(dominent ?? ""):\(data.aqi)\n".makeAttrString(font: .NotoSans(.bold, size: 14), color: .white)
                     attrS.append("veryBadDesc".localized.makeAttrString(font: .NotoSans(.bold, size: 14), color: .white))
                     
                     self.widgetLb.attributedText = attrS
