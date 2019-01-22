@@ -12,7 +12,8 @@ import StoreKit
 
 class ProductDetailViewController: UIViewController {
 
-    
+    var product:SKProduct?
+    var productId = "pro1"
     let btn = UIButton()
     var ImageTitle:String?
     var maskName:String?
@@ -22,6 +23,7 @@ class ProductDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
+        getProductInfo()
         // Do any additional setup after loading the view.
     }
     
@@ -128,6 +130,30 @@ class ProductDetailViewController: UIViewController {
         }
         pv.delegate = self
     }
+    
+    func afterPurchased() {
+        UserDefaults.standard.set(true, forKey: "isProversion")
+        
+        let av = UIAlertController.init(title: "purchased!".localized, message: "purchaseDesc".localized, preferredStyle: UIAlertController.Style.alert)
+        let action = UIAlertAction.init(title: "confirm".localized, style: .cancel, handler: nil)
+        
+        av.addAction(action)
+        
+        self.present(av, animated: true, completion: nil)
+    }
+    
+    func afterRestored() {
+        
+        UserDefaults.standard.set(true, forKey: "isProversion")
+        
+        let av = UIAlertController.init(title: "restored!".localized, message: "restoredDesc".localized, preferredStyle: UIAlertController.Style.alert)
+        let action = UIAlertAction.init(title: "confirm".localized, style: .cancel, handler: nil)
+        
+        av.addAction(action)
+        
+        self.present(av, animated: true, completion: nil)
+        
+    }
 
     /*
     // MARK: - Navigation
@@ -141,6 +167,62 @@ class ProductDetailViewController: UIViewController {
 
 }
 
+extension ProductDetailViewController:SKPaymentTransactionObserver, SKProductsRequestDelegate {
+    
+    func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
+        
+        
+        for tr in queue.transactions {
+            
+            if tr.payment.productIdentifier == "pro1" {
+                self.afterRestored()
+            }
+        }
+    }
+    
+    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        
+        for tr in transactions {
+            
+            switch tr.transactionState {
+                
+            case .purchased:
+                print("purchased")
+                SKPaymentQueue.default().finishTransaction(tr)
+                self.afterPurchased()
+            case .restored:
+                print("restored")
+                SKPaymentQueue.default().finishTransaction(tr)
+                self.afterRestored()
+                
+            case .failed:
+                print("failed")
+                SKPaymentQueue.default().finishTransaction(tr)
+                
+            default:
+                print("XX")
+                
+            }
+            
+        }
+        
+    }
+    
+    func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
+        
+        let products = response.products
+        
+        if products.count != 0 {
+            self.product = products[0]
+            print(products)
+            print("PRODODODO")
+        }else{
+            print("ERROR")
+        }
+        
+    }
+}
+
 extension ProductDetailViewController:PurchasePopupDelegate {
     func callAppstore(sender: UIButton) {
         sender.isUserInteractionEnabled = false
@@ -149,32 +231,34 @@ extension ProductDetailViewController:PurchasePopupDelegate {
             
             
             
-            //            guard let _product = product else {
-            //                pv.removeFromSuperview()
-            //
-            //                sender.isUserInteractionEnabled = true
-            //                return }
-            //
-            //            let payment = SKPayment.init(product: _product)
-            //            SKPaymentQueue.default().add(payment)
-            UserDefaults.standard.set(true, forKey: "isProversion")
+            guard let _product = product else {
+                pv.removeFromSuperview()
+                
+                sender.isUserInteractionEnabled = true
+                return }
+            let payment = SKPayment.init(product: _product)
+            SKPaymentQueue.default().add(payment)
+
             
             pv.removeFromSuperview()
             
-            // 구매 완료 후 나오는 팝업
-            let av = UIAlertController.init(title: "구매완료", message: "구매가 완료되었습니다.", preferredStyle: UIAlertController.Style.alert)
-            let action = UIAlertAction.init(title: "확인", style: .cancel, handler: nil)
-            
-            av.addAction(action)
-            
-           self.present(av, animated: true, completion: nil)
-            
-//            av.adda
             sender.isUserInteractionEnabled = true
 
         }
     }
     
+    func getProductInfo() {
+        
+        if SKPaymentQueue.canMakePayments() {
+            
+            let request = SKProductsRequest.init(productIdentifiers: [self.productId])
+            
+            SKPaymentQueue.default().add(self)
+            request.delegate = self
+            request.start()
+        }
+        
+    }
     
     
     
@@ -196,7 +280,8 @@ class ProductInfoView:UIView {
         self.addSubview([thumnailImv, titleLb, descLb])
         
         thumnailImv.snp.makeConstraints { (make) in
-            make.top.equalTo(20)
+         
+            make.centerY.equalToSuperview()
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(300)
         }

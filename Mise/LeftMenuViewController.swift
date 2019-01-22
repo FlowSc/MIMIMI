@@ -325,9 +325,7 @@ extension LeftMenuViewController:SKPaymentTransactionObserver, SKProductsRequest
         }
         
     }
-    
-//    restore
-    
+        
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         
         let products = response.products

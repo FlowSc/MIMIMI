@@ -117,7 +117,7 @@ class MainViewController: UIViewController {
     
     func setUI() {
         
-        UserDefaults.standard.set(false, forKey: "isProversion")
+//        UserDefaults.standard.set(false, forKey: "isProversion")
 
         
         LoadingIndicator.start(vc: self)
@@ -258,7 +258,8 @@ class MainViewController: UIViewController {
         }
         
         view.bringSubviewToFront(leftMenuView)
-        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+
+        bannerView.adUnitID = "ca-app-pub-9212649214874133/6072058333"
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
         checkPro()
