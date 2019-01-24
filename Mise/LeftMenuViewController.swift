@@ -15,6 +15,7 @@ typealias MenuTuple = (image:UIImage, title:String)
 
 class LeftMenuViewController: UIViewController, BasicViewControllerDelegate, PurchasePopupDelegate {
     
+    
     func callAppstore(sender: UIButton) {
         
         sender.isUserInteractionEnabled = false
@@ -71,31 +72,34 @@ class LeftMenuViewController: UIViewController, BasicViewControllerDelegate, Pur
         }
         bottomView.snp.makeConstraints { (make) in
             make.left.bottom.trailing.equalToSuperview()
-            make.height.equalTo(100)
+            make.height.equalTo(120)
         }
         
-        bottomView.addSubview([signInBtn])
+        bottomView.addSubview([signInBtn, signUpBtn])
         
         signInBtn.snp.makeConstraints { (make) in
             make.leading.equalTo(10)
-            make.centerY.equalToSuperview()
+            make.top.equalTo(10)
+//            make.centerY.equalToSuperview()
             make.height.equalTo(40)
             make.trailing.equalTo(-10)
         }
-//        signUpBtn.snp.makeConstraints { (make) in
-//            make.trailing.equalTo(-10)
+        signUpBtn.snp.makeConstraints { (make) in
+            make.trailing.equalTo(-10)
+            make.top.equalTo(signInBtn.snp.bottom).offset(10)
+//            make.bottom.equalTo(-10)
 //            make.centerY.equalToSuperview()
-//            make.height.equalTo(40)
-//            make.width.equalTo(signInBtn.snp.width)
+            make.height.equalTo(40)
+            make.width.equalTo(signInBtn.snp.width)
 //            make.leading.equalTo(signInBtn.snp.trailing).offset(10)
-//        }
+        }
         
         signInBtn.setAttributedTitle("purchasePro".localized.makeAttrString(font: .NotoSans(.bold, size: 15), color: .black), for: .normal)
         signInBtn.addTarget(self, action: #selector(callPurchase), for: .touchUpInside)
         
+        signUpBtn.addTarget(self, action: #selector(restorePurhcase), for: .touchUpInside)
         
-        
-//        signUpBtn.setAttributedTitle("회원가입".makeAttrString(font: .NotoSans(.bold, size: 15), color: .black), for: .normal)
+        signUpBtn.setAttributedTitle("restoreTitle".localized.makeAttrString(font: .NotoSans(.bold, size: 15), color: .black), for: .normal)
         
 //        bottomView.backgroundColor = .red
         tableView.register(MenuTableViewCell.self, forCellReuseIdentifier: "MenuTableViewCell")
@@ -290,12 +294,24 @@ extension LeftMenuViewController:SKPaymentTransactionObserver, SKProductsRequest
     func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
         
         
+        if queue.transactions.count == 0 {
+            
+            print("No resotre Product")
+            
+            return
+        }
+        
+        
         for tr in queue.transactions {
             
             if tr.payment.productIdentifier == "pro1" {
                self.afterRestored()
             }
         }
+    }
+    
+    func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: Error) {
+        print(error.localizedDescription)
     }
     
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
@@ -311,7 +327,6 @@ extension LeftMenuViewController:SKPaymentTransactionObserver, SKProductsRequest
             case .restored:
                 print("restored")
                 SKPaymentQueue.default().finishTransaction(tr)
-                self.afterRestored()
 
             case .failed:
                 print("failed")
