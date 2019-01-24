@@ -73,6 +73,8 @@ class PopUpView:UIView, WKUIDelegate, WKNavigationDelegate {
     
 }
 
+//class AlerP
+
 class PurhcasePopUpView:UIView {
     
     let baseView = UIView()

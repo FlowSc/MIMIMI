@@ -73,3 +73,4 @@
 "purchaseOk" = "구매하기";
 "purchaseNo" = "안살래요";
 "restoreTitle" = "구매내역 복원하기";
+"restoreXtitle" = "기존 구매내역이 없습니다.";

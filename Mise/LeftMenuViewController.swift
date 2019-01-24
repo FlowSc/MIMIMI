@@ -295,8 +295,13 @@ extension LeftMenuViewController:SKPaymentTransactionObserver, SKProductsRequest
         
         
         if queue.transactions.count == 0 {
+                        
+            let av = UIAlertController.init(title: "", message: "restoreXtitle".localized, preferredStyle: UIAlertController.Style.alert)
+            let action = UIAlertAction.init(title: "confirm".localized, style: .cancel, handler: nil)
             
-            print("No resotre Product")
+            av.addAction(action)
+            
+            self.present(av, animated: true, completion: nil)
             
             return
         }
